@@ -5,10 +5,16 @@
 
 using namespace vex;
 
+// Creating motor and controller objects
 extern vex::motor rightMotorFront;
 extern vex::motor leftMotorFront;
+
 extern vex::motor rightMotorBack;
 extern vex::motor leftMotorBack;
+
+extern vex::motor_group leftWheels;
+extern vex::motor_group rightWheels;
+
 extern vex::controller Controller1;
 
 #endif

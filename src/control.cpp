@@ -11,29 +11,21 @@
 #include "vex.h"
 #include "setup.h"
 
-brain Brain;
 
+// User control code here, inside the loop
 void usercontrol() {
-  // User control code here, inside the loop
+
   while (1) {
-    
-    //get speed from controller joysticks
-    int forwardSpeed = Controller1.Axis3.position();   //forward & back
-    int sideSpeed = Controller1.Axis1.position();    //left & right
+    //Get speed from controller joysticks
+    int forwardSpeed = Controller1.Axis3.position();   //left joystick input (forward/backward)
+    int sideSpeed = Controller1.Axis1.position();    //right joystick input (left/right)
 
-    //front motors
-    leftMotorFront.spin(forward, sideSpeed + forwardSpeed, percent);
-    rightMotorFront.spin(forward, sideSpeed - forwardSpeed, percent);
-    leftMotorFront.setBrake(brakeType::coast);
-    rightMotorFront.setBrake(brakeType::coast);
+    leftWheels.spin(forward, forwardSpeed + sideSpeed, percent);
+    leftWheels.setStopping(brakeType::coast);
 
-    //back motors
-    leftMotorBack.spin(forward, sideSpeed + forwardSpeed, percent);
-    rightMotorBack.spin(forward, sideSpeed - forwardSpeed, percent);
-    leftMotorBack.setBrake(brakeType::coast);
-    rightMotorBack.setBrake(brakeType::coast);
+    rightWheels.spin(forward, forwardSpeed - sideSpeed, percent);
+    rightWheels.setStopping(brakeType::coast);
 
     wait(20, msec); // Sleep the task for a short amount of time to
-                    // prevent wasted resources.
   }
 }

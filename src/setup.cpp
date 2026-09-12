@@ -11,5 +11,9 @@ vex::motor rightMotorBack(vex::PORT13, vex::gearSetting::ratio18_1, false);
 
 vex::motor leftMotorBack(vex::PORT12, vex::gearSetting::ratio18_1, false);
 
+//grouping motors
+vex::motor_group leftWheels(leftMotorFront, leftMotorBack);
+vex::motor_group rightWheels(rightMotorFront, rightMotorBack);
+
 //configure controller
 vex::controller Controller1(vex::controllerType::primary);
