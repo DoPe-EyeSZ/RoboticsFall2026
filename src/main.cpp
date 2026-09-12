@@ -19,17 +19,14 @@ using namespace vex;
 competition Competition;
 
 
-
-//
-// Main will set up the competition functions and callbacks.
-//
 int main() {
-  // Set up callbacks for autonomous and driver control periods.
-  //Competition.autonomous(autonomous);
-  //Competition.drivercontrol(usercontrol);
+  //tells program to listen for sign to run autonomus and usercontrol function
+  Competition.autonomous(autonomous);
+  Competition.drivercontrol(usercontrol);
 
   // Run the pre-autonomous function.
-  usercontrol();
+  //pre_auton();
+  usercontrol();    //DELETE LATER, USE FOR TESTING PURPOSES ONLY
 
   // Prevent main from exiting with an infinite loop.
   while (true) {
