@@ -7,8 +7,8 @@ void usercontrol() {
 
   while (1) {
     //Get speed from controller joysticks
-    int forwardSpeed = Controller1.Axis3.position();   //left joystick input (forward/backward)
-    int sideSpeed = Controller1.Axis1.position();    //right joystick input (left/right)
+    int forwardSpeed = Controller1.Axis3.position();   //left joystick output (forward/backward)
+    int sideSpeed = Controller1.Axis1.position();    //right joystick output (left/right)
 
     leftWheels.spin(forward, forwardSpeed + sideSpeed, percent);
     leftWheels.setStopping(brakeType::coast);
