@@ -24,9 +24,15 @@ int main() {
   Competition.autonomous(autonomous);
   Competition.drivercontrol(usercontrol);
 
+  // Calibrate the Inertial Sensor
+
+
+
   // Run the pre-autonomous function.
   //pre_auton();
-  usercontrol();    //DELETE LATER, USE FOR TESTING PURPOSES ONLY
+  //usercontrol();    //DELETE LATER, USE FOR TESTING PURPOSES ONLY
+  autonomous();    //DELETE LATER, USE FOR TESTING PURPOSES ONLY
+
 
   // Prevent main from exiting with an infinite loop.
   while (true) {
