@@ -15,6 +15,10 @@
 
 void pre_auton(void) {
 
-  // All activities that occur before the competition starts
-  // Example: clearing encoders, setting servo positions, ...
+  InertialSensor.calibrate();
+
+  while (InertialSensor.isCalibrating()) {
+    wait(100, msec);
+  }
+
 }

@@ -12,9 +12,12 @@
 #include "vex.h"
 #include "setup.h"
 
-void autonomous() {
 
+void autonomous() {
     InertialSensor.setHeading(0, rotationUnits::deg); // Reset the head of Inertial Sensor to 0 degrees
+
+
+    driveTrain.turnFor(right, 60, deg); // Turn to 90 degrees
 
   
 
