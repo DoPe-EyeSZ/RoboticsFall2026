@@ -5,22 +5,26 @@
 
 using namespace vex;
 
-// Creating motor and controller objects
+// Front motors
 extern vex::motor rightMotorFront;
 extern vex::motor leftMotorFront;
 
+// Back motors
 extern vex::motor rightMotorBack;
 extern vex::motor leftMotorBack;
 
+// Grouping motors
 extern vex::motor_group leftWheels;
 extern vex::motor_group rightWheels;
 
-//lifting motors
+// Lifting motors
 extern vex::motor liftMotorLeft;
 extern vex::motor liftMotorRight;
 
+// Grouping lift motors
 extern vex::motor_group liftMotors;
 
+// Controller
 extern vex::controller Controller1;
 
 #endif
