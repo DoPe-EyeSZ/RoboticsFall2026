@@ -4,6 +4,6 @@
 #include "vex.h"
 #include "setup.h"
 
-void usercontrol(void);
+void usercontrol();
 
 #endif
