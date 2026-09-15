@@ -15,6 +15,12 @@ extern vex::motor leftMotorBack;
 extern vex::motor_group leftWheels;
 extern vex::motor_group rightWheels;
 
+//lifting motors
+extern vex::motor liftMotorLeft;
+extern vex::motor liftMotorRight;
+
+extern vex::motor_group liftMotors;
+
 extern vex::controller Controller1;
 
 #endif
