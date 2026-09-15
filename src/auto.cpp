@@ -14,6 +14,8 @@
 
 
 void autonomous() {
+
+    //TODO: USE INERTIAL SENSOR TO GET DATA
     InertialSensor.setHeading(0, rotationUnits::deg); // Reset the head of Inertial Sensor to 0 degrees
 
 
