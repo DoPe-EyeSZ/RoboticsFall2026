@@ -24,6 +24,9 @@ extern vex::motor liftMotorRight;
 // Inertial Sensor
 extern vex::inertial InertialSensor;
 
+//Odometry sensor
+extern vex::rotation RotationSensor;
+
 // Drive Train
 extern vex::drivetrain driveTrain;
 

@@ -23,8 +23,7 @@ vex::motor_group liftMotors(liftMotorLeft, liftMotorRight);
 vex::inertial InertialSensor(vex::PORT20);
 
 //Odometry
-vex::rotation leftEncoder(vex::PORT4, true);
-vex::rotation rightEncoder(vex::PORT3, false);
+vex::rotation rightEncoder(vex::PORT4, false);
 
 // Drive Train
 vex::drivetrain driveTrain(leftWheels, rightWheels);
