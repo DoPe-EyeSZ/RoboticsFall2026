@@ -8,25 +8,24 @@
 /*----------------------------------------------------------------------------*/
 
 #include "vex.h"
+#include "setup.h"
 #include "pre-auto.h"
 #include "auto.h"
 #include "control.h"
-#include "setup.h"
 
 using namespace vex;
 
 // A global instance of competition
 competition Competition;
 
-
 int main() {
   //tells program to listen for sign to run autonomus and usercontrol function
   Competition.autonomous(autonomous);
   Competition.drivercontrol(usercontrol);
 
-  // Run the pre-autonomous function.
-  //pre_auton();
-  usercontrol();    //DELETE LATER, USE FOR TESTING PURPOSES ONLY
+  pre_auton();
+  autonomous();
+  usercontrol();
 
   // Prevent main from exiting with an infinite loop.
   while (true) {

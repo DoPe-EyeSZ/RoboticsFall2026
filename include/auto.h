@@ -4,6 +4,6 @@
 #include "vex.h"
 #include "setup.h"
 
-void autonomous(void);
+void autonomous();
 
 #endif

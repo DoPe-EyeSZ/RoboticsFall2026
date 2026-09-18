@@ -21,11 +21,23 @@ extern vex::motor_group rightWheels;
 extern vex::motor liftMotorLeft;
 extern vex::motor liftMotorRight;
 
+// Inertial Sensor
+extern vex::inertial InertialSensor;
+
+//Odometry sensor
+extern vex::rotation RotationSensor;
+
+// Drive Train
+extern vex::drivetrain driveTrain;
+
 // Grouping lift motors
 extern vex::motor_group liftMotors;
 
 // Controller
 extern vex::controller Controller1;
+
+//Brain
+extern vex::brain Brain;
 
 #endif
 
