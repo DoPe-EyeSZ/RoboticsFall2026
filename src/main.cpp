@@ -26,9 +26,7 @@ int main() {
   Competition.drivercontrol(usercontrol);
 
   pre_auton();
-  autonomous();
-  autonomousOdometry();
-  usercontrol();
+
 
   // Prevent main from exiting with an infinite loop.
   while (true) {
