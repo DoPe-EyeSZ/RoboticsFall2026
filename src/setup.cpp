@@ -32,4 +32,4 @@ vex::drivetrain driveTrain(leftWheels, rightWheels);
 vex::controller Controller1(vex::controllerType::primary);
 
 //configure V5 brain
-vex::brain Brain();
+vex::brain Brain;

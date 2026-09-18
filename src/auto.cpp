@@ -15,6 +15,17 @@ void autonomous() {
   Brain.Screen.print(angle);
   Brain.Screen.print(position);
 
+  //Rotation sensor PID, linear movement
+  //Coefficients still need fine tuning
+  double kP = 1.0; //proportional
+  double kI = 0.1; //integral
+  double kD = 0.05; //derivative
+
+  double err = 0;
+  double target = 
+
+  while ()
+
     //TODO: USE INERTIAL SENSOR TO GET DATA
     InertialSensor.setHeading(0, rotationUnits::deg); // Reset the head of Inertial Sensor to 0 degrees
 
