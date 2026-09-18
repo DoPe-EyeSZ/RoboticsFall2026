@@ -7,7 +7,7 @@ brain Brain;
 
 void turnRight(){
     double currDeg = InertialSensor.rotation(deg);
-    while (InertialSensor.rotation(deg)-currDeg < 60){
+    while (abs(InertialSensor.rotation(deg)-currDeg) < 60){
         driveTrain.turn(right);
     }
     driveTrain.stop();
@@ -15,7 +15,7 @@ void turnRight(){
 
 void turnLeft(){
     double currDeg = InertialSensor.rotation(deg);
-    while (currDeg - InertialSensor.rotation(deg) < 60){
+    while (abs(currDeg - InertialSensor.rotation(deg)) < 60){
         driveTrain.turn(left);
     }
     driveTrain.stop();
