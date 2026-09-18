@@ -7,7 +7,8 @@ const int RIGHT_ANGLE_TURN = 60;
 
 void autonomous() {
   
-    //Gets current angle of the rotation sensor's shaft
+  RotationSensor.setPosition(0, rotationUnits::deg);
+  //Gets current angle of the rotation sensor's shaft
   double angle = RotationSensor.angle(degrees);
   double position = RotationSensor.position(rotationUnits::deg);
 
