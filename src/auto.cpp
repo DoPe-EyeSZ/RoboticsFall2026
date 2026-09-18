@@ -7,6 +7,12 @@ const int RIGHT_ANGLE_TURN = 60;
 
 void autonomous() {
   
+  //Wheel configs
+  wheelCircumference = 25.95; //in cm
+  wheeltarget_distance = 30;  //in cm
+
+  double wheelRotations = wheeltarget_distance / wheelCircumference; //for how many rotations needed
+
   RotationSensor.setPosition(0, rotationUnits::deg);
   //Gets current angle of the rotation sensor's shaft
   double angle = RotationSensor.angle(degrees);
