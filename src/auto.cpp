@@ -17,9 +17,9 @@ void autonomous() {
 
   //Rotation sensor PID, linear movement
   //Coefficients still need fine tuning
-  double kP = 1.0; //proportional
-  double kI = 0.1; //integral
-  double kD = 0.05; //derivative
+  double kP = 0.05; //proportional
+  //double kI = 0.1; //integral, not needed
+  double kD = 0.25; //derivative
 
   double err = 0;
   double last_err = 0;
@@ -35,7 +35,12 @@ void autonomous() {
     err = 90 - RotationSensor.position(rotationUnits::deg); //Target angle is 90 degrees
     integral += err;
     derivative = err - last_err;
-    double output = kP * err + kI * integral + kD * derivative;
+    double output = (kP * err) + (kD * derivative);
+
+    leftMotorFront.spin(forward, output, voltageUnits::volt);
+    rightMotorFront.spin(forward, output, voltageUnits::volt);
+
+    last_err = err;
   }
 
     //TODO: USE INERTIAL SENSOR TO GET DATA
