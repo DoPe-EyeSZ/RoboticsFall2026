@@ -2,19 +2,18 @@
 
 #include "vex.h"
 #include "setup.h"
+#include "inertial.h"
+#include <cmath>
 
-const int RIGHT_ANGLE_TURN = 60;
+
+
 
 void autonomous() {
-  
-    //TODO: USE INERTIAL SENSOR TO GET DATA
-    InertialSensor.setHeading(0, rotationUnits::deg); // Reset the head of Inertial Sensor to 0 degrees
+    InertialSensor.setRotation(0, deg); // Reset the head of Inertial Sensor to 0 degrees 
+    driveTrain.setTurnVelocity(20, percent);
 
-    while (InertialSensor.heading() < 90){
-        driveTrain.turnFor(right, RIGHT_ANGLE_TURN, deg); // Turn to 90 degrees
-    }
-    
+    turnRight();
+    turnLeft();
 
-  
 
 }
