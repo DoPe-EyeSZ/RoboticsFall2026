@@ -8,8 +8,8 @@ const int RIGHT_ANGLE_TURN = 60;
 void autonomous() {
   
     //Gets current angle of the rotation sensor's shaft
-  double angle = Rotation1.angle(degrees);
-  double position( rotationUnits units );
+  double angle = RotationSensor.angle(degrees);
+  double position = RotationSensor.position(rotationUnits::deg);
 
   //This prints the current angle/heading of the shaft
   Brain.Screen.print(angle);

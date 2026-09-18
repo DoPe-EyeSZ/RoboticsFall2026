@@ -36,5 +36,8 @@ extern vex::motor_group liftMotors;
 // Controller
 extern vex::controller Controller1;
 
+//Brain
+extern vex::brain Brain;
+
 #endif
 
