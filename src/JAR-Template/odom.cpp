@@ -1,5 +1,10 @@
 #include "vex.h"
 
+using namespace vex;
+
+#include "JAR-Template/util.h"
+#include "JAR-Template/odom.h"
+
 /**
  * Setter method for tracker center distances.
  * The forward tracker center distance is the horizontal distance from the 

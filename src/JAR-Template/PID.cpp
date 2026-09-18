@@ -1,5 +1,9 @@
 #include "vex.h"
 
+using namespace vex;
+
+#include "JAR-Template/PID.h"
+
 /**
  * PID constructor with P, I, D, and starti.
  * Starti keeps the I term at 0 until error is less than starti.

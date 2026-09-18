@@ -1,5 +1,12 @@
 #include "vex.h"
 
+using namespace vex;
+
+#include "JAR-Template/util.h"
+#include "JAR-Template/PID.h"
+#include "JAR-Template/odom.h"
+#include "JAR-Template/drive.h"
+
 /**
  * Drive constructor for the chassis.
  * Even though there's only one constructor, there can be
@@ -727,6 +734,7 @@ void Drive::control_tank(){
  */
 
 int Drive::position_track_task(){
+  extern Drive chassis;
   chassis.position_track();
   return(0);
 }

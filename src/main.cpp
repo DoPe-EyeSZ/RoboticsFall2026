@@ -12,7 +12,6 @@
 #include "auto.h"
 #include "control.h"
 #include "setup.h"
-#include "JAR-Template/chassis.h"
 
 using namespace vex;
 

@@ -1,4 +1,6 @@
 #include "vex.h"
+#include <cmath>
+#include <algorithm>
 
 /**
  * Converts an angle to an equivalent one in the range [0, 360).

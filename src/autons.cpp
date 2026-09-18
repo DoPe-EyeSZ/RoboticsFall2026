@@ -1,5 +1,13 @@
 #include "vex.h"
 
+using namespace vex;
+
+#include "JAR-Template/odom.h"
+#include "JAR-Template/drive.h"
+
+extern Drive chassis;
+extern brain Brain;
+
 /**
  * Resets the constants for auton movement.
  * Modify these to change the default behavior of functions like
