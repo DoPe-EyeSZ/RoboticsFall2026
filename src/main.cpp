@@ -11,6 +11,7 @@
 #include "setup.h"
 #include "pre-auto.h"
 #include "auto.h"
+#include "odometry.h"
 #include "control.h"
 
 using namespace vex;
@@ -19,12 +20,14 @@ using namespace vex;
 competition Competition;
 
 int main() {
-  //tells program to listen for sign to run autonomus and usercontrol function
+  //tells program to listen for sign to run autonomous, autonomous odometry, and usercontrol function
   Competition.autonomous(autonomous);
+  Competition.autonomousOdometry(autonomousOdometry);
   Competition.drivercontrol(usercontrol);
 
   pre_auton();
   autonomous();
+  autonomousOdometry();
   usercontrol();
 
   // Prevent main from exiting with an infinite loop.
