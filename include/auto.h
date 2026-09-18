@@ -6,4 +6,8 @@
 
 void autonomous();
 
+void turnRight();
+
+void turnLeft();
+
 #endif
