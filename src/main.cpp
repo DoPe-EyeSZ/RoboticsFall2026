@@ -22,7 +22,7 @@ competition Competition;
 int main() {
   //tells program to listen for sign to run autonomous, autonomous odometry, and usercontrol function
   Competition.autonomous(autonomous);
-  Competition.autonomousOdometry(autonomousOdometry);
+  Competition.autonomous(autonomousOdometry);
   Competition.drivercontrol(usercontrol);
 
   pre_auton();

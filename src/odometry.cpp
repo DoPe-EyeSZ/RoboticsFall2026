@@ -1,11 +1,12 @@
 #include "vex.h"
 #include "setup.h"
 
+using namespace vex;
 void autonomousOdometry() {
   
   //Wheel configs
   double wheelCircumference = 25.95; //in cm
-  double wheeltarget_distance = 30;  //in cm
+  double wheeltarget_distance = 50; //in cm
 
   double wheelRotations = wheeltarget_distance / wheelCircumference; //for how many rotations needed
 
@@ -15,8 +16,8 @@ void autonomousOdometry() {
   double position = RotationSensor.position(rotationUnits::deg);
 
   //This prints the current angle/heading of the shaft
-  Brain.Screen.print(angle);
-  Brain.Screen.print(position);
+  Controller1.Screen.print(angle);
+  Controller1.Screen.print(position);
 
   //Rotation sensor PID, linear movement
   //Coefficients still need fine tuning
@@ -35,7 +36,7 @@ void autonomousOdometry() {
 
   //Still need to correct this math and figure out how to send this data to the drivetrain
   while (true) {
-    err = 90 - RotationSensor.position(rotationUnits::deg); //Target angle is 90 degrees
+    err = 5000 - RotationSensor.position(rotationUnits::deg); //Target angle is 90 degrees
     integral += err;
     derivative = err - last_err;
     double output = (kP * err) + (kD * derivative);
