@@ -27,6 +27,17 @@ void autonomous() {
   double derivative = 0;
   double integral = 0;
 
+  RotationSensor.setPosition(0, rotationUnits::deg);
+
+
+  //Still need to correct this math and figure out how to send this data to the drivetrain
+  while (true) {
+    err = 90 - RotationSensor.position(rotationUnits::deg); //Target angle is 90 degrees
+    integral += err;
+    derivative = err - last_err;
+    double output = kP * err + kI * integral + kD * derivative;
+  }
+
     //TODO: USE INERTIAL SENSOR TO GET DATA
     InertialSensor.setHeading(0, rotationUnits::deg); // Reset the head of Inertial Sensor to 0 degrees
 
