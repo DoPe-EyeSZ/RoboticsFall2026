@@ -22,9 +22,10 @@ void autonomous() {
   double kD = 0.05; //derivative
 
   double err = 0;
-  double target = 
-
-  while ()
+  double last_err = 0;
+  double tolerance = 1.0;
+  double derivative = 0;
+  double integral = 0;
 
     //TODO: USE INERTIAL SENSOR TO GET DATA
     InertialSensor.setHeading(0, rotationUnits::deg); // Reset the head of Inertial Sensor to 0 degrees
