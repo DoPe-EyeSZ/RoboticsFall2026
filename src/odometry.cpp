@@ -25,7 +25,7 @@ void autonomousOdometry() {
 
   //Rotation sensor PID, linear movement
   //Coefficients still need fine tuning
-  double kP = 0.05; //proportional
+  double kP = 0.08; //proportional
   //double kI = 0.1; //integral, not needed
   double kD = 0.25; //derivative
 
