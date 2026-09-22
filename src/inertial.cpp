@@ -5,7 +5,7 @@
 
 void turnRight(){
     const double target = InertialSensor.rotation(deg) + 90;
-    const double Kp = 0.35;
+    const double Kp = 0.32;
     const double Kd = 0;
 
     double err = 0;
@@ -34,7 +34,7 @@ void turnRight(){
         if (fabs(err) < 1){
             break;
         }
-        wait(1, msec);
+        wait(20, msec);
         
     }
     leftWheels.stop();
@@ -71,7 +71,7 @@ void turnLeft(){
         if (fabs(err) < 1){
             break;
         }
-        wait(1, msec);
+        wait(20, msec);
         
     }
     leftWheels.stop();
