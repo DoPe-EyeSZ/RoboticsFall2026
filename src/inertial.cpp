@@ -5,6 +5,8 @@
 
 void turnRight(){
     const double target = InertialSensor.rotation(deg) + 90;
+    //We should consider whether or not to consolidate the logic for the PID coefficients, not sure what kind of
+    //lateral asymmetry exists with the drivetrain
     const double Kp = 0.32;
     const double Kd = 0;
 
