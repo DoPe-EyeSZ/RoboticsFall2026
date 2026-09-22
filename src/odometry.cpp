@@ -61,6 +61,6 @@ void autonomousOdometry() {
     timeElapsed += loopDelay;
   }
 
-  leftMotorFront.stop(braketype::hold);
-  rightMotorFront.stop(braketype::hold);
+  leftMotorFront.stop(brakeType::hold);
+  rightMotorFront.stop(brakeType::hold);
 }
