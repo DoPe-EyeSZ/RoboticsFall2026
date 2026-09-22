@@ -65,6 +65,10 @@ void turnLeft(){
 
         motorPow = (Kp*err) + (Kd*derivative);
 
+        //Motor power clamp
+        if (motorPow > 100.0) motorPow = 100.0;
+        if (motorPow < -100.0) motorPow = -100.0;
+
         leftWheels.spin(forward, motorPow, percent);
         rightWheels.spin(reverse, motorPow, percent);
 
