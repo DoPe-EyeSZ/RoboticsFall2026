@@ -31,9 +31,9 @@ void autonomousOdometry() {
 
   double err = 0;
   double last_err = 0;
-  double tolerance = 1.0;
+  //double tolerance = 1.0; //not being used right now
   double derivative = 0;
-  double integral = 0;
+  //double integral = 0; //not being used right now
 
   RotationSensor.setPosition(0, rotationUnits::deg);
 
