@@ -24,7 +24,7 @@ void autonomousOdometry() {
   Controller1.Screen.print(wheelRotations);
 
   //Rotation sensor PID, linear movement
-  //Coefficients still need fine tuning
+  //Coefficients still need fine tuning, continue work as needed
   double kP = 0.08; //proportional
   //double kI = 0.1; //integral, not needed
   double kD = 0.25; //derivative
