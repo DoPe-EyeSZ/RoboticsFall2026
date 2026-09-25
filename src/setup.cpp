@@ -11,8 +11,8 @@ vex::motor leftMotorFront(vex::PORT12, vex::gearSetting::ratio18_1, false);
 //vex::motor leftMotorBack(vex::PORT__, vex::gearSetting::ratio18_1, false);
 
 // Grouping motors
-vex::motor_group leftWheels(leftMotorFront, leftMotorBack);
-vex::motor_group rightWheels(rightMotorFront, rightMotorBack);
+vex::motor_group leftWheels(leftMotorFront);
+vex::motor_group rightWheels(rightMotorFront);
 
 // Grouping lift motors
 //vex::motor liftMotorLeft(vex::PORT__, vex::gearSetting::ratio18_1, true);
