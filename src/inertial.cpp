@@ -84,6 +84,8 @@ void turnLeft(int degree){
         wait(20, msec);
         
     }
+    leftWheels.setStopping(brakeType::coast);
+    rightWheels.setStopping(brakeType::coast);
     leftWheels.stop();
     rightWheels.stop();
 }
