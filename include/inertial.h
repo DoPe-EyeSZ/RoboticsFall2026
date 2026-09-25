@@ -4,7 +4,7 @@
 #include "vex.h"
 #include "setup.h"
 
-void turnRight();
-void turnLeft();
+void turnRight(int degree);
+void turnLeft(int degree);
 
 #endif

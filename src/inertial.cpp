@@ -3,8 +3,8 @@
 #include "inertial.h"
 #include <cmath>
 
-void turnRight(){
-    const double target = InertialSensor.rotation(deg) + 90;
+void turnRight(int degree){
+    const double target = InertialSensor.rotation(deg) + degree;
     const double Kp = 0.32;
     const double Kd = 0;
 
@@ -45,8 +45,8 @@ void turnRight(){
     rightWheels.stop();
 }
 
-void turnLeft(){
-    const double target = InertialSensor.rotation(deg) - 90;
+void turnLeft(int degree){
+    const double target = InertialSensor.rotation(deg) - degree;
     const double Kp = 0.375;
     const double Kd = 0.0;
 
