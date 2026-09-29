@@ -5,8 +5,8 @@
 
 void turnRight(int degree){
     const double target = InertialSensor.rotation(deg) + degree;
-    const double Kp = 0.32;
-    const double Kd = 0;
+    const double Kp = 0.35;
+    const double Kd = 0.05;
 
     double err = 0;
     double prevErr = 0;
@@ -17,7 +17,7 @@ void turnRight(int degree){
     timer t; 
     t.reset(); 
 
-    while (t.time(sec) < 1.5){
+    while (t.time(sec) < 1.2){
         currDeg = InertialSensor.rotation(deg);
 
         err = target - currDeg;
@@ -35,7 +35,7 @@ void turnRight(int degree){
 
         prevErr = err;
 
-        if (fabs(err) < 1){
+        if (fabs(err) < 0.5){
             break;
         }
         wait(20, msec);
@@ -49,8 +49,8 @@ void turnRight(int degree){
 
 void turnLeft(int degree){
     const double target = InertialSensor.rotation(deg) - degree;
-    const double Kp = 0.375;
-    const double Kd = 0.0;
+    const double Kp = 0.335;
+    const double Kd = 0.05;
 
     double err = 0;
     double prevErr = 0;
@@ -60,7 +60,7 @@ void turnLeft(int degree){
     double motorPow;
     timer t; 
     t.reset(); 
-    while (t.time(sec) < 1.5){
+    while (t.time(sec) < 1.2){
         currDeg = InertialSensor.rotation(deg);
 
         err = target - currDeg;
@@ -69,7 +69,7 @@ void turnLeft(int degree){
 
         motorPow = (Kp*err) + (Kd*derivative);
 
-        //Motor power clamp
+        //Motor power cap
         if (motorPow > 100.0) motorPow = 100.0;
         if (motorPow < -100.0) motorPow = -100.0;
 
@@ -78,7 +78,7 @@ void turnLeft(int degree){
 
         prevErr = err;
 
-        if (fabs(err) < 1){
+        if (fabs(err) < 0.5){
             break;
         }
         wait(20, msec);
