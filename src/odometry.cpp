@@ -6,13 +6,13 @@ void driveDistance(double targetDistance) {
   
   //Wheel configs
   const double wheelCircumference = 25.95; // centimeters
-  RotationSensor.setPosition(0, rotationUnits::deg);                    //put in autocpp???:
+  RotationSensor.setPosition(0, deg);                  
 
   //gets num of rotations to reach target
   double wheelRotations = targetDistance / wheelCircumference;
   
   //Gets target angle
-  double initialAngle = RotationSensor.position(rotationUnits::deg);
+  double initialAngle = RotationSensor.position(deg);
   double finalAngle = initialAngle + (wheelRotations * 360);
 
   /* Will come back to this for debugging experiments
@@ -62,6 +62,6 @@ void driveDistance(double targetDistance) {
     wait(20, msec);
   }
 
-  leftMotorFront.stop(brakeType::coast);
-  rightMotorFront.stop(brakeType::coast);
+  leftMotorFront.stop(brakeType::hold);
+  rightMotorFront.stop(brakeType::hold);
 }
