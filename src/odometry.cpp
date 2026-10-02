@@ -8,9 +8,7 @@ void driveDistance(double targetDistance, double maxTime = 5.0) {
   //Wheel configs
   const double wheelCircumference = 15.96; // centimeters
   const double tolerance = 3.0 * wheelCircumference / 360.0;
-  RotationSensor.setPosition(0, rotationUnits::rev);
-
-  const double kP = 0.1 * 360.0 / wheelCircumference;           
+  RotationSensor.setPosition(0, rotationUnits::rev);          
 
   //gets num of rotations to reach target
   double wheelRotations = targetDistance / wheelCircumference;
@@ -30,8 +28,8 @@ void driveDistance(double targetDistance, double maxTime = 5.0) {
   
 
   //Rotation sensor PID, linear movement
-  double kP = 0.1; 
-  double kD = 0.0; 
+  const double kP = 0.1 * 360.0 / wheelCircumference;
+  const double kD = 0.0;
 
   double err;
   double prev_err = finalAngle - RotationSensor.position(deg);
