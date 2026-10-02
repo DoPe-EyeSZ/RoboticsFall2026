@@ -1,38 +1,26 @@
 #include "vex.h"
 #include "setup.h"
-#include "odometry.h"
 
 using namespace vex;
 void driveDistance(double targetDistance, double maxTime = 5.0) {
   
   //Wheel configs
   const double wheelCircumference = 15.96; // centimeters
-  const double tolerance = 3.0 * wheelCircumference / 360.0;
-  RotationSensor.setPosition(0, rotationUnits::rev);          
-
-  //gets num of rotations to reach target
-  double wheelRotations = targetDistance / wheelCircumference;
+  const double kP = 0.2; 
+  const double kD = 0.0; 
+  RotationSensor.setPosition(0, deg);
   
-  //Gets target angle
-  double initialAngle = RotationSensor.position(deg);
-  double finalAngle = initialAngle + (wheelRotations * 360);
 
   //Will come back to this for debugging experiments
-  Controller1.Screen.print(initialAngle);
-  Controller1.Screen.print(finalAngle);
   Controller1.Screen.newLine();
   Controller1.Screen.print(RotationSensor.position(rotationUnits::deg));
   Controller1.Screen.newLine();
-  Controller1.Screen.print(wheelRotations);
-  
+  Controller1.Screen.print(targetDistance);
   
 
-  //Rotation sensor PID, linear movement
-  const double kP = 0.1 * 360.0 / wheelCircumference;
-  const double kD = 0.0;
-
+  double distanceTraveled = (RotationSensor.position(deg) / 360.0) * wheelCircumference;
   double err;
-  double prev_err = finalAngle - RotationSensor.position(deg);
+  double prev_err = targetDistance - distanceTraveled;
 
   double derivative;
   double motorPow;
@@ -42,8 +30,11 @@ void driveDistance(double targetDistance, double maxTime = 5.0) {
 
   while (t.time(sec) < maxTime) {
 
-    err = finalAngle - RotationSensor.position(deg);;
-    if (fabs(err) < 3) break;   // check if the error is within a threshold to break the loop
+    distanceTraveled = (RotationSensor.position(deg) / 360.0) * wheelCircumference;
+
+    err = targetDistance - distanceTraveled;
+
+    if (fabs(err) < 1) break;   // check if the error is within a threshold to break the loop
 
     derivative = (err - prev_err);
 
