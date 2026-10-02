@@ -9,8 +9,8 @@ void turnRight(int degree){
     const double Kp = 0.35;
     const double Kd = 0.05;
 
-    double err = 0;
-    double prevErr = 0;
+    double err;
+    double prevErr = target - InertialSensor.rotation(deg);
 
     //initialize variables for PID control
     double currDeg;
@@ -21,11 +21,12 @@ void turnRight(int degree){
     timer t; 
     t.reset(); 
 
-    while (t.time(sec) < 1.2){
+    while (t.time(sec) < 1.5){
+        
         currDeg = InertialSensor.rotation(deg);
 
         err = target - currDeg;
-        if (fabs(err) < 3) break;   // check if the error is within a threshold to break the loop
+        if (fabs(err) < 0.5) break;   // check if the error is within a threshold to break the loop
 
         derivative = err - prevErr;
 
@@ -43,11 +44,12 @@ void turnRight(int degree){
         wait(20, msec);
         
     }
-    leftWheels.setStopping(brakeType::coast);
-    rightWheels.setStopping(brakeType::coast);
-    leftWheels.stop();
-    rightWheels.stop();
+    leftWheels.stop(brakeType::hold);
+    rightWheels.stop(brakeType::hold);
+
 }
+
+
 
 void turnLeft(int degree){
     const double target = InertialSensor.rotation(deg) - degree;
