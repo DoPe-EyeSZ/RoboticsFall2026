@@ -3,6 +3,7 @@
 #include "vex.h"
 #include "setup.h"
 #include "inertial.h"
+#include "odometry.h"
 #include <cmath>
 
 
@@ -16,6 +17,6 @@ void autonomous() {
     turnLeft(90);
     turnRight(90);
     
-
+    driveDistance(30.0, 5.0);
 
 }
