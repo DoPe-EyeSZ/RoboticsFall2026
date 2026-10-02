@@ -2,17 +2,17 @@
 #include "setup.h"
 
 using namespace vex;
-void autonomousOdometry(double targetDistance) {
+void driveDistance(double targetDistance, double maxTime = 5.0) {
   
   //Wheel configs
   const double wheelCircumference = 25.95; // centimeters
-  RotationSensor.setPosition(0, rotationUnits::deg);                    //put in autocpp???:
+  RotationSensor.setPosition(0, deg);                  
 
   //gets num of rotations to reach target
   double wheelRotations = targetDistance / wheelCircumference;
   
   //Gets target angle
-  double initialAngle = RotationSensor.position(rotationUnits::deg);
+  double initialAngle = RotationSensor.position(deg);
   double finalAngle = initialAngle + (wheelRotations * 360);
 
   /* Will come back to this for debugging experiments
@@ -36,14 +36,16 @@ void autonomousOdometry(double targetDistance) {
   double motorPow;
   double currAngle;
 
-  int loopDelay = 20; //in milliseconds
-  int timeElapsed = 0; //in milliseconds
-  int timeRun = 5000; //in milliseconds
+  timer t;
+  t.reset();
 
-  while (timeElapsed < timeRun) {
-    currAngle = RotationSensor.position(rotationUnits::deg);
+  while (t.time(sec) < maxTime) {
+    
+    currAngle = RotationSensor.position(deg);
 
     err = finalAngle - currAngle;
+    if (fabs(err) < 3) break;   // check if the error is within a threshold to break the loop
+
     derivative = (err - prev_err);
 
     motorPow = (kP * err) + (kD * derivative);
@@ -57,15 +59,9 @@ void autonomousOdometry(double targetDistance) {
 
     prev_err = err;
 
-    if (fabs(err) < 0.5){
-            break;
-        }
     wait(20, msec);
-    //Fixed time
-    wait(loopDelay, msec);
-    timeElapsed += loopDelay;
   }
 
-  leftMotorFront.stop(brakeType::coast);
-  rightMotorFront.stop(brakeType::coast);
+  leftMotorFront.stop(brakeType::hold);
+  rightMotorFront.stop(brakeType::hold);
 }

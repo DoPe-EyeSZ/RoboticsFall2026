@@ -25,6 +25,7 @@ void turnRight(int degree){
         currDeg = InertialSensor.rotation(deg);
 
         err = target - currDeg;
+        if (fabs(err) < 3) break;   // check if the error is within a threshold to break the loop
 
         derivative = err - prevErr;
 
@@ -39,10 +40,6 @@ void turnRight(int degree){
 
         prevErr = err;
 
-        // Stop spinning if error is within 0.5 degrees of target
-        if (fabs(err) < 0.5){
-            break;
-        }
         wait(20, msec);
         
     }
