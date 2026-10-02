@@ -34,7 +34,7 @@ void driveDistance(double targetDistance, double maxTime = 5.0) {
 
     err = targetDistance - distanceTraveled;
 
-    if (fabs(err) < 0.1) break;   // check if the error is within a threshold to break the loop
+    if (fabs(err) < 1.0) break;   // check if the error is within a threshold to break the loop
 
     derivative = (err - prev_err);
 
