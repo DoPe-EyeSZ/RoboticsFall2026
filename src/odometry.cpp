@@ -6,7 +6,7 @@ void driveDistance(double targetDistance, double maxTime = 5.0) {
   
   //Wheel configs
   const double wheelCircumference = 15.96; // centimeters
-  const double kP = 0.1; 
+  const double kP = 0.2; 
   const double kD = 0.0; 
   RotationSensor.setPosition(0, deg);
   
@@ -20,7 +20,7 @@ void driveDistance(double targetDistance, double maxTime = 5.0) {
 
   double distanceTraveled = (RotationSensor.position(deg) / 360.0) * wheelCircumference;
   double err;
-  double prev_err = targetDistance - RotationSensor.position(deg);
+  double prev_err = targetDistance - distanceTraveled;
 
   double derivative;
   double motorPow;
@@ -31,7 +31,8 @@ void driveDistance(double targetDistance, double maxTime = 5.0) {
   while (t.time(sec) < maxTime) {
 
     distanceTraveled = (RotationSensor.position(deg) / 360.0) * wheelCircumference;
-    err = targetDistance - RotationSensor.position(deg);
+
+    err = targetDistance - distanceTraveled;
 
     if (fabs(err) < 1) break;   // check if the error is within a threshold to break the loop
 
