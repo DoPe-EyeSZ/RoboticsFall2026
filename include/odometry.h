@@ -4,6 +4,6 @@
 #include "vex.h"
 #include "setup.h"
 
-void driveDistance(double targetDistance);
+void driveDistance(double targetDistance, double maxTime = 5.0);
 
 #endif

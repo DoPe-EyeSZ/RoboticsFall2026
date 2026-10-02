@@ -2,7 +2,7 @@
 #include "setup.h"
 
 using namespace vex;
-void driveDistance(double targetDistance) {
+void driveDistance(double targetDistance, double maxTime = 5.0) {
   
   //Wheel configs
   const double wheelCircumference = 25.95; // centimeters
@@ -39,7 +39,7 @@ void driveDistance(double targetDistance) {
   timer t;
   t.reset();
 
-  while (t.time(sec) < 5) {
+  while (t.time(sec) < maxTime) {
     currAngle = RotationSensor.position(rotationUnits::deg);
 
     err = finalAngle - currAngle;
