@@ -15,7 +15,7 @@ void driveDistance(double targetDistance) {
   double initialAngle = RotationSensor.position(rotationUnits::deg);
   double finalAngle = initialAngle + (wheelRotations * 360);
 
-  /*
+  /* Will come back to this for debugging experiments
   Controller1.Screen.print(initialAngle);
   Controller1.Screen.print(finalAngle);
   Controller1.Screen.newLine();
@@ -59,8 +59,6 @@ void driveDistance(double targetDistance) {
     if (fabs(err) < 3){
       break;
     }
-    wait(20, msec);
-    //Fixed time
     wait(20, msec);
   }
 
