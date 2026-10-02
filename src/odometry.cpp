@@ -1,12 +1,16 @@
 #include "vex.h"
 #include "setup.h"
+#include "odometry.h"
 
 using namespace vex;
 void driveDistance(double targetDistance, double maxTime = 5.0) {
   
   //Wheel configs
   const double wheelCircumference = 15.96; // centimeters
-  RotationSensor.setPosition(0, deg);                  
+  const double tolerance = 3.0 * wheelCircumference / 360.0;
+  RotationSensor.setPosition(0, rotationUnits::rev);
+
+  const double kP = 0.1 * 360.0 / wheelCircumference;           
 
   //gets num of rotations to reach target
   double wheelRotations = targetDistance / wheelCircumference;
