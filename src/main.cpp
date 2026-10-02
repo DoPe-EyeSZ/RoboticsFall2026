@@ -12,6 +12,7 @@
 #include "pre-auto.h"
 #include "auto.h"
 #include "odometry.h"
+#include "aps.h"
 #include "control.h"
 
 using namespace vex;
