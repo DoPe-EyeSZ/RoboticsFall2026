@@ -48,16 +48,24 @@ void autonomousOdometry(double targetDistance) {
 
     motorPow = (kP * err) + (kD * derivative);
 
+    //Motor power cap
+    if (motorPow > 100.0) motorPow = 100.0;
+    if (motorPow < -100.0) motorPow = -100.0;
+
     leftMotorFront.spin(forward, motorPow, percent);
     rightMotorFront.spin(forward, motorPow, percent);
 
     prev_err = err;
 
+    if (fabs(err) < 0.5){
+            break;
+        }
+    wait(20, msec);
     //Fixed time
     wait(loopDelay, msec);
     timeElapsed += loopDelay;
   }
 
-  leftMotorFront.stop(brakeType::hold);
-  rightMotorFront.stop(brakeType::hold);
+  leftMotorFront.stop(brakeType::coast);
+  rightMotorFront.stop(brakeType::coast);
 }

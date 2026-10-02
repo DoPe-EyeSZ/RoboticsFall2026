@@ -4,6 +4,7 @@
 #include <cmath>
 
 void turnRight(int degree){
+    //kp, kd, target values initialization
     const double target = InertialSensor.rotation(deg) + degree;
     const double Kp = 0.35;
     const double Kd = 0.05;
@@ -11,9 +12,12 @@ void turnRight(int degree){
     double err = 0;
     double prevErr = 0;
 
+    //initialize variables for PID control
     double currDeg;
     double derivative;
     double motorPow;
+
+    //initialize timer
     timer t; 
     t.reset(); 
 
