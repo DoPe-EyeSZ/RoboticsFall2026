@@ -26,7 +26,7 @@ void driveDistance(double targetDistance, double maxTime = 5.0) {
   
 
   //Rotation sensor PID, linear movement
-  double kP = 0.2; 
+  double kP = 0.1; 
   double kD = 0.0; 
 
   double err;
