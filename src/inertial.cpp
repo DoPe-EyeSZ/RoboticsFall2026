@@ -6,7 +6,7 @@
 void turnRight(int degree){
     //kp, kd, target values initialization
     const double target = InertialSensor.rotation(deg) + degree;
-    const double Kp = 0.35;
+    const double Kp = 0.40;
     const double Kd = 0.00;
 
     double err;
@@ -20,11 +20,11 @@ void turnRight(int degree){
     timer t; 
     t.reset(); 
 
-    while (t.time(sec) < 1.5){
+    while (t.time(sec) < 1.2){
                 
         err = target - InertialSensor.rotation(deg);
 
-        if (fabs(err) < 0.5) break;   // check if the error is within a threshold to break the loop
+        if (fabs(err) < 1) break;   // check if the error is within a threshold to break the loop
 
         derivative = err - prevErr;
 
@@ -52,7 +52,7 @@ void turnRight(int degree){
 void turnLeft(int degree){
     //kp, kd, target values initialization
     const double target = InertialSensor.rotation(deg) - degree;
-    const double Kp = 0.335;
+    const double Kp = 0.40;
     const double Kd = 0.00;
 
     double err;
@@ -66,11 +66,11 @@ void turnLeft(int degree){
     timer t; 
     t.reset(); 
 
-    while (t.time(sec) < 1.5){
+    while (t.time(sec) < 1.2){
 
         err = target - InertialSensor.rotation(deg);
 
-        if (fabs(err) < 0.5) break;   // check if the error is within a threshold to break the loop
+        if (fabs(err) < 1) break;   // check if the error is within a threshold to break the loop
 
         derivative = err - prevErr;
 
