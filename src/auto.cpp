@@ -13,6 +13,9 @@ void autonomous() {
 
     turnLeft(180);
     turnRight(180);
+    turnLeft(90);
+    turnRight(90);
+    
 
 
 }
