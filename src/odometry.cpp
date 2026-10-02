@@ -41,9 +41,7 @@ void driveDistance(double targetDistance, double maxTime = 5.0) {
 
   while (t.time(sec) < maxTime) {
 
-    currAngle = RotationSensor.position(deg);
-
-    err = finalAngle - currAngle;
+    err = finalAngle - RotationSensor.position(deg);;
     if (fabs(err) < 3) break;   // check if the error is within a threshold to break the loop
 
     derivative = (err - prev_err);
@@ -59,7 +57,7 @@ void driveDistance(double targetDistance, double maxTime = 5.0) {
 
     prev_err = err;
 
-    wait(18, msec);
+    wait(20, msec);
   }
 
   leftWheels.stop(brakeType::hold);
