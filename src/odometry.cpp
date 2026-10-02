@@ -26,11 +26,11 @@ void driveDistance(double targetDistance, double maxTime = 5.0) {
   
 
   //Rotation sensor PID, linear movement
-  double kP = 0.08; 
-  double kD = 0.25; 
+  double kP = 0.2; 
+  double kD = 0.1; 
 
-  double err = 0;
-  double prev_err = 0;
+  double err;
+  double prev_err = finalAngle - RotationSensor.position(deg);
 
   double derivative;
   double motorPow;
