@@ -40,9 +40,12 @@ void driveDistance(double targetDistance, double maxTime = 5.0) {
   t.reset();
 
   while (t.time(sec) < maxTime) {
-    currAngle = RotationSensor.position(rotationUnits::deg);
+    
+    currAngle = RotationSensor.position(deg);
 
     err = finalAngle - currAngle;
+    if (fabs(err) < 3) break;   // check if the error is within a threshold to break the loop
+
     derivative = (err - prev_err);
 
     motorPow = (kP * err) + (kD * derivative);
@@ -56,9 +59,6 @@ void driveDistance(double targetDistance, double maxTime = 5.0) {
 
     prev_err = err;
 
-    if (fabs(err) < 3){
-      break;
-    }
     wait(20, msec);
   }
 
