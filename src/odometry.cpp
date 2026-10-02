@@ -34,7 +34,6 @@ void driveDistance(double targetDistance, double maxTime = 5.0) {
 
   double derivative;
   double motorPow;
-  double currAngle;
 
   timer t;
   t.reset();
