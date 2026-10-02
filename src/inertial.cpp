@@ -26,7 +26,7 @@ void turnRight(int degree){
 
         motorPow = (Kp*err) + (Kd*derivative);
 
-        //Motor power clamp
+        //Motor power cap
         if (motorPow > 100.0) motorPow = 100.0;
         if (motorPow < -100.0) motorPow = -100.0;
 

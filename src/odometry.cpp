@@ -2,59 +2,56 @@
 #include "setup.h"
 
 using namespace vex;
-void autonomousOdometry() {
+void autonomousOdometry(double targetDistance) {
   
   //Wheel configs
-  double wheelCircumference = 25.95; //in cm
-  double wheeltarget_distance = 50; //in cm
+  const double wheelCircumference = 25.95; // centimeters
+  RotationSensor.setPosition(0, rotationUnits::deg);                    //put in autocpp???:
 
-  double wheelRotations = wheeltarget_distance / wheelCircumference; //for how many rotations needed
-
-  RotationSensor.setPosition(0, rotationUnits::deg);
-  //Gets current angle of the rotation sensor's shaft
+  //gets num of rotations to reach target
+  double wheelRotations = targetDistance / wheelCircumference;
+  
+  //Gets target angle
   double initialAngle = RotationSensor.position(rotationUnits::deg);
-  double finalAngle = initialAngle + (wheelRotations * 360); //360 degrees for a full rotation
+  double finalAngle = initialAngle + (wheelRotations * 360);
 
-  //This prints the current angle/heading of the shaft
+  /*
   Controller1.Screen.print(initialAngle);
   Controller1.Screen.print(finalAngle);
   Controller1.Screen.newLine();
   Controller1.Screen.print(RotationSensor.position(rotationUnits::deg));
   Controller1.Screen.newLine();
   Controller1.Screen.print(wheelRotations);
+  */
+  
 
   //Rotation sensor PID, linear movement
-  //Coefficients still need fine tuning, continue work as needed
-  double kP = 0.08; //proportional
-  //double kI = 0.1; //integral, not needed
-  double kD = 0.25; //derivative
+  double kP = 0.08; 
+  double kD = 0.25; 
 
   double err = 0;
-  double last_err = 0;
-  //double tolerance = 1.0; //not being used right now
-  double derivative = 0;
-  //double integral = 0; //not being used right now
+  double prev_err = 0;
 
-  RotationSensor.setPosition(0, rotationUnits::deg);
-
-
-  //New math, new while loop
+  double derivative;
+  double motorPow;
+  double currAngle;
 
   int loopDelay = 20; //in milliseconds
   int timeElapsed = 0; //in milliseconds
   int timeRun = 5000; //in milliseconds
 
   while (timeElapsed < timeRun) {
-    double currentAngle = RotationSensor.position(rotationUnits::deg);
-    err = finalAngle - currentAngle;
+    currAngle = RotationSensor.position(rotationUnits::deg);
 
-    derivative = (err - last_err);
-    double output = (kP * err) + (kD * derivative);
+    err = finalAngle - currAngle;
+    derivative = (err - prev_err);
 
-    leftMotorFront.spin(forward, output, voltageUnits::volt);
-    rightMotorFront.spin(forward, output, voltageUnits::volt);
+    motorPow = (kP * err) + (kD * derivative);
 
-    last_err = err;
+    leftMotorFront.spin(forward, motorPow, percent);
+    rightMotorFront.spin(forward, motorPow, percent);
+
+    prev_err = err;
 
     //Fixed time
     wait(loopDelay, msec);
