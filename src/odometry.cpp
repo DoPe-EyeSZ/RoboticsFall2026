@@ -59,7 +59,7 @@ void driveDistance(double targetDistance, double maxTime = 5.0) {
 
     prev_err = err;
 
-    wait(20, msec);
+    wait(18, msec);
   }
 
   leftMotorFront.stop(brakeType::hold);
