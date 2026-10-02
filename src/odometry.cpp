@@ -2,7 +2,7 @@
 #include "setup.h"
 
 using namespace vex;
-void autonomousOdometry(double targetDistance) {
+void driveDistance(double targetDistance) {
   
   //Wheel configs
   const double wheelCircumference = 25.95; // centimeters
@@ -36,11 +36,10 @@ void autonomousOdometry(double targetDistance) {
   double motorPow;
   double currAngle;
 
-  int loopDelay = 20; //in milliseconds
-  int timeElapsed = 0; //in milliseconds
-  int timeRun = 5000; //in milliseconds
+  timer t;
+  t.reset();
 
-  while (timeElapsed < timeRun) {
+  while (t.time(sec) < 5) {
     currAngle = RotationSensor.position(rotationUnits::deg);
 
     err = finalAngle - currAngle;
@@ -57,13 +56,12 @@ void autonomousOdometry(double targetDistance) {
 
     prev_err = err;
 
-    if (fabs(err) < 0.5){
-            break;
-        }
+    if (fabs(err) < 3){
+      break;
+    }
     wait(20, msec);
     //Fixed time
-    wait(loopDelay, msec);
-    timeElapsed += loopDelay;
+    wait(20, msec);
   }
 
   leftMotorFront.stop(brakeType::coast);
