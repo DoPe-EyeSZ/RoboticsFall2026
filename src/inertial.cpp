@@ -13,7 +13,6 @@ void turnRight(int degree){
     double prevErr = target - InertialSensor.rotation(deg);
 
     //initialize variables for PID control
-    double currDeg;
     double derivative;
     double motorPow;
 
@@ -22,10 +21,9 @@ void turnRight(int degree){
     t.reset(); 
 
     while (t.time(sec) < 1.5){
-        
-        currDeg = InertialSensor.rotation(deg);
+                
+        err = target - InertialSensor.rotation(deg);
 
-        err = target - currDeg;
         if (fabs(err) < 0.5) break;   // check if the error is within a threshold to break the loop
 
         derivative = err - prevErr;
@@ -52,22 +50,27 @@ void turnRight(int degree){
 
 
 void turnLeft(int degree){
+    //kp, kd, target values initialization
     const double target = InertialSensor.rotation(deg) - degree;
     const double Kp = 0.335;
     const double Kd = 0.05;
 
-    double err = 0;
-    double prevErr = 0;
+    double err;
+    double prevErr = target - InertialSensor.rotation(deg);
 
-    double currDeg;
+    //initialize variables for PID control
     double derivative;
     double motorPow;
+
+    //initialize timer
     timer t; 
     t.reset(); 
-    while (t.time(sec) < 1.2){
-        currDeg = InertialSensor.rotation(deg);
 
-        err = target - currDeg;
+    while (t.time(sec) < 1.5){
+
+        err = target - InertialSensor.rotation(deg);
+
+        if (fabs(err) < 0.5) break;   // check if the error is within a threshold to break the loop
 
         derivative = err - prevErr;
 
@@ -82,14 +85,9 @@ void turnLeft(int degree){
 
         prevErr = err;
 
-        if (fabs(err) < 0.5){
-            break;
-        }
         wait(20, msec);
         
     }
-    leftWheels.setStopping(brakeType::coast);
-    rightWheels.setStopping(brakeType::coast);
-    leftWheels.stop();
-    rightWheels.stop();
+    leftWheels.stop(brakeType::hold);
+    rightWheels.stop(brakeType::hold);
 }
