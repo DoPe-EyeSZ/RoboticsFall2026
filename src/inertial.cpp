@@ -35,6 +35,7 @@ void turnRight(int degree){
 
         prevErr = err;
 
+        // Stop spinning if error is within 0.5 degrees of target
         if (fabs(err) < 0.5){
             break;
         }
