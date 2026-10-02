@@ -39,7 +39,7 @@ void turnRight(int degree){
 
         prevErr = err;
 
-        wait(20, msec);
+        wait(18, msec);
         
     }
     leftWheels.stop(brakeType::hold);
@@ -85,7 +85,7 @@ void turnLeft(int degree){
 
         prevErr = err;
 
-        wait(20, msec);
+        wait(18, msec);
         
     }
     leftWheels.stop(brakeType::hold);
