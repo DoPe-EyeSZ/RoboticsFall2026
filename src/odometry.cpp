@@ -40,7 +40,7 @@ void driveDistance(double targetDistance, double maxTime = 5.0) {
   t.reset();
 
   while (t.time(sec) < maxTime) {
-    
+
     currAngle = RotationSensor.position(deg);
 
     err = finalAngle - currAngle;
@@ -54,14 +54,14 @@ void driveDistance(double targetDistance, double maxTime = 5.0) {
     if (motorPow > 100.0) motorPow = 100.0;
     if (motorPow < -100.0) motorPow = -100.0;
 
-    leftMotorFront.spin(forward, motorPow, percent);
-    rightMotorFront.spin(forward, motorPow, percent);
+    leftWheels.spin(forward, motorPow, percent);
+    rightWheels.spin(forward, motorPow, percent);
 
     prev_err = err;
 
     wait(20, msec);
   }
 
-  leftMotorFront.stop(brakeType::hold);
-  rightMotorFront.stop(brakeType::hold);
+  leftWheels.stop(brakeType::hold);
+  rightWheels.stop(brakeType::hold);
 }

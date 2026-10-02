@@ -12,11 +12,11 @@
 void autonomous() {
     InertialSensor.setRotation(0, deg); // Reset the head of Inertial Sensor to 0 degrees 
 
-    turnLeft(180);
+    /*turnLeft(180);
     turnRight(180);
     turnLeft(90);
-    turnRight(90);
-    //driveDistance(10);
+    turnRight(90);*/
+    driveDistance(20, 5);
     
 
 
