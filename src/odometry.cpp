@@ -15,14 +15,14 @@ void driveDistance(double targetDistance, double maxTime = 5.0) {
   double initialAngle = RotationSensor.position(deg);
   double finalAngle = initialAngle + (wheelRotations * 360);
 
-  /* Will come back to this for debugging experiments
+  //Will come back to this for debugging experiments
   Controller1.Screen.print(initialAngle);
   Controller1.Screen.print(finalAngle);
   Controller1.Screen.newLine();
   Controller1.Screen.print(RotationSensor.position(rotationUnits::deg));
   Controller1.Screen.newLine();
   Controller1.Screen.print(wheelRotations);
-  */
+
   
 
   //Rotation sensor PID, linear movement
