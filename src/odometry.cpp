@@ -30,7 +30,7 @@ void driveDistance(double targetDistance, double maxTime = 5.0) {
   double kD = 0.25; 
 
   double err = 0;
-  double prev_err = finalAngle - initialAngle;
+  double prev_err = 0;
 
   double derivative;
   double motorPow;
