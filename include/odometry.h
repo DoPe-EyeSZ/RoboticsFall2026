@@ -4,6 +4,6 @@
 #include "vex.h"
 #include "setup.h"
 
-void autonomousOdometry();
+void driveDistance(double targetDistance);
 
 #endif
