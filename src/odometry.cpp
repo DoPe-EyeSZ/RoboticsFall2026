@@ -6,8 +6,8 @@ void driveDistance(double targetDistance, double maxTime = 5.0) {
   
   //Wheel configs
   const double wheelCircumference = 15.96; // centimeters
-  const double kP = 1.0; 
-  const double kD = 0.0; 
+  const double kP = 0.90; 
+  const double kD = 0.15; 
   RotationSensor.setPosition(0, deg);
   
 
@@ -49,7 +49,7 @@ void driveDistance(double targetDistance, double maxTime = 5.0) {
 
     prev_err = err;
 
-    wait(20, msec);
+    wait(10, msec);
   }
 
   leftWheels.stop(brakeType::hold);
