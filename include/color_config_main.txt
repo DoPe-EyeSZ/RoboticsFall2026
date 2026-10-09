@@ -1,0 +1,124 @@
+{
+  "brightness": 29,
+  "signatures": [
+    {
+      "name": "SIG_1",
+      "parameters": {
+        "uMin": 2717,
+        "uMax": 3085,
+        "uMean": 2901,
+        "vMin": -4739,
+        "vMax": -4443,
+        "vMean": -4591,
+        "rgb": 11175761,
+        "type": 0,
+        "name": "SIG_1"
+      },
+      "range": 2.5
+    },
+    {
+      "name": "SIG_2",
+      "parameters": {
+        "uMin": 11929,
+        "uMax": 13041,
+        "uMean": 12485,
+        "vMin": -1809,
+        "vMax": -1433,
+        "vMean": -1621,
+        "rgb": 9910316,
+        "type": 0,
+        "name": "SIG_2"
+      },
+      "range": 2.5
+    },
+    {
+      "name": "SIG_3",
+      "parameters": {
+        "uMin": -4275,
+        "uMax": -3261,
+        "uMean": -3768,
+        "vMin": 2315,
+        "vMax": 3429,
+        "vMean": 2872,
+        "rgb": 2966871,
+        "type": 0,
+        "name": "SIG_3"
+      },
+      "range": 2.5
+    },
+    {
+      "name": "SIG_4",
+      "parameters": {
+        "uMin": 0,
+        "uMax": 0,
+        "uMean": 0,
+        "vMin": 0,
+        "vMax": 0,
+        "vMean": 0,
+        "rgb": 0,
+        "type": 0,
+        "name": "SIG_4"
+      },
+      "range": 2.5
+    },
+    {
+      "name": "SIG_5",
+      "parameters": {
+        "uMin": 0,
+        "uMax": 0,
+        "uMean": 0,
+        "vMin": 0,
+        "vMax": 0,
+        "vMean": 0,
+        "rgb": 0,
+        "type": 0,
+        "name": "SIG_5"
+      },
+      "range": 2.5
+    },
+    {
+      "name": "SIG_6",
+      "parameters": {
+        "uMin": 0,
+        "uMax": 0,
+        "uMean": 0,
+        "vMin": 0,
+        "vMax": 0,
+        "vMean": 0,
+        "rgb": 0,
+        "type": 0,
+        "name": "SIG_6"
+      },
+      "range": 2.5
+    },
+    {
+      "name": "SIG_7",
+      "parameters": {
+        "uMin": 0,
+        "uMax": 0,
+        "uMean": 0,
+        "vMin": 0,
+        "vMax": 0,
+        "vMean": 0,
+        "rgb": 0,
+        "type": 0,
+        "name": "SIG_7"
+      },
+      "range": 2.5
+    }
+  ],
+  "codes": [
+    {
+      "name": "SIG_1",
+      "code": "YELLOW"
+    },
+    {
+      "name": "SIG_2",
+      "code": "RED"
+    },
+    {
+      "name": "SIG_3",
+      "code": "BLUE"
+    }
+  ]
+}
