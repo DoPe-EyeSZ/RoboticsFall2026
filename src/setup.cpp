@@ -33,3 +33,6 @@ vex::controller Controller1(vex::controllerType::primary);
 
 //configure V5 brain
 vex::brain Brain;
+
+//configure vision sensor
+vex::vision VisionSensor(vex::PORT19);
