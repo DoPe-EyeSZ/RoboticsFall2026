@@ -7,25 +7,31 @@
 
 void Vision() {
 
-double kP = 0.08;
-double kD = 0.25;
+  double kP = 0.08;
+  double kD = 0.25;
+  
+  vision::signature SIG_1 = vision::signature(1, 2717, 3085, 2901, -4739, -4443, -4591, 2.5, 0);
+  VisionSensor.setBrightness(29);
+  VisionSensor.takeSnapshot(SIG_1);
 
-//double x.center = VisionSensor.largestObject.centerX;
-double err = 0;
-double last_err = 0;
-double derivative = 0;
-double tolerance = 5.0;
+  // Center of the vision sensor's field of view 
+  double center = 158;    
 
-while(abs(x.center - center) > tolerance) {
-  err = x.center - center;
-  derivative = (err - last_err);
-  double vel_output = (kP * err) + (kD * derivative);
+  double err = 0;
+  double last_err = 0;
+  double derivative = 0;
+  double tolerance = 5.0;
 
-  leftMotorFront.spin(forward, vel_output, voltageUnits::volt);
-  rightMotorFront.spin(forward, vel_output, voltageUnits::volt);
+  while(abs(VisionSensor.largestObject.centerX - center) > tolerance) {
+    err = VisionSensor.largestObject.centerX - center;
+    derivative = (err - last_err);
+    double vel_output = (kP * err) + (kD * derivative);
 
-  last_err = err;
+    leftWheels.spin(forward, vel_output, percent);
+    rightWheels.spin(reverse, vel_output, percent);
 
-  wait(20, msec);
-}
+    last_err = err;
+
+    wait(20, msec);
+  }
 }
