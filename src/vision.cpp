@@ -7,12 +7,11 @@
 
 void Vision() {
 
-  double kP = 0.08;
-  double kD = 0.25;
+  double kP = 0.15;
+  double kD = 0.08;
   
   vision::signature SIG_1 = vision::signature(1, 2717, 3085, 2901, -4739, -4443, -4591, 2.5, 0);
   VisionSensor.setBrightness(29);
-  VisionSensor.takeSnapshot(SIG_1);
 
   // Center of the vision sensor's field of view 
   double center = 158;    
@@ -23,6 +22,15 @@ void Vision() {
   double tolerance = 5.0;
 
   while(abs(VisionSensor.largestObject.centerX - center) > tolerance) {
+
+    VisionSensor.takeSnapshot(SIG_1);
+
+    if (VisionSensor.largestObject.exists) {
+      Controller1.Screen.clearScreen();
+      Controller1.Screen.setCursor(1, 1);
+      Controller1.Screen.print("Object Detected");
+    }
+
     err = VisionSensor.largestObject.centerX - center;
     derivative = (err - last_err);
     double vel_output = (kP * err) + (kD * derivative);
