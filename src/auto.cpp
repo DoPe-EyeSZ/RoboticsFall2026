@@ -4,6 +4,7 @@
 #include "setup.h"
 #include "inertial.h"
 #include "odometry.h"
+#include "vision.h"
 #include <cmath>
 
 
@@ -16,8 +17,9 @@ void autonomous() {
     turnRight(180);
     turnLeft(90);
     turnRight(90);*/
-    driveDistance(50.0, 5);
+    //driveDistance(50.0, 5);
     
-    driveDistance(100.0, 5.0);
+    //driveDistance(100.0, 5.0);
+    Vision();
 
 }
