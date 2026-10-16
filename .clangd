@@ -1,0 +1,13 @@
+CompileFlags:
+  Add:
+    - --target=thumbv7-none-eabi
+    - -std=gnu++11
+    - -fshort-enums
+    - -DVexV5
+    - -IC:/Users/brody/Documents/RoboticsFall2026/include
+    - -IC:/Users/brody/Documents/RoboticsFall2026/src
+    - -IC:/Users/brody/AppData/Roaming/Code/User/globalStorage/vexrobotics.vexcode/sdk/cpp/V5/V5_20240802_15_00_00/vexv5/clang/8.0.0/include
+    - -IC:/Users/brody/AppData/Roaming/Code/User/globalStorage/vexrobotics.vexcode/sdk/cpp/V5/V5_20240802_15_00_00/vexv5/gcc/include/c++/4.9.3
+    - -IC:/Users/brody/AppData/Roaming/Code/User/globalStorage/vexrobotics.vexcode/sdk/cpp/V5/V5_20240802_15_00_00/vexv5/gcc/include/c++/4.9.3/arm-none-eabi/armv7-ar/thumb
+    - -IC:/Users/brody/AppData/Roaming/Code/User/globalStorage/vexrobotics.vexcode/sdk/cpp/V5/V5_20240802_15_00_00/vexv5/gcc/include
+    - -IC:/Users/brody/AppData/Roaming/Code/User/globalStorage/vexrobotics.vexcode/sdk/cpp/V5/V5_20240802_15_00_00/vexv5/include
