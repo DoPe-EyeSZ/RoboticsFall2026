@@ -8,10 +8,10 @@
 /*----------------------------------------------------------------------------*/
 
 #include "vex.h"
-#include "setup.h"
+//#include "setup.h" - not being used right now
 #include "pre-auto.h"
 #include "auto.h"
-#include "odometry.h"
+//#include "odometry.h" - not being used right now
 #include "control.h"
 
 using namespace vex;
