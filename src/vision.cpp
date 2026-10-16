@@ -7,6 +7,11 @@
 
 //Vision sensor/drivetrain integration PID coefficients
 
+void stopDrive() {
+  leftWheels.stop();
+  rightWheels.stop();
+}
+
 void Vision(VisionTarget target) {
 
   double kP = 0.08;
