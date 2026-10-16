@@ -67,6 +67,14 @@ void Vision(VisionTarget target) {
   const int PhaseTimeout = 5000;
   const int LoopDelay = 20;
 
+  for (int elapsed = 0; elapsed < PhaseTimeout; elapsed += LoopDelay) {
+    VisionSensor.takeSnapshot(*selectedSignature);
+    if (!VisionSensor.largestObject.exists) {
+      stopDrive();
+      wait(LoopDelay, msec);
+      continue;
+    }
+
   while(abs(VisionSensor.largestObject.centerX - center) > tolerance) {
     err = VisionSensor.largestObject.centerX - center;
     derivative = (err - last_err);
