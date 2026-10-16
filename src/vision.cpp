@@ -12,8 +12,8 @@ void Vision() {
   const double center = 158;    
 
   //remove later
-  vision::signature SIG_1 = vision::signature(1, 2717, 3085, 2901, -4739, -4443, -4591, 2.5, 0);
-  VisionSensor.setBrightness(29);
+  vision::signature Vision10__SIG_1 = vision::signature(2, 43, 1801, 922, -4207, -2653, -3430, 3, 0);
+  VisionSensor.setBrightness(50);
 
 
   double err = 0;
@@ -24,12 +24,12 @@ void Vision() {
   while(fabs(VisionSensor.largestObject.centerX - center) > tolerance) {
 
     //remove later
-    VisionSensor.takeSnapshot(SIG_1);
+    VisionSensor.takeSnapshot(Vision10__SIG_1);
 
-    if (!(VisionSensor.largestObject.exists)) {
+    if ((VisionSensor.largestObject.exists)) {
       Controller1.Screen.clearScreen();
       Controller1.Screen.setCursor(1, 1);
-      Controller1.Screen.print("Object Not Detected");
+      Controller1.Screen.print("Object Detected");
       break;
     }
 
