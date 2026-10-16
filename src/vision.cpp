@@ -1,5 +1,5 @@
 #include "vex.h"
-#include "robot-config.h"
+//#include "robot-config.h"
 #include "setup.h"
 #include "vision.h"
 
@@ -10,6 +10,17 @@
 void stopDrive() {
   leftWheels.stop();
   rightWheels.stop();
+}
+
+void turnToTarget(double output) {
+  if (output >= 0) {
+    leftWheels.spin(forward, output, percent);
+    rightWheels.spin(reverse, output, percent);
+  } else {
+    leftWheels.spin(reverse, -output, percent);
+    rightWheels.spin(forward, -output, percent);
+  }
+}
 }
 
 void Vision(VisionTarget target) {
