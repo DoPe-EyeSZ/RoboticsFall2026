@@ -1,19 +1,35 @@
 #include "vex.h"
 #include "robot-config.h"
 #include "setup.h"
+#include "vision.h"
 
 //10/9/2026: Main focus is to get robot to detect a colored pin and drive to it smoothly (combining both linear and turning logic)
 
 //Vision sensor/drivetrain integration PID coefficients
 
-void Vision() {
+void Vision(VisionTarget target) {
 
   double kP = 0.08;
   double kD = 0.25;
-  
-  vision::signature SIG_1 = vision::signature(1, 2717, 3085, 2901, -4739, -4443, -4591, 2.5, 0);
+
   VisionSensor.setBrightness(29);
-  VisionSensor.takeSnapshot(SIG_1);
+  switch (target) {
+    case VisionTarget::yellow: {
+      vision::signature signature(1, 2717, 3085, 2901, -4739, -4443, -4591, 2.5, 0);
+      VisionSensor.takeSnapshot(signature);
+      break;
+    }
+    case VisionTarget::red: {
+      vision::signature signature(2, 11929, 13041, 12485, -1809, -1433, -1621, 2.5, 0);
+      VisionSensor.takeSnapshot(signature);
+      break;
+    }
+    case VisionTarget::blue: {
+      vision::signature signature(3, -4275, -3261, -3768, 2315, 3429, 2872, 2.5, 0);
+      VisionSensor.takeSnapshot(signature);
+      break;
+    }
+  }
 
   // Center of the vision sensor's field of view 
   double center = 158;    
