@@ -2,8 +2,8 @@
 
 #include "vex.h"
 #include "setup.h"
-#include "inertial.h"
-#include "odometry.h"
+//#include "inertial.h" - not being used right now
+//#include "odometry.h" - not being used right now
 #include "vision.h"
 #include <cmath>
 
