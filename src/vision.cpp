@@ -24,8 +24,8 @@ void turnToTarget(double output) {
 
 void Vision(VisionTarget target) {
 
-  double kP = 0.08;
-  double kD = 0.25;
+  const double kP = 0.08;
+  const double kD = 0.25;
 
   VisionSensor.setBrightness(29);
   switch (target) {
@@ -52,7 +52,7 @@ void Vision(VisionTarget target) {
   double err = 0;
   double last_err = 0;
   double derivative = 0;
-  double tolerance = 5.0;
+  const double tolerance = 5.0;
 
   while(abs(VisionSensor.largestObject.centerX - center) > tolerance) {
     err = VisionSensor.largestObject.centerX - center;
