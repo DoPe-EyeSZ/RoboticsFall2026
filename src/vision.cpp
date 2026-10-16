@@ -27,27 +27,35 @@ void Vision(VisionTarget target) {
   const double kP = 0.08;
   const double kD = 0.25;
 
-  VisionSensor.setBrightness(29);
+  vision::signature yellowSignature(
+      1, 2717, 3085, 2901, -4739, -4443, -4591, 2.5, 0);
+  vision::signature redSignature(
+      2, 11929, 13041, 12485, -1809, -1433, -1621, 2.5, 0);
+  vision::signature blueSignature(
+      3, -4275, -3261, -3768, 2315, 3429, 2872, 2.5, 0);
+  vision::signature *selectedSignature = 0;
+
   switch (target) {
-    case VisionTarget::yellow: {
-      vision::signature signature(1, 2717, 3085, 2901, -4739, -4443, -4591, 2.5, 0);
-      VisionSensor.takeSnapshot(signature);
+    case VisionTarget::yellow:
+      selectedSignature = &yellowSignature;
       break;
-    }
-    case VisionTarget::red: {
-      vision::signature signature(2, 11929, 13041, 12485, -1809, -1433, -1621, 2.5, 0);
-      VisionSensor.takeSnapshot(signature);
+    case VisionTarget::red:
+      selectedSignature = &redSignature;
       break;
-    }
-    case VisionTarget::blue: {
-      vision::signature signature(3, -4275, -3261, -3768, 2315, 3429, 2872, 2.5, 0);
-      VisionSensor.takeSnapshot(signature);
+    case VisionTarget::blue:
+      selectedSignature = &blueSignature;
       break;
-    }
+    default:
+      stopDrive();
+      return;
   }
 
-  // Center of the vision sensor's field of view 
-  double center = 158;    
+  VisionSensor.setBrightness(29);
+  // Center of the vision sensor's field of view
+  const double center = 158.0;
+  double lastError = 0;
+  bool centered = false;
+  }
 
   double err = 0;
   double last_err = 0;
