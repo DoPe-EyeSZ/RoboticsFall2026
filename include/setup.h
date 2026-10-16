@@ -42,9 +42,5 @@ extern vex::controller Controller1;
 //Brain
 extern vex::brain Brain;
 
-//Vision Sensor
-extern vex::vision VisionSensor;
-
-
 #endif
 

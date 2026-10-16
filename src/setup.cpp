@@ -25,9 +25,6 @@ vex::inertial InertialSensor(vex::PORT13);
 //Odometry
 vex::rotation RotationSensor(vex::PORT4, false);
 
-//Vision sensor
-vex::vision VisionSensor(vex::PORT5);
-
 // Drive Train
 vex::drivetrain driveTrain(leftWheels, rightWheels);
 
