@@ -1,5 +1,5 @@
 
-#include "../include/vex.h"
+#include "vex.h"
 #include "setup.h"
 
 void pre_auton(void) {
