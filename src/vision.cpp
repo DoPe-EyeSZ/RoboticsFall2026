@@ -21,7 +21,6 @@ void turnToTarget(double output) {
     rightWheels.spin(forward, -output, percent);
   }
 }
-}
 
 void Vision(VisionTarget target) {
 
