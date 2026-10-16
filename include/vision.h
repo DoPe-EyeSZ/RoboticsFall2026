@@ -4,6 +4,12 @@
 #include "vex.h"
 #include "setup.h"
 
-void Vision();
+enum class VisionTarget {
+  yellow,
+  red,
+  blue
+};
+
+void Vision(VisionTarget target = VisionTarget::yellow);
 
 #endif
