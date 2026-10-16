@@ -1,4 +1,5 @@
 #include "vex.h"
+#include "robot-config.h"
 #include "setup.h"
 
 //10/9/2026: Main focus is to get robot to detect a colored pin and drive to it smoothly (combining both linear and turning logic)
