@@ -49,13 +49,13 @@ void Vision(VisionTarget target) {
       stopDrive();
       return;
   }
-
+  
   VisionSensor.setBrightness(29);
   // Center of the vision sensor's field of view
   const double center = 158.0;
   double lastError = 0;
   bool centered = false;
-  }
+
 
   double err = 0;
   double last_err = 0;
@@ -87,4 +87,5 @@ void Vision(VisionTarget target) {
 
     wait(20, msec);
   }
+}
 }
