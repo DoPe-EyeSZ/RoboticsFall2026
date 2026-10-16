@@ -27,9 +27,6 @@ extern vex::inertial InertialSensor;
 //Odometry sensor
 extern vex::rotation RotationSensor;
 
-//Vision sensor
-extern vex::vision VisionSensor;
-
 // Drive Train
 extern vex::drivetrain driveTrain;
 
@@ -41,6 +38,10 @@ extern vex::controller Controller1;
 
 //Brain
 extern vex::brain Brain;
+
+//Vision Sensor
+extern vex::vision VisionSensor;
+
 
 #endif
 

@@ -20,14 +20,6 @@ void autonomous() {
     //driveDistance(50.0, 5);
     
     //driveDistance(100.0, 5.0);
-    //Vision();
-    
-    //Vision(); // Call the Vision function to align the robot with the colored pin
-    /*turnRight(90);
-    turnLeft(90);
-    turnRight(180);
-    turnLeft(180);
-    */
-
+    Vision();
 
 }
