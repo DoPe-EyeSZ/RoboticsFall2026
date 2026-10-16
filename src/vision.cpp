@@ -61,6 +61,11 @@ void Vision(VisionTarget target) {
   double last_err = 0;
   double derivative = 0;
   const double tolerance = 5.0;
+  const double TurnLimit = 25.0;
+  const double ApproachSpeed = 25.0;
+  const int TargetHeight = 100;
+  const int PhaseTimeout = 5000;
+  const int LoopDelay = 20;
 
   while(abs(VisionSensor.largestObject.centerX - center) > tolerance) {
     err = VisionSensor.largestObject.centerX - center;
