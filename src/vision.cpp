@@ -93,16 +93,58 @@ void Vision(VisionTarget target) {
     wait(LoopDelay, msec);
   }
 
-  while(abs(VisionSensor.largestObject.centerX - center) > tolerance) {
-    err = VisionSensor.largestObject.centerX - center;
-    derivative = (err - last_err);
-    double vel_output = (kP * err) + (kD * derivative);
+if (!centered) {
+    stopDrive();
+    return;
+  }
+  lastError = 0;
+  for (int elapsed = 0; elapsed < PhaseTimeout; elapsed += LoopDelay) {
+    VisionSensor.takeSnapshot(*selectedSignature);
+    if (!VisionSensor.largestObject.exists) {
+      break;
+    }
+    if (VisionSensor.largestObject.height >= TargetHeight) {
+      break;
+    }
 
-    leftWheels.spin(forward, vel_output, percent);
-    rightWheels.spin(reverse, vel_output, percent);
+    const double error = VisionSensor.largestObject.centerX - center;
+    double correction = (kP * error) + (kD * (error - lastError));
+    if (correction > TurnLimit) {
+      correction = TurnLimit;
+    } else if (correction < -TurnLimit) {
+      correction = -TurnLimit;
+    }
 
-    last_err = err;
-
+    leftWheels.spin(forward, ApproachSpeed + correction, percent);
+    rightWheels.spin(forward, ApproachSpeed - correction, percent);
+    lastError = error;
     wait(LoopDelay, msec);
   }
+
+  stopDrive();
+  last_err = 0;
+  for (int elapsed = 0; elapsed < PhaseTimeout; elapsed += LoopDelay) {
+    VisionSensor.takeSnapshot(*selectedSignature);
+    if (!VisionSensor.largestObject.exists) {
+      break;
+    }
+
+    err = VisionSensor.largestObject.centerX - center;
+    if (err <= tolerance && err >= -tolerance) {
+      break;
+    }
+
+    derivative = err - last_err;
+    double vel_output = (kP * err) + (kD * derivative);
+    if (vel_output > TurnLimit) {
+      vel_output = TurnLimit;
+    } else if (vel_output < -TurnLimit) {
+      vel_output = -TurnLimit;
+    }
+    turnToTarget(vel_output);
+    last_err = err;
+    wait(LoopDelay, msec);
+  }
+
+  stopDrive();
 }
