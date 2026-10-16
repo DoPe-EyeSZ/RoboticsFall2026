@@ -75,6 +75,24 @@ void Vision(VisionTarget target) {
       continue;
     }
 
+    const double error = VisionSensor.largestObject.centerX - center;
+    if (error >= -tolerance && error <= tolerance) {
+      centered = true;
+      stopDrive();
+      break;
+    }
+
+    double turnOutput = (kP * error) + (kD * (error - lastError));
+    if (turnOutput > TurnLimit) {
+      turnOutput = TurnLimit;
+    } else if (turnOutput < -TurnLimit) {
+      turnOutput = -TurnLimit;
+    }
+    turnToTarget(turnOutput);
+    lastError = error;
+    wait(LoopDelay, msec);
+  }
+
   while(abs(VisionSensor.largestObject.centerX - center) > tolerance) {
     err = VisionSensor.largestObject.centerX - center;
     derivative = (err - last_err);
@@ -85,7 +103,6 @@ void Vision(VisionTarget target) {
 
     last_err = err;
 
-    wait(20, msec);
+    wait(LoopDelay, msec);
   }
-}
 }
