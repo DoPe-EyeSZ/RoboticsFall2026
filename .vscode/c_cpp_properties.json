@@ -17,6 +17,8 @@
 		{
 			"name": "Win32",
 			"includePath": [
+				"${workspaceFolder}/include",
+				"${workspaceFolder}/src",
 				"${vex_sdkIncludes}"
 			],
 			"compilerPath": "${vex_compilerPath}",
@@ -27,6 +29,8 @@
 		{
 			"name": "Mac",
 			"includePath": [
+				"${workspaceFolder}/include",
+				"${workspaceFolder}/src",
 				"${vex_sdkIncludes}"
 			],
 			"compilerPath": "${vex_compilerPath}",
@@ -37,6 +41,8 @@
 		{
 			"name": "Linux",
 			"includePath": [
+				"${workspaceFolder}/include",
+				"${workspaceFolder}/src",
 				"${vex_sdkIncludes}"
 			],
 			"compilerPath": "",
