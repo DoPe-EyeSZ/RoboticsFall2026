@@ -2,6 +2,7 @@
 #include "setup.h"
 
 using namespace vex;
+//targetDistance is in centimeters
 void driveDistance(double targetDistance, double maxTime = 5.0) {
   
   //Wheel configs
