@@ -16,5 +16,10 @@ void autonomous() {
     turnRight(90);
     turnLeft(90);
     driveDistance(50, 5);
+    driveDistance(-50, 5);
+    turnRight(90);
+    turnLeft(90);
+    driveDistance(50, 5);
+    driveDistance(-50, 5);
 
 }
