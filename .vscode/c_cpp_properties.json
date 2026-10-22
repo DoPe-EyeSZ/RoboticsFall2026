@@ -1,3 +1,4 @@
+# IntelliSense configuration file for VS Code
 {
 	"env": {
 		"vex_compilerPath": "${config:vexrobotics.vexcode.Cpp.Toolchain.Path}\\clang\\bin\\clang.exe",
