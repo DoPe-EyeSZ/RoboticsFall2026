@@ -208,6 +208,11 @@ void Vision(VisionTarget target) {
     } else if (vel_output < -TurnLimit) {
       vel_output = -TurnLimit;
     }
+    if (vel_output >= 0 && vel_output < MinimumTurnOutput) {
+      vel_output = err > 0 ? MinimumTurnOutput : -MinimumTurnOutput;
+    } else if (vel_output < 0 && vel_output > -MinimumTurnOutput) {
+      vel_output = -MinimumTurnOutput;
+    }
     turnToTarget(vel_output);
     last_err = err;
     wait(LoopDelay, msec);
