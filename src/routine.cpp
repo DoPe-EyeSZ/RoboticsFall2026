@@ -1,5 +1,5 @@
 #include "vex.h"
-#include "setup.h"
+//#include "setup.h" - not being used right now
 #include "inertial.h"
 #include "odometry.h"
 //#include "vision.h" - not being used right now
