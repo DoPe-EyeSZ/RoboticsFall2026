@@ -27,12 +27,15 @@ void Vision(VisionTarget target) {
   const double kP = 0.08;
   const double kD = 0.25;
 
+
+  //Make sure to update early and update often; signature values are dependent on lighting environment and noise from different sensors
+  //Be consistent with the specific vision sensor used
   vision::signature yellowSignature(
-      1, 2717, 3085, 2901, -4739, -4443, -4591, 2.5, 0);
+      1, 9781, 10387, 10084, -885, -381, -634, 3.0, 0);
   vision::signature redSignature(
-      2, 11929, 13041, 12485, -1809, -1433, -1621, 2.5, 0);
+      2, -6219, -5499, -5858, 8249, 9423, 8836, 2.5, 0);
   vision::signature blueSignature(
-      3, -4275, -3261, -3768, 2315, 3429, 2872, 2.5, 0);
+      3, 253, 925, 590, -4237, -3571, -3904, 2.5, 0);
   vision::signature *selectedSignature = 0;
 
   switch (target) {
@@ -63,14 +66,19 @@ void Vision(VisionTarget target) {
   const double tolerance = 5.0;
   const double TurnLimit = 25.0;
   const double ApproachSpeed = 25.0;
+  const double SearchSpeed = 15.0;
   const int TargetHeight = 100;
-  const int PhaseTimeout = 5000;
+  const int PhaseTimeout = 90000;
   const int LoopDelay = 20;
+  const int SearchDirectionInterval = 1000;
 
   for (int elapsed = 0; elapsed < PhaseTimeout; elapsed += LoopDelay) {
     VisionSensor.takeSnapshot(*selectedSignature);
     if (!VisionSensor.largestObject.exists) {
-      stopDrive();
+      lastError = 0;
+      const double searchOutput =
+          (elapsed / SearchDirectionInterval) % 2 == 0 ? SearchSpeed : -SearchSpeed;
+      turnToTarget(searchOutput);
       wait(LoopDelay, msec);
       continue;
     }
