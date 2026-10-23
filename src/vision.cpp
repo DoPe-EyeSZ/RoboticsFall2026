@@ -63,14 +63,19 @@ void Vision(VisionTarget target) {
   const double tolerance = 5.0;
   const double TurnLimit = 25.0;
   const double ApproachSpeed = 25.0;
+  const double SearchSpeed = 15.0;
   const int TargetHeight = 100;
   const int PhaseTimeout = 5000;
   const int LoopDelay = 20;
+  const int SearchDirectionInterval = 1000;
 
   for (int elapsed = 0; elapsed < PhaseTimeout; elapsed += LoopDelay) {
     VisionSensor.takeSnapshot(*selectedSignature);
     if (!VisionSensor.largestObject.exists) {
-      stopDrive();
+      lastError = 0;
+      const double searchOutput =
+          (elapsed / SearchDirectionInterval) % 2 == 0 ? SearchSpeed : -SearchSpeed;
+      turnToTarget(searchOutput);
       wait(LoopDelay, msec);
       continue;
     }
