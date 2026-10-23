@@ -80,11 +80,17 @@ void Vision(VisionTarget target) {
   const int PhaseTimeout = 90000;
   const int LoopDelay = 20;
   const int SearchDirectionInterval = 1000;
+  const int RequiredCenteredFrames = 3;
+  double initialFilteredCenterX = 0;
+  bool initialFilterInitialized = false;
+  int initialCenteredFrames = 0;
 
   for (int elapsed = 0; elapsed < PhaseTimeout; elapsed += LoopDelay) {
     VisionSensor.takeSnapshot(*selectedSignature);
     if (!VisionSensor.largestObject.exists) {
       lastError = 0;
+      initialFilterInitialized = false;
+      initialCenteredFrames = 0;
       const double searchOutput =
           (elapsed / SearchDirectionInterval) % 2 == 0 ? SearchSpeed : -SearchSpeed;
       turnToTarget(searchOutput);
@@ -92,20 +98,28 @@ void Vision(VisionTarget target) {
       continue;
     }
 
-    const double error = VisionSensor.largestObject.centerX - center;
+    const double error =
+        updateFilteredCenterX(VisionSensor.largestObject.centerX,
+                              initialFilteredCenterX,
+                              initialFilterInitialized) -
+        center;
     if (error >= -tolerance && error <= tolerance) {
-      centered = true;
+      initialCenteredFrames++;
       stopDrive();
-      break;
+      if (initialCenteredFrames >= RequiredCenteredFrames) {
+        centered = true;
+        break;
+      }
+    } else {
+      initialCenteredFrames = 0;
+      double turnOutput = (kP * error) + (kD * (error - lastError));
+      if (turnOutput > TurnLimit) {
+        turnOutput = TurnLimit;
+      } else if (turnOutput < -TurnLimit) {
+        turnOutput = -TurnLimit;
+      }
+      turnToTarget(turnOutput);
     }
-
-    double turnOutput = (kP * error) + (kD * (error - lastError));
-    if (turnOutput > TurnLimit) {
-      turnOutput = TurnLimit;
-    } else if (turnOutput < -TurnLimit) {
-      turnOutput = -TurnLimit;
-    }
-    turnToTarget(turnOutput);
     lastError = error;
     wait(LoopDelay, msec);
   }
@@ -149,7 +163,6 @@ void Vision(VisionTarget target) {
   double filteredCenterX = 0;
   bool filterInitialized = false;
   int centeredFrames = 0;
-  const int RequiredCenteredFrames = 3;
   for (int elapsed = 0; elapsed < PhaseTimeout; elapsed += LoopDelay) {
     VisionSensor.takeSnapshot(*selectedSignature);
     if (!VisionSensor.largestObject.exists) {
