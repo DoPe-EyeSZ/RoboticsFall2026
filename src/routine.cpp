@@ -36,23 +36,36 @@ void skillsMode(string color, double tileDistance){
     turnRight(180);
     flipBar(color);
 
-    //Stack first base
+
+    //Trip 1 (stack grey thing on base)
     turnRight(90);
     driveDistance(tileDistance*0.9, 3.0);
     elevator("up");
     turnRight(85);
     driveDistance(tileDistance*0.9, 3.0);
     elevator("down");
+
+    //Trip 2 (stack yellow cone on grey thing)
     turnLeft(175);
     driveDistance(tileDistance*0.9, 3.0);
     elevator("up");
     turnLeft(180);
     driveDistance(tileDistance*0.9, 3.0);
     elevator("down");
+
+    //Trip 3 (stack grey thing on yellow)
     turnLeft(175);
     driveDistance(tileDistance*0.9, 3.0);
     elevator("up");
     turnLeft(180);
     driveDistance(tileDistance*0.9, 3.0);
+    elevator("down");
+
+    //Trip 4 (stack yellow gone on grey)
+    turnLeft(85);
+    driveDistance(tileDistance*0.3);
+    elevator("up");
+    turnRight(160);
+    driveDistance(tileDistance*0.3);
     elevator("down");
 }
