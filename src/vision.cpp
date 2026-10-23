@@ -142,6 +142,8 @@ void Vision(VisionTarget target) {
   last_err = 0;
   double filteredCenterX = 0;
   bool filterInitialized = false;
+  int centeredFrames = 0;
+  const int RequiredCenteredFrames = 3;
   for (int elapsed = 0; elapsed < PhaseTimeout; elapsed += LoopDelay) {
     VisionSensor.takeSnapshot(*selectedSignature);
     if (!VisionSensor.largestObject.exists) {
@@ -152,8 +154,15 @@ void Vision(VisionTarget target) {
                                 filteredCenterX, filterInitialized) -
           center;
     if (err <= tolerance && err >= -tolerance) {
-      break;
+      centeredFrames++;
+      stopDrive();
+      if (centeredFrames >= RequiredCenteredFrames) {
+        break;
+      }
+      wait(LoopDelay, msec);
+      continue;
     }
+    centeredFrames = 0;
 
     derivative = err - last_err;
     double vel_output = (kP * err) + (kD * derivative);
