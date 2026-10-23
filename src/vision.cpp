@@ -28,11 +28,11 @@ void Vision(VisionTarget target) {
   const double kD = 0.25;
 
   vision::signature yellowSignature(
-      1, 2717, 3085, 2901, -4739, -4443, -4591, 2.5, 0);
+      1, 9781, 10387, 10084, -885, -381, -634, 3.0, 0);
   vision::signature redSignature(
-      2, 11929, 13041, 12485, -1809, -1433, -1621, 2.5, 0);
+      2, -6219, -5499, -5858, 8249, 9423, 8836, 2.5, 0);
   vision::signature blueSignature(
-      3, -4275, -3261, -3768, 2315, 3429, 2872, 2.5, 0);
+      3, 253, 925, 590, -4237, -3571, -3904, 2.5, 0);
   vision::signature *selectedSignature = 0;
 
   switch (target) {
