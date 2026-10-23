@@ -115,6 +115,8 @@ void Vision(VisionTarget target) {
     return;
   }
   lastError = 0;
+  double approachFilteredCenterX = 0;
+  bool approachFilterInitialized = false;
   for (int elapsed = 0; elapsed < PhaseTimeout; elapsed += LoopDelay) {
     VisionSensor.takeSnapshot(*selectedSignature);
     if (!VisionSensor.largestObject.exists) {
@@ -124,7 +126,11 @@ void Vision(VisionTarget target) {
       break;
     }
 
-    const double error = VisionSensor.largestObject.centerX - center;
+    const double error =
+        updateFilteredCenterX(VisionSensor.largestObject.centerX,
+                              approachFilteredCenterX,
+                              approachFilterInitialized) -
+        center;
     double correction = (kP * error) + (kD * (error - lastError));
     if (correction > TurnLimit) {
       correction = TurnLimit;
