@@ -72,7 +72,7 @@ void Vision(VisionTarget target) {
   double err = 0;
   double last_err = 0;
   double derivative = 0;
-  const double tolerance = 5.0;
+  const double tolerance = 8.0;
   const double TurnLimit = 25.0;
   const double ApproachSpeed = 25.0;
   const double SearchSpeed = 15.0;
