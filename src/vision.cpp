@@ -27,7 +27,6 @@ void Vision(VisionTarget target) {
   const double kP = 0.08;
   const double kD = 0.25;
 
-
   //Make sure to update early and update often; signature values are dependent on lighting environment and noise from different sensors
   //Be consistent with the specific vision sensor used
   vision::signature yellowSignature(
