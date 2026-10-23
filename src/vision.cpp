@@ -131,13 +131,20 @@ void Vision(VisionTarget target) {
   lastError = 0;
   double approachFilteredCenterX = 0;
   bool approachFilterInitialized = false;
+  int targetHeightFrames = 0;
+  const int RequiredTargetHeightFrames = 3;
   for (int elapsed = 0; elapsed < PhaseTimeout; elapsed += LoopDelay) {
     VisionSensor.takeSnapshot(*selectedSignature);
     if (!VisionSensor.largestObject.exists) {
       break;
     }
     if (VisionSensor.largestObject.height >= TargetHeight) {
-      break;
+      targetHeightFrames++;
+      if (targetHeightFrames >= RequiredTargetHeightFrames) {
+        break;
+      }
+    } else {
+      targetHeightFrames = 0;
     }
 
     const double error =
