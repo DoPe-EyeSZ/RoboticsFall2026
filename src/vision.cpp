@@ -58,7 +58,6 @@ void Vision(VisionTarget target) {
   double lastError = 0;
   bool centered = false;
 
-
   double err = 0;
   double last_err = 0;
   double derivative = 0;
@@ -100,7 +99,7 @@ void Vision(VisionTarget target) {
     wait(LoopDelay, msec);
   }
 
-if (!centered) {
+  if (!centered) {
     stopDrive();
     return;
   }
