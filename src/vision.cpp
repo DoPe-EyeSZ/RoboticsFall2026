@@ -74,6 +74,7 @@ void Vision(VisionTarget target) {
   double derivative = 0;
   const double tolerance = 8.0;
   const double TurnLimit = 25.0;
+  const double MinimumTurnOutput = 5.0;
   const double ApproachSpeed = 25.0;
   const double SearchSpeed = 15.0;
   const int TargetHeight = 100;
@@ -118,6 +119,11 @@ void Vision(VisionTarget target) {
       } else if (turnOutput < -TurnLimit) {
         turnOutput = -TurnLimit;
       }
+      if (turnOutput >= 0 && turnOutput < MinimumTurnOutput) {
+        turnOutput = error > 0 ? MinimumTurnOutput : -MinimumTurnOutput;
+      } else if (turnOutput < 0 && turnOutput > -MinimumTurnOutput) {
+        turnOutput = -MinimumTurnOutput;
+      }
       turnToTarget(turnOutput);
     }
     lastError = error;
@@ -131,13 +137,20 @@ void Vision(VisionTarget target) {
   lastError = 0;
   double approachFilteredCenterX = 0;
   bool approachFilterInitialized = false;
+  int targetHeightFrames = 0;
+  const int RequiredTargetHeightFrames = 3;
   for (int elapsed = 0; elapsed < PhaseTimeout; elapsed += LoopDelay) {
     VisionSensor.takeSnapshot(*selectedSignature);
     if (!VisionSensor.largestObject.exists) {
       break;
     }
     if (VisionSensor.largestObject.height >= TargetHeight) {
-      break;
+      targetHeightFrames++;
+      if (targetHeightFrames >= RequiredTargetHeightFrames) {
+        break;
+      }
+    } else {
+      targetHeightFrames = 0;
     }
 
     const double error =
@@ -150,6 +163,11 @@ void Vision(VisionTarget target) {
       correction = TurnLimit;
     } else if (correction < -TurnLimit) {
       correction = -TurnLimit;
+    }
+    if (error > tolerance && correction < MinimumTurnOutput) {
+      correction = MinimumTurnOutput;
+    } else if (error < -tolerance && correction > -MinimumTurnOutput) {
+      correction = -MinimumTurnOutput;
     }
 
     leftWheels.spin(forward, ApproachSpeed + correction, percent);
