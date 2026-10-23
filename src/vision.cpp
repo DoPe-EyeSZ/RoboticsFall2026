@@ -22,6 +22,17 @@ void turnToTarget(double output) {
   }
 }
 
+double updateFilteredCenterX(double measuredCenterX, double &filteredCenterX,
+                             bool &filterInitialized) {
+  if (!filterInitialized) {
+    filteredCenterX = measuredCenterX;
+    filterInitialized = true;
+  } else {
+    filteredCenterX = 0.5 * measuredCenterX + 0.5 * filteredCenterX;
+  }
+  return filteredCenterX;
+}
+
 void Vision(VisionTarget target) {
 
   const double kP = 0.08;
@@ -57,7 +68,6 @@ void Vision(VisionTarget target) {
   const double center = 158.0;
   double lastError = 0;
   bool centered = false;
-
 
   double err = 0;
   double last_err = 0;
@@ -100,7 +110,7 @@ void Vision(VisionTarget target) {
     wait(LoopDelay, msec);
   }
 
-if (!centered) {
+  if (!centered) {
     stopDrive();
     return;
   }
