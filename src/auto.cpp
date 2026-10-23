@@ -1,5 +1,3 @@
-
-
 #include "vex.h"
 #include "vision.h"
 
