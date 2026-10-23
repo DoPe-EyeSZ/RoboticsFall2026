@@ -140,13 +140,17 @@ void Vision(VisionTarget target) {
 
   stopDrive();
   last_err = 0;
+  double filteredCenterX = 0;
+  bool filterInitialized = false;
   for (int elapsed = 0; elapsed < PhaseTimeout; elapsed += LoopDelay) {
     VisionSensor.takeSnapshot(*selectedSignature);
     if (!VisionSensor.largestObject.exists) {
       break;
     }
 
-    err = VisionSensor.largestObject.centerX - center;
+    err = updateFilteredCenterX(VisionSensor.largestObject.centerX,
+                                filteredCenterX, filterInitialized) -
+          center;
     if (err <= tolerance && err >= -tolerance) {
       break;
     }
