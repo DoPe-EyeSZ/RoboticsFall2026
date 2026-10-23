@@ -65,7 +65,7 @@ void Vision(VisionTarget target) {
   const double ApproachSpeed = 25.0;
   const double SearchSpeed = 15.0;
   const int TargetHeight = 100;
-  const int PhaseTimeout = 5000;
+  const int PhaseTimeout = 90000;
   const int LoopDelay = 20;
   const int SearchDirectionInterval = 1000;
 
