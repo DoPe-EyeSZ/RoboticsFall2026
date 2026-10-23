@@ -22,6 +22,17 @@ void turnToTarget(double output) {
   }
 }
 
+double updateFilteredCenterX(double measuredCenterX, double &filteredCenterX,
+                             bool &filterInitialized) {
+  if (!filterInitialized) {
+    filteredCenterX = measuredCenterX;
+    filterInitialized = true;
+  } else {
+    filteredCenterX = 0.5 * measuredCenterX + 0.5 * filteredCenterX;
+  }
+  return filteredCenterX;
+}
+
 void Vision(VisionTarget target) {
 
   const double kP = 0.08;
