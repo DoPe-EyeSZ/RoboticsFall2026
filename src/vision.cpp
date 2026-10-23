@@ -74,6 +74,7 @@ void Vision(VisionTarget target) {
   double derivative = 0;
   const double tolerance = 8.0;
   const double TurnLimit = 25.0;
+  const double MinimumTurnOutput = 5.0;
   const double ApproachSpeed = 25.0;
   const double SearchSpeed = 15.0;
   const int TargetHeight = 100;
@@ -117,6 +118,11 @@ void Vision(VisionTarget target) {
         turnOutput = TurnLimit;
       } else if (turnOutput < -TurnLimit) {
         turnOutput = -TurnLimit;
+      }
+      if (turnOutput >= 0 && turnOutput < MinimumTurnOutput) {
+        turnOutput = error > 0 ? MinimumTurnOutput : -MinimumTurnOutput;
+      } else if (turnOutput < 0 && turnOutput > -MinimumTurnOutput) {
+        turnOutput = -MinimumTurnOutput;
       }
       turnToTarget(turnOutput);
     }
