@@ -13,7 +13,6 @@ void flipBar(string color) {
         //lift 1x;
     } 
     else {
-        
         //lift 2x;
     }
 }
