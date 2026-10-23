@@ -2,5 +2,5 @@
 #include "vision.h"
 
 void autonomous() {
-    Vision(VisionTarget::red);
+    Vision(VisionTarget::yellow);
 }
