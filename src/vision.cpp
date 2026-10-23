@@ -72,7 +72,7 @@ void Vision(VisionTarget target) {
   double err = 0;
   double last_err = 0;
   double derivative = 0;
-  const double tolerance = 5.0;
+  const double tolerance = 8.0;
   const double TurnLimit = 25.0;
   const double ApproachSpeed = 25.0;
   const double SearchSpeed = 15.0;
@@ -80,11 +80,17 @@ void Vision(VisionTarget target) {
   const int PhaseTimeout = 90000;
   const int LoopDelay = 20;
   const int SearchDirectionInterval = 1000;
+  const int RequiredCenteredFrames = 3;
+  double initialFilteredCenterX = 0;
+  bool initialFilterInitialized = false;
+  int initialCenteredFrames = 0;
 
   for (int elapsed = 0; elapsed < PhaseTimeout; elapsed += LoopDelay) {
     VisionSensor.takeSnapshot(*selectedSignature);
     if (!VisionSensor.largestObject.exists) {
       lastError = 0;
+      initialFilterInitialized = false;
+      initialCenteredFrames = 0;
       const double searchOutput =
           (elapsed / SearchDirectionInterval) % 2 == 0 ? SearchSpeed : -SearchSpeed;
       turnToTarget(searchOutput);
@@ -92,20 +98,28 @@ void Vision(VisionTarget target) {
       continue;
     }
 
-    const double error = VisionSensor.largestObject.centerX - center;
+    const double error =
+        updateFilteredCenterX(VisionSensor.largestObject.centerX,
+                              initialFilteredCenterX,
+                              initialFilterInitialized) -
+        center;
     if (error >= -tolerance && error <= tolerance) {
-      centered = true;
+      initialCenteredFrames++;
       stopDrive();
-      break;
+      if (initialCenteredFrames >= RequiredCenteredFrames) {
+        centered = true;
+        break;
+      }
+    } else {
+      initialCenteredFrames = 0;
+      double turnOutput = (kP * error) + (kD * (error - lastError));
+      if (turnOutput > TurnLimit) {
+        turnOutput = TurnLimit;
+      } else if (turnOutput < -TurnLimit) {
+        turnOutput = -TurnLimit;
+      }
+      turnToTarget(turnOutput);
     }
-
-    double turnOutput = (kP * error) + (kD * (error - lastError));
-    if (turnOutput > TurnLimit) {
-      turnOutput = TurnLimit;
-    } else if (turnOutput < -TurnLimit) {
-      turnOutput = -TurnLimit;
-    }
-    turnToTarget(turnOutput);
     lastError = error;
     wait(LoopDelay, msec);
   }
@@ -115,6 +129,8 @@ void Vision(VisionTarget target) {
     return;
   }
   lastError = 0;
+  double approachFilteredCenterX = 0;
+  bool approachFilterInitialized = false;
   for (int elapsed = 0; elapsed < PhaseTimeout; elapsed += LoopDelay) {
     VisionSensor.takeSnapshot(*selectedSignature);
     if (!VisionSensor.largestObject.exists) {
@@ -124,7 +140,11 @@ void Vision(VisionTarget target) {
       break;
     }
 
-    const double error = VisionSensor.largestObject.centerX - center;
+    const double error =
+        updateFilteredCenterX(VisionSensor.largestObject.centerX,
+                              approachFilteredCenterX,
+                              approachFilterInitialized) -
+        center;
     double correction = (kP * error) + (kD * (error - lastError));
     if (correction > TurnLimit) {
       correction = TurnLimit;
@@ -140,16 +160,28 @@ void Vision(VisionTarget target) {
 
   stopDrive();
   last_err = 0;
+  double filteredCenterX = 0;
+  bool filterInitialized = false;
+  int centeredFrames = 0;
   for (int elapsed = 0; elapsed < PhaseTimeout; elapsed += LoopDelay) {
     VisionSensor.takeSnapshot(*selectedSignature);
     if (!VisionSensor.largestObject.exists) {
       break;
     }
 
-    err = VisionSensor.largestObject.centerX - center;
+    err = updateFilteredCenterX(VisionSensor.largestObject.centerX,
+                                filteredCenterX, filterInitialized) -
+          center;
     if (err <= tolerance && err >= -tolerance) {
-      break;
+      centeredFrames++;
+      stopDrive();
+      if (centeredFrames >= RequiredCenteredFrames) {
+        break;
+      }
+      wait(LoopDelay, msec);
+      continue;
     }
+    centeredFrames = 0;
 
     derivative = err - last_err;
     double vel_output = (kP * err) + (kD * derivative);
