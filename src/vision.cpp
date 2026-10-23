@@ -164,6 +164,11 @@ void Vision(VisionTarget target) {
     } else if (correction < -TurnLimit) {
       correction = -TurnLimit;
     }
+    if (error > tolerance && correction < MinimumTurnOutput) {
+      correction = MinimumTurnOutput;
+    } else if (error < -tolerance && correction > -MinimumTurnOutput) {
+      correction = -MinimumTurnOutput;
+    }
 
     leftWheels.spin(forward, ApproachSpeed + correction, percent);
     rightWheels.spin(forward, ApproachSpeed - correction, percent);
