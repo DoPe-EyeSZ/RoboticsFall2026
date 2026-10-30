@@ -172,7 +172,7 @@ void matchMode(string color, double tileDistance){
 
 }
 
-//Skills mode; do the whole field 
+//Skills mode; do half the field 
 void skillsMode(string color, double tileDistance){
 
     //Flipping bar thing
@@ -310,38 +310,6 @@ void skillsMode(string color, double tileDistance){
     elevator("down");
 
     //Top "3" base, trip 4
-    turnLeft(90);
-    driveDistance(tileDistance * kFullTileDistanceScale);
-    elevator("up");
-    turnLeft(180);
-    driveDistance(tileDistance * kTripDistanceScale);
-    elevator("down");
-
-    //Go to the top "4" base and trip 1
-    turnLeft(160);
-    driveDistance(tileDistance * kTopBaseApproachDistanceScale);
-    elevator("up");
-    turnLeft(90);
-    driveDistance(tileDistance * kTopBaseOffsetDistanceScale);
-    elevator("down");
-
-    //Top "4" base, trip 2
-    turnRight(180);
-    driveDistance(tileDistance * kFullTileDistanceScale);
-    elevator("up");
-    turnLeft(180);
-    driveDistance(tileDistance * kTripDistanceScale);
-    elevator("down");
-
-    //Top "4" base, trip 3
-    turnRight(180);
-    driveDistance(tileDistance * kFullTileDistanceScale);
-    elevator("up");
-    turnLeft(180);
-    driveDistance(tileDistance * kTripDistanceScale);
-    elevator("down");
-
-    //Top "4" base, trip 4
     turnLeft(90);
     driveDistance(tileDistance * kFullTileDistanceScale);
     elevator("up");
