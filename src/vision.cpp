@@ -14,11 +14,11 @@ void stopDrive() {
 
 void turnToTarget(double output) {
   if (output >= 0) {
-    leftWheels.spin(forward, output, percent);
-    rightWheels.spin(reverse, output, percent);
+    leftWheels.spin(reverse, output, percent);
+    rightWheels.spin(forward, output, percent);
   } else {
-    leftWheels.spin(reverse, -output, percent);
-    rightWheels.spin(forward, -output, percent);
+    leftWheels.spin(forward, -output, percent);
+    rightWheels.spin(reverse, -output, percent);
   }
 }
 
@@ -170,8 +170,8 @@ void Vision(VisionTarget target) {
       correction = -MinimumTurnOutput;
     }
 
-    leftWheels.spin(forward, ApproachSpeed + correction, percent);
-    rightWheels.spin(forward, ApproachSpeed - correction, percent);
+    leftWheels.spin(forward, ApproachSpeed - correction, percent);
+    rightWheels.spin(forward, ApproachSpeed + correction, percent);
     lastError = error;
     wait(LoopDelay, msec);
   }
