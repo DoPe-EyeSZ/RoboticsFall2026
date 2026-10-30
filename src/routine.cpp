@@ -48,7 +48,6 @@ void skillsMode(string color, double tileDistance){
     turnRight(180);
     flipBar(color);
 
-
     //Trip 1 (stack grey thing on base)
     turnRight(90);
     driveDistance(tileDistance * kTripDistanceScale, kDriveTimeoutSeconds);
