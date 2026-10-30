@@ -5,6 +5,7 @@
 //#include "vision.h" - not being used right now
 #include <cmath>
 #include <string>
+#include "vision.h"
 
 using namespace std;
 
@@ -45,17 +46,10 @@ void testMode(string color, double tileDistance) {
     //const string color = "red"; 
     //const double tileDistance = 61; //cm
 
-    //Flipping bar thing
-    turnRight(180);
-    flipBar(color);
-
     //Trip 1 (stack grey thing on base)
     turnRight(90);
     driveDistance(tileDistance * kTripDistanceScale, kDriveTimeoutSeconds);
-    elevator("up");
-    turnRight(85);
-    driveDistance(tileDistance * kTripDistanceScale, kDriveTimeoutSeconds);
-    elevator("down");
+    Vision(color == "yellow" ? VisionTarget::red : VisionTarget::blue);
 }
 
 //For head-to-head match
