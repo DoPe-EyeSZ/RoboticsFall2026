@@ -22,9 +22,9 @@ void usercontrol() {
     //  liftMotors.spin(reverse, 100, percent);
     //} 
 
-    leftWheels.spin(forward, forwardSpeed + sideSpeed, percent);
+    leftWheels.spin(reverse, forwardSpeed + sideSpeed, percent);
 
-    rightWheels.spin(forward, forwardSpeed - sideSpeed, percent);
+    rightWheels.spin(reverse, forwardSpeed - sideSpeed, percent);
 
     wait(20, msec); // Sleep the task for a short amount of time to
   }

@@ -3,20 +3,24 @@
 #include "setup.h"
 
 // Front motors
-vex::motor rightMotorFront(vex::PORT14, vex::gearSetting::ratio18_1, true);
-vex::motor leftMotorFront(vex::PORT11, vex::gearSetting::ratio18_1, false);
+vex::motor rightMotorFront(vex::PORT19, vex::gearSetting::ratio18_1, true);
+vex::motor leftMotorFront(vex::PORT13, vex::gearSetting::ratio18_1, false);
+
+// Middle motors
+vex::motor rightMotorMiddle(vex::PORT16, vex::gearSetting::ratio18_1, true);
+vex::motor leftMotorMiddle(vex::PORT12, vex::gearSetting::ratio18_1, false);
 
 // Back motors
-vex::motor rightMotorBack(vex::PORT13, vex::gearSetting::ratio18_1, true);
-vex::motor leftMotorBack(vex::PORT12, vex::gearSetting::ratio18_1, false);
+vex::motor rightMotorBack(vex::PORT15, vex::gearSetting::ratio18_1, true);
+vex::motor leftMotorBack(vex::PORT11, vex::gearSetting::ratio18_1, false);
 
 // Grouping motors
-vex::motor_group leftWheels(leftMotorFront, leftMotorBack);
-vex::motor_group rightWheels(rightMotorFront, rightMotorBack);
+vex::motor_group leftWheels(leftMotorFront, leftMotorMiddle, leftMotorBack);
+vex::motor_group rightWheels(rightMotorFront, rightMotorMiddle, rightMotorBack);
 
 // Grouping lift motors
-vex::motor liftMotorLeft(vex::PORT16, vex::gearSetting::ratio18_1, true);
-vex::motor liftMotorRight(vex::PORT17, vex::gearSetting::ratio18_1, false);
+vex::motor liftMotorLeft(vex::PORT10, vex::gearSetting::ratio18_1, true);
+vex::motor liftMotorRight(vex::PORT7, vex::gearSetting::ratio18_1, false);
 vex::motor_group liftMotors(liftMotorLeft, liftMotorRight);
 
 // Inertial Sensor
