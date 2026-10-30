@@ -83,6 +83,81 @@ void matchMode(string color, double tileDistance){
     driveDistance(tileDistance * kShortDistanceScale);
     elevator("down");
 
+    //Go to next base
+    //Check timing on this run
+    turnLeft(90);
+    driveDistance(tileDistance * kBaseTransitionDistanceScale);
+    elevator("up");
+    turnRight(45);
+    driveDistance(tileDistance * kFullTileDistanceScale);
+    elevator("down");
+
+    //Trip 1 (stack gray thing)
+    turnRight(90);
+    driveDistance(tileDistance * kTripDistanceScale);
+    elevator("up");
+    turnLeft(180);
+    driveDistance(tileDistance * kTripDistanceScale);
+    elevator("down");
+
+    //Trip 2 (stack gray thing)
+    turnRight(180);
+    driveDistance(tileDistance * kTripDistanceScale);
+    elevator("up");
+    turnLeft(180);
+    driveDistance(tileDistance * kTripDistanceScale);
+    elevator("down");
+
+    //Trip 3 (stack gray thing)
+    turnRight(180);
+    driveDistance(tileDistance * kTripDistanceScale);
+    elevator("up");
+    turnLeft(180);
+    driveDistance(tileDistance * kTripDistanceScale);
+    elevator("down");
+
+    //Trip 4 (stack gray thing)
+    turnRight(90);
+    driveDistance(tileDistance * kTripDistanceScale);
+    elevator("up");
+    turnLeft(180);
+    driveDistance(tileDistance * kTripDistanceScale);
+    elevator("down");
+
+    //Go to the "2" base (up 1 tile, right 1 tile)
+    turnRight(90);
+    driveDistance(tileDistance * kFullTileDistanceScale);
+    elevator("up");
+    turnRight(90);
+    driveDistance(tileDistance * kFullTileDistanceScale);
+    elevator("down");
+
+    //"2" base, trip 1
+    driveDistance(tileDistance * kTripDistanceScale);
+    elevator("up");
+    turnLeft(180);
+    driveDistance(tileDistance * kTripDistanceScale);
+    elevator("down");
+
+    //"2" base, trip 2
+    turnRight(180);
+    driveDistance(tileDistance * kTripDistanceScale);
+    elevator("up");
+    turnLeft(180);
+    driveDistance(tileDistance * kTripDistanceScale);
+    elevator("down");
+
+    //"2" base, trip 3
+    turnRight(180);
+    driveDistance(tileDistance * kTripDistanceScale);
+    elevator("up");
+    turnLeft(90);
+    driveDistance(tileDistance * kHalfTileDistanceScale);
+    flipBar(color);
+    turnLeft(135);
+    driveDistance(+tileDistance * kTripDistanceScale);
+    elevator("down");
+
 }
 
 //Skills mode; do the whole field 
