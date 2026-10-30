@@ -78,7 +78,7 @@ void Vision(VisionTarget target) {
   const double ApproachSpeed = 25.0;
   const double SearchSpeed = 15.0;
   const int TargetHeight = 100;
-  const int PhaseTimeout = 500;
+  const int PhaseTimeout = 9000;
   const int LoopDelay = 20;
   const int SearchDirectionInterval = 1000;
   const int RequiredCenteredFrames = 3;
@@ -173,48 +173,6 @@ void Vision(VisionTarget target) {
     leftWheels.spin(forward, ApproachSpeed + correction, percent);
     rightWheels.spin(forward, ApproachSpeed - correction, percent);
     lastError = error;
-    wait(LoopDelay, msec);
-  }
-
-  stopDrive();
-  last_err = 0;
-  double filteredCenterX = 0;
-  bool filterInitialized = false;
-  int centeredFrames = 0;
-  for (int elapsed = 0; elapsed < PhaseTimeout; elapsed += LoopDelay) {
-    VisionSensor.takeSnapshot(*selectedSignature);
-    if (!VisionSensor.largestObject.exists) {
-      break;
-    }
-
-    err = updateFilteredCenterX(VisionSensor.largestObject.centerX,
-                                filteredCenterX, filterInitialized) -
-          center;
-    if (err <= tolerance && err >= -tolerance) {
-      centeredFrames++;
-      stopDrive();
-      if (centeredFrames >= RequiredCenteredFrames) {
-        break;
-      }
-      wait(LoopDelay, msec);
-      continue;
-    }
-    centeredFrames = 0;
-
-    derivative = err - last_err;
-    double vel_output = (kP * err) + (kD * derivative);
-    if (vel_output > TurnLimit) {
-      vel_output = TurnLimit;
-    } else if (vel_output < -TurnLimit) {
-      vel_output = -TurnLimit;
-    }
-    if (vel_output >= 0 && vel_output < MinimumTurnOutput) {
-      vel_output = err > 0 ? MinimumTurnOutput : -MinimumTurnOutput;
-    } else if (vel_output < 0 && vel_output > -MinimumTurnOutput) {
-      vel_output = -MinimumTurnOutput;
-    }
-    turnToTarget(vel_output);
-    last_err = err;
     wait(LoopDelay, msec);
   }
 
