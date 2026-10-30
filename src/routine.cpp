@@ -40,6 +40,7 @@ void elevator(string action) {
     }
 }
 
+//There will be 2 alliance bots on our half of field, so let's restrict this bot's movement to one's of the triangle spaces
 //Skills mode; do half of field
 void skillsMode(string color, double tileDistance){
 
