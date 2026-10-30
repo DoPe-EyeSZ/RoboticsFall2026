@@ -19,6 +19,8 @@ void autonomous() {
     if (mode == "skills"){
         skillsMode(color, tileDistance);
     }
-
+    if (mode == "match"){
+        matchMode(color, tileDistance);
+    }
 
 }

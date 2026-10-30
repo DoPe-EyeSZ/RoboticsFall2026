@@ -13,4 +13,6 @@ void elevator(string action);
 
 void skillsMode(string color, double tileDistance);
 
+void matchMode(string color, double tileDistance);
+
 #endif
