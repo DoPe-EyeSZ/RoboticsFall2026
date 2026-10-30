@@ -14,11 +14,11 @@ void stopDrive() {
 
 void turnToTarget(double output) {
   if (output >= 0) {
-    leftWheels.spin(reverse, output, percent);
-    rightWheels.spin(forward, output, percent);
+    leftWheels.spin(forward, output, percent);
+    rightWheels.spin(reverse, output, percent);
   } else {
-    leftWheels.spin(forward, -output, percent);
-    rightWheels.spin(reverse, -output, percent);
+    leftWheels.spin(reverse, -output, percent);
+    rightWheels.spin(forward, -output, percent);
   }
 }
 
@@ -78,7 +78,7 @@ void Vision(VisionTarget target) {
   const double ApproachSpeed = 25.0;
   const double SearchSpeed = 15.0;
   const int TargetHeight = 100;
-  const int PhaseTimeout = 90000;
+  const int PhaseTimeout = 500;
   const int LoopDelay = 20;
   const int SearchDirectionInterval = 1000;
   const int RequiredCenteredFrames = 3;
@@ -170,8 +170,8 @@ void Vision(VisionTarget target) {
       correction = -MinimumTurnOutput;
     }
 
-    leftWheels.spin(forward, ApproachSpeed - correction, percent);
-    rightWheels.spin(forward, ApproachSpeed + correction, percent);
+    leftWheels.spin(forward, ApproachSpeed + correction, percent);
+    rightWheels.spin(forward, ApproachSpeed - correction, percent);
     lastError = error;
     wait(LoopDelay, msec);
   }
