@@ -15,4 +15,6 @@ void skillsMode(string color, double tileDistance);
 
 void matchMode(string color, double tileDistance);
 
+void testMode(string color, double tileDistance);
+
 #endif

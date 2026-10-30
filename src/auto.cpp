@@ -22,4 +22,7 @@ void autonomous() {
     if (mode == "match"){
         matchMode(color, tileDistance);
     }
+    if (mode == "test"){
+        testMode(color, tileDistance);
+    }
 }

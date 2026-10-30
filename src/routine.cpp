@@ -40,6 +40,24 @@ void elevator(string action) {
     }
 }
 
+void testMode(string color, double tileDistance) {
+    //CHANGE ON MATCH
+    //const string color = "red"; 
+    //const double tileDistance = 61; //cm
+
+    //Flipping bar thing
+    turnRight(180);
+    flipBar(color);
+
+    //Trip 1 (stack grey thing on base)
+    turnRight(90);
+    driveDistance(tileDistance * kTripDistanceScale, kDriveTimeoutSeconds);
+    elevator("up");
+    turnRight(85);
+    driveDistance(tileDistance * kTripDistanceScale, kDriveTimeoutSeconds);
+    elevator("down");
+}
+
 //For head-to-head match
 //There will be 2 alliance bots on our half of field, so let's restrict this bot's movement to one's of the triangle spaces
 void matchMode(string color, double tileDistance){
