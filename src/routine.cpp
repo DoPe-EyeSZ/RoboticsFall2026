@@ -59,6 +59,30 @@ void matchMode(string color, double tileDistance){
     driveDistance(tileDistance * kTripDistanceScale, kDriveTimeoutSeconds);
     elevator("down");
 
+    //Trip 2 (stack yellow cone on grey thing)
+    turnLeft(175);
+    driveDistance(tileDistance * kTripDistanceScale, kDriveTimeoutSeconds);
+    elevator("up");
+    turnLeft(180);
+    driveDistance(tileDistance * kTripDistanceScale, kDriveTimeoutSeconds);
+    elevator("down");
+
+    //Trip 3 (stack grey thing on yellow)
+    turnLeft(175);
+    driveDistance(tileDistance * kTripDistanceScale, kDriveTimeoutSeconds);
+    elevator("up");
+    turnLeft(180);
+    driveDistance(tileDistance * kTripDistanceScale, kDriveTimeoutSeconds);
+    elevator("down");
+
+    //Trip 4 (stack yellow gone on grey)
+    turnLeft(85);
+    driveDistance(tileDistance * kShortDistanceScale);
+    elevator("up");
+    turnRight(160);
+    driveDistance(tileDistance * kShortDistanceScale);
+    elevator("down");
+
 }
 
 //Skills mode; do the whole field 
