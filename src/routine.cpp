@@ -41,6 +41,7 @@ void elevator(string action) {
 }
 
 //For head-to-head match
+//There will be 2 alliance bots on our half of field, so let's restrict this bot's movement to one's of the triangle spaces
 void matchMode(string color, double tileDistance){
     //CHANGE ON MATCH
     //const string color = "red"; 
@@ -60,8 +61,7 @@ void matchMode(string color, double tileDistance){
 
 }
 
-//There will be 2 alliance bots on our half of field, so let's restrict this bot's movement to one's of the triangle spaces
-//Skills mode; do half of field
+//Skills mode; do the whole field 
 void skillsMode(string color, double tileDistance){
 
     //Flipping bar thing
@@ -171,7 +171,7 @@ void skillsMode(string color, double tileDistance){
     driveDistance(tileDistance * kHalfTileDistanceScale);
     flipBar(color);
     turnLeft(135);
-    driveDistance(tileDistance * kTripDistanceScale);
+    driveDistance(+tileDistance * kTripDistanceScale);
     elevator("down");
 
     //Go to the top "3" base and trip 1
