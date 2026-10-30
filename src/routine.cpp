@@ -12,6 +12,11 @@ namespace {
 constexpr double kTripDistanceScale = 0.9;
 constexpr double kShortDistanceScale = 0.3;
 constexpr double kDriveTimeoutSeconds = 3.0;
+constexpr double kBaseTransitionDistanceScale = 0.6;
+constexpr double kHalfTileDistanceScale = 0.5;
+constexpr double kFullTileDistanceScale = 1.0;
+constexpr double kTopBaseApproachDistanceScale = 2.4;
+constexpr double kTopBaseOffsetDistanceScale = 0.7;
 }
 
 void flipBar(string color) {
@@ -77,10 +82,10 @@ void skillsMode(string color, double tileDistance){
 
     //Go to next base
     turnLeft(90);
-    driveDistance(tileDistance * 0.6);
+    driveDistance(tileDistance * kBaseTransitionDistanceScale);
     elevator("up");
     turnRight(45);
-    driveDistance(tileDistance * 1);
+    driveDistance(tileDistance * kFullTileDistanceScale);
     elevator("down");
 
     //Trip 1 (stack gray thing)
@@ -117,10 +122,10 @@ void skillsMode(string color, double tileDistance){
 
     //Go to the "2" base (up 1 tile, right 1 tile)
     turnRight(90);
-    driveDistance(tileDistance * 1);
+    driveDistance(tileDistance * kFullTileDistanceScale);
     elevator("up");
     turnRight(90);
-    driveDistance(tileDistance * 1);
+    driveDistance(tileDistance * kFullTileDistanceScale);
     elevator("down");
 
     //"2" base, trip 1
@@ -143,7 +148,7 @@ void skillsMode(string color, double tileDistance){
     driveDistance(tileDistance * kTripDistanceScale);
     elevator("up");
     turnLeft(90);
-    driveDistance(tileDistance * 0.5);
+    driveDistance(tileDistance * kHalfTileDistanceScale);
     flipBar(color);
     turnLeft(135);
     driveDistance(tileDistance * kTripDistanceScale);
@@ -151,15 +156,15 @@ void skillsMode(string color, double tileDistance){
 
     //Go to the top "3" base and trip 1
     turnLeft(160);
-    driveDistance(tileDistance * 2.4);
+    driveDistance(tileDistance * kTopBaseApproachDistanceScale);
     elevator("up");
     turnLeft(90);
-    driveDistance(tileDistance * 0.7);
+    driveDistance(tileDistance * kTopBaseOffsetDistanceScale);
     elevator("down");
 
     //Top "3" base, trip 2
     turnRight(180);
-    driveDistance(tileDistance * 1.0);
+    driveDistance(tileDistance * kFullTileDistanceScale);
     elevator("up");
     turnLeft(180);
     driveDistance(tileDistance * kTripDistanceScale);
@@ -167,7 +172,7 @@ void skillsMode(string color, double tileDistance){
 
     //Top "3" base, trip 3
     turnRight(180);
-    driveDistance(tileDistance * 1.0);
+    driveDistance(tileDistance * kFullTileDistanceScale);
     elevator("up");
     turnLeft(180);
     driveDistance(tileDistance * kTripDistanceScale);
@@ -175,7 +180,7 @@ void skillsMode(string color, double tileDistance){
 
     //Top "3" base, trip 4
     turnLeft(90);
-    driveDistance(tileDistance * 1.0);
+    driveDistance(tileDistance * kFullTileDistanceScale);
     elevator("up");
     turnLeft(180);
     driveDistance(tileDistance * kTripDistanceScale);
