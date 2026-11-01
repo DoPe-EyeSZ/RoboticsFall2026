@@ -86,6 +86,7 @@ void Vision(VisionTarget target) {
   bool initialFilterInitialized = false;
   int initialCenteredFrames = 0;
 
+  //Loop this logic
   for (int elapsed = 0; elapsed < PhaseTimeout; elapsed += LoopDelay) {
     VisionSensor.takeSnapshot(*selectedSignature);
     if (!VisionSensor.largestObject.exists) {
