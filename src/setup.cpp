@@ -27,7 +27,7 @@ vex::motor_group liftMotors(liftMotorLeft, liftMotorRight);
 vex::inertial InertialSensor(vex::PORT20);
 
 //Odometry
-vex::rotation RotationSensor(vex::PORT4, false);
+vex::rotation RotationSensor(vex::PORT5, false);
 
 // Drive Train
 vex::drivetrain driveTrain(leftWheels, rightWheels);
@@ -39,4 +39,4 @@ vex::controller Controller1(vex::controllerType::primary);
 vex::brain Brain;
 
 //configure vision sensor
-vex::vision VisionSensor(vex::PORT10);
+vex::vision VisionSensor(vex::PORT8);
