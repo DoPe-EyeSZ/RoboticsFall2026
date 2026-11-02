@@ -48,7 +48,7 @@ void testMode(string color, double tileDistance) {
 
     //Trip 1 (stack grey thing on base)
     turnLeft(10);
-    driveDistance(tileDistance * kTripDistanceScale, kDriveTimeoutSeconds);
+    //driveDistance(tileDistance * kTripDistanceScale, kDriveTimeoutSeconds);
     Vision(color == "yellow" ? VisionTarget::red : VisionTarget::blue);
 }
 
