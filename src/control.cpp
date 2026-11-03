@@ -28,10 +28,13 @@ void usercontrol() {
 
     //Control intake motor with controller buttons
     if (Controller1.ButtonB.pressing()) {
-      intakeMotor.spin(forward, 100, percent);
+      intakeMotors.spin(forward, 100, percent);
+    }
+    else if (Controller1.ButtonA.pressing()) {
+      intakeMotors.spin(reverse, 100, percent);
     }
     else {
-      intakeMotor.stop();
+      intakeMotors.stop();
     }
 
     //Control banshee motor with controller buttons

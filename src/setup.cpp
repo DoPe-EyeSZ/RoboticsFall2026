@@ -25,6 +25,9 @@ vex::motor_group liftMotors(liftMotorLeft, liftMotorRight);
 
 // Intake motor
 vex::motor intakeMotor(vex::PORT17, vex::gearSetting::ratio18_1, true);
+vex::motor intakeMotor2(vex::PORT7, vex::gearSetting::ratio18_1, true);
+vex::motor_group intakeMotors(intakeMotor, intakeMotor2);
+
 
 // Banshee motor
 vex::motor bansheeMotor(vex::PORT6, vex::gearSetting::ratio18_1, true);
