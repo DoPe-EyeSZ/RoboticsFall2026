@@ -8,7 +8,7 @@ void usercontrol() {
   leftWheels.setStopping(brakeType::coast);
   rightWheels.setStopping(brakeType::coast);
   liftMotors.setStopping(brakeType::hold);
-
+  intakeMotor.setStopping(brakeType::hold);
   while (1) {
 
     //Get speed from controller joysticks
@@ -24,6 +24,13 @@ void usercontrol() {
     }
     else {
       liftMotors.stop();
+    }
+
+    if (Controller1.ButtonB.pressing()) {
+      intakeMotor.spin(forward, 100, percent);
+    }
+    else {
+      intakeMotor.stop();
     }
 
     leftWheels.spin(reverse, forwardSpeed + sideSpeed, percent);

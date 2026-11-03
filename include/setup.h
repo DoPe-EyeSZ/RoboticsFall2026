@@ -21,6 +21,9 @@ extern vex::motor_group rightWheels;
 extern vex::motor liftMotorLeft;
 extern vex::motor liftMotorRight;
 
+// Intake motor
+extern vex::motor intakeMotor;
+
 // Inertial Sensor
 extern vex::inertial InertialSensor;
 

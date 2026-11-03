@@ -23,6 +23,9 @@ vex::motor liftMotorLeft(vex::PORT9, vex::gearSetting::ratio18_1, true);
 vex::motor liftMotorRight(vex::PORT10, vex::gearSetting::ratio18_1, false);
 vex::motor_group liftMotors(liftMotorLeft, liftMotorRight);
 
+// Intake motor
+vex::motor intakeMotor(vex::PORT17, vex::gearSetting::ratio18_1, true);
+
 // Inertial Sensor
 vex::inertial InertialSensor(vex::PORT20);
 
