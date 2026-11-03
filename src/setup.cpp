@@ -26,6 +26,9 @@ vex::motor_group liftMotors(liftMotorLeft, liftMotorRight);
 // Intake motor
 vex::motor intakeMotor(vex::PORT17, vex::gearSetting::ratio18_1, true);
 
+// Banshee motor
+vex::motor bansheeMotor(vex::PORT6, vex::gearSetting::ratio18_1, true);
+
 // Inertial Sensor
 vex::inertial InertialSensor(vex::PORT20);
 

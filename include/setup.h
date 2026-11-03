@@ -24,6 +24,9 @@ extern vex::motor liftMotorRight;
 // Intake motor
 extern vex::motor intakeMotor;
 
+// Banshee motor
+extern vex::motor bansheeMotor;
+
 // Inertial Sensor
 extern vex::inertial InertialSensor;
 

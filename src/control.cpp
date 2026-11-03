@@ -15,7 +15,7 @@ void usercontrol() {
     int forwardSpeed = Controller1.Axis3.position();   //left joystick output (forward/backward)
     int sideSpeed = Controller1.Axis1.position();    //right joystick output (left/right)
 
-    
+    //Control lift motors with controller buttons
     if (Controller1.ButtonR2.pressing()) {
       liftMotors.spin(forward, 100, percent);
     }
@@ -26,11 +26,23 @@ void usercontrol() {
       liftMotors.stop();
     }
 
+    //Control intake motor with controller buttons
     if (Controller1.ButtonB.pressing()) {
       intakeMotor.spin(forward, 100, percent);
     }
     else {
       intakeMotor.stop();
+    }
+
+    //Control banshee motor with controller buttons
+    if (Controller1.ButtonL1.pressing()) {
+      bansheeMotor.spin(forward, 100, percent);
+    }
+    else if (Controller1.ButtonR1.pressing()) {
+      bansheeMotor.spin(reverse, 100, percent);
+    }
+    else {
+      bansheeMotor.stop();
     }
 
     leftWheels.spin(reverse, forwardSpeed + sideSpeed, percent);
