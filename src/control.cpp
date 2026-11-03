@@ -7,6 +7,7 @@ void usercontrol() {
 
   leftWheels.setStopping(brakeType::coast);
   rightWheels.setStopping(brakeType::coast);
+  liftMotors.setStopping(brakeType::hold);
 
   while (1) {
 
@@ -15,12 +16,15 @@ void usercontrol() {
     int sideSpeed = Controller1.Axis1.position();    //right joystick output (left/right)
 
     
-    //if (Controller1.ButtonR2.pressing()) {    //Motor going up
-    //  liftMotors.spin(forward, 100, percent);
-    //} 
-    //else if (Controller1.ButtonL2.pressing()) {   //Motor going down
-    //  liftMotors.spin(reverse, 100, percent);
-    //} 
+    if (Controller1.ButtonR2.pressing()) {
+      liftMotors.spin(forward, 100, percent);
+    }
+    else if (Controller1.ButtonL2.pressing()) {
+      liftMotors.spin(reverse, 100, percent);
+    }
+    else {
+      liftMotors.stop();
+    }
 
     leftWheels.spin(reverse, forwardSpeed + sideSpeed, percent);
 

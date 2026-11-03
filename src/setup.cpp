@@ -19,8 +19,8 @@ vex::motor_group leftWheels(leftMotorFront, leftMotorMiddle, leftMotorBack);
 vex::motor_group rightWheels(rightMotorFront, rightMotorMiddle, rightMotorBack);
 
 // Grouping lift motors
-vex::motor liftMotorLeft(vex::PORT10, vex::gearSetting::ratio18_1, true);
-vex::motor liftMotorRight(vex::PORT7, vex::gearSetting::ratio18_1, false);
+vex::motor liftMotorLeft(vex::PORT9, vex::gearSetting::ratio18_1, true);
+vex::motor liftMotorRight(vex::PORT10, vex::gearSetting::ratio18_1, false);
 vex::motor_group liftMotors(liftMotorLeft, liftMotorRight);
 
 // Inertial Sensor
