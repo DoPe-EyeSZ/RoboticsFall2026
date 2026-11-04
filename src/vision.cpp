@@ -12,6 +12,12 @@ void stopDrive() {
   rightWheels.stop();
 }
 
+void printVisionStatus(const char *status) {
+  Controller1.Screen.clearLine(1);
+  Controller1.Screen.setCursor(1, 1);
+  Controller1.Screen.print("Vision: %s", status);
+}
+
 void turnToTarget(double output) {
   if (output >= 0) {
     leftWheels.spin(reverse, output, percent);
@@ -82,16 +88,26 @@ void Vision(VisionTarget target) {
   double initialFilteredCenterX = 0;
   bool initialFilterInitialized = false;
   int initialCenteredFrames = 0;
+  bool targetVisible = false;
 
   //Loop this logic
+  printVisionStatus("Searching");
   for (int elapsed = 0; elapsed < PhaseTimeout; elapsed += LoopDelay) {
     VisionSensor.takeSnapshot(*selectedSignature);
     if (!VisionSensor.largestObject.exists) {
+      if (targetVisible) {
+        printVisionStatus("Searching");
+        targetVisible = false;
+      }
       lastError = 0;
       initialFilterInitialized = false;
       initialCenteredFrames = 0;
       wait(LoopDelay, msec);
       continue;
+    }
+    if (!targetVisible) {
+      printVisionStatus("Aligning");
+      targetVisible = true;
     }
 
     const double error =
