@@ -76,11 +76,8 @@ void Vision(VisionTarget target) {
   const double TurnLimit = 25.0;
   const double MinimumTurnOutput = 5.0;
   const double ApproachSpeed = 25.0;
-  const double SearchSpeed = 15.0;
-  const int TargetHeight = 100;
   const int PhaseTimeout = 90000;
   const int LoopDelay = 20;
-  const int SearchDirectionInterval = 1000;
   const int RequiredCenteredFrames = 3;
   double initialFilteredCenterX = 0;
   bool initialFilterInitialized = false;
@@ -135,20 +132,11 @@ void Vision(VisionTarget target) {
   lastError = 0;
   double approachFilteredCenterX = 0;
   bool approachFilterInitialized = false;
-  int targetHeightFrames = 0;
-  const int RequiredTargetHeightFrames = 3;
-  for (int elapsed = 0; elapsed < PhaseTimeout; elapsed += LoopDelay) {
+  while (true) {
     VisionSensor.takeSnapshot(*selectedSignature);
     if (!VisionSensor.largestObject.exists) {
-      break;
-    }
-    if (VisionSensor.largestObject.height >= TargetHeight) {
-      targetHeightFrames++;
-      if (targetHeightFrames >= RequiredTargetHeightFrames) {
-        break;
-      }
-    } else {
-      targetHeightFrames = 0;
+      stopDrive();
+      return;
     }
 
     const double error =
