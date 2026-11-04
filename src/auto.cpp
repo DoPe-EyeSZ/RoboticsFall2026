@@ -12,7 +12,7 @@ void autonomous() {
     InertialSensor.setRotation(0, deg); 
 
     //CHANGE ON MATCH
-    const string color = "red"; 
+    const string color = "yellow"; 
     const double tileDistance = 31; //cm
     const string mode = "test";
 
