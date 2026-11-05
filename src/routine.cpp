@@ -49,7 +49,13 @@ void testMode(string color, double tileDistance) {
     //Trip 1 (stack grey thing on base)
     turnLeft(10);
     //driveDistance(tileDistance * kTripDistanceScale, kDriveTimeoutSeconds);
-    Vision(color == "yellow" ? VisionTarget::red : VisionTarget::blue);
+    if (color == "yellow") {
+    Vision(VisionTarget::yellow);
+} else if (color == "red") {
+    Vision(VisionTarget::red);
+} else if (color == "blue") {
+    Vision(VisionTarget::blue);
+}
 }
 
 //For head-to-head match
