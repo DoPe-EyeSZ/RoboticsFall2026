@@ -47,11 +47,11 @@ void Vision(VisionTarget target) {
   //Make sure to update early and update often; signature values are dependent on lighting environment and noise from different sensors
   //Be consistent with the specific vision sensor used
   vision::signature yellowSignature(
-      1, 111, 555, 333, -4383, -4023, -4203, 3.6, 0);
+      1, -1, 757, 378, -4355, -3417, -3886, 3, 0);
   vision::signature redSignature(
-      2, 8407, 9623, 9015, -1085, -459, -772, 2.5, 0);
+      2, 10381, 11027, 10704, -999, -605, -802, 3, 0);
   vision::signature blueSignature(
-      3, -5409, -4737, -5073, 6517, 8123, 7320, 2.5, 0);
+      3, -5267, -4531, -4899, 5213, 6587, 5900, 3, 0);
   vision::signature *selectedSignature = 0;
 
   switch (target) {
