@@ -69,7 +69,7 @@ void Vision(VisionTarget target) {
       return;
   }
   
-  VisionSensor.setBrightness(15);
+  VisionSensor.setBrightness(50);
   // Center of the vision sensor's field of view
   const double center = 158.0;
   double lastError = 0;
