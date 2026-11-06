@@ -6,8 +6,8 @@
 void turnRight(int degree){
     //kp, kd, target values initialization
     const double target = InertialSensor.rotation(deg) + degree;
-    const double Kp = 0.50;
-    const double Kd = 0.00;
+    const double Kp = 0.65;
+    const double Kd = 0.01;
 
     double err;
     double prevErr = target - InertialSensor.rotation(deg);
@@ -52,8 +52,8 @@ void turnRight(int degree){
 void turnLeft(int degree){
     //kp, kd, target values initialization
     const double target = InertialSensor.rotation(deg) - degree;
-    const double Kp = 0.50;
-    const double Kd = 0.00;
+    const double Kp = 0.70;
+    const double Kd = 0.01;
 
     double err;
     double prevErr = target - InertialSensor.rotation(deg);
