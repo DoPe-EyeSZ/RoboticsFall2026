@@ -59,7 +59,6 @@ void testMode(string color, double tileDistance) {
     }
     */
 
-    /*
     driveDistance(-tileDistance/5);
     turnLeft(45);
     driveDistance(tileDistance * 1.4);
@@ -68,12 +67,6 @@ void testMode(string color, double tileDistance) {
     driveDistance(tileDistance*0.9);
     turnRight(90);
     driveDistance(tileDistance*1.5);
-    */
-    
-    turnRight(90);
-    turnLeft(90);
-    turnRight(180);
-    turnLeft(180);
     
 }
 
