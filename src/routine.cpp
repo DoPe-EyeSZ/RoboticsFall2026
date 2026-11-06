@@ -10,6 +10,7 @@
 using namespace std;
 
 namespace {
+//Autonomous constants
 constexpr double kTripDistanceScale = 0.9;
 constexpr double kShortDistanceScale = 0.3;
 constexpr double kDriveTimeoutSeconds = 3.0;
