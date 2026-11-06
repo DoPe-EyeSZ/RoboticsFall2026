@@ -14,7 +14,7 @@ void autonomous() {
     //CHANGE ON MATCH
     const string color = "yellow"; 
     const double tileDistance = 31; //cm
-    const string mode = "test"; //skills (2), match (2v2), test 
+    const string mode = "test"; //skills (2 teammates), match (2v2), test 
 
     if (mode == "skills"){
         skillsMode(color, tileDistance);
