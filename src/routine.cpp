@@ -46,6 +46,7 @@ void testMode(string color, double tileDistance) {
     //const string color = "red"; 
     //const double tileDistance = 61; //cm
 
+    /*      
     //Trip 1 (stack grey thing on base)
     turnLeft(10);
     //driveDistance(tileDistance * kTripDistanceScale, kDriveTimeoutSeconds);
@@ -56,6 +57,17 @@ void testMode(string color, double tileDistance) {
     } else if (color == "blue") {
         Vision(VisionTarget::blue);
     }
+    */
+
+    driveDistance(tileDistance);
+    turnRight(90);
+    driveDistance(tileDistance * 2);
+    driveDistance(-tileDistance);
+    turnLeft(45);
+    driveDistance(tileDistance);
+    turnLeft(45);
+    driveDistance(2*tileDistance);
+    
 }
 
 //For head-to-head match

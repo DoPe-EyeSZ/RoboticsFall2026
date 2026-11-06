@@ -12,9 +12,9 @@ void autonomous() {
     InertialSensor.setRotation(0, deg); 
 
     //CHANGE ON MATCH
-    const string color = "yellow"; 
-    const double tileDistance = 31; //cm
-    const string mode = "test"; //skills (2 teammates), match (2v2), test 
+    const string color = "yellow";      //color to target (red, yellow, blue)
+    const double tileDistance = 31;     //cm
+    const string mode = "test";         //skills (2 teammates), match (2v2), test 
 
     if (mode == "skills"){
         skillsMode(color, tileDistance);
