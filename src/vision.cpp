@@ -12,11 +12,11 @@ void stopDrive() {
   rightWheels.stop();
 }
 
-void printVisionStatus(const char *status) {
-  Controller1.Screen.clearLine(1);
-  Controller1.Screen.setCursor(1, 1);
-  Controller1.Screen.print("Vision: %s", status);
-}
+//void printVisionStatus(const char *status) { //Commented out to print odometry status instead
+  //Controller1.Screen.clearLine(1);
+  //Controller1.Screen.setCursor(1, 1);
+  //Controller1.Screen.print("Vision: %s", status);
+//}
 
 void turnToTarget(double output) {
   if (output >= 0) {
@@ -91,12 +91,12 @@ void Vision(VisionTarget target) {
   bool targetVisible = false;
 
   //Loop this logic
-  printVisionStatus("Searching");
+  //printVisionStatus("Searching");
   for (int elapsed = 0; elapsed < PhaseTimeout; elapsed += LoopDelay) {
     VisionSensor.takeSnapshot(*selectedSignature);
     if (!VisionSensor.largestObject.exists) {
       if (targetVisible) {
-        printVisionStatus("Searching");
+        //printVisionStatus("Searching");
         targetVisible = false;
       }
       lastError = 0;
@@ -106,7 +106,7 @@ void Vision(VisionTarget target) {
       continue;
     }
     if (!targetVisible) {
-      printVisionStatus("Aligning");
+      //printVisionStatus("Aligning");
       targetVisible = true;
     }
 
