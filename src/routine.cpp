@@ -60,10 +60,10 @@ void testMode(string color, double tileDistance) {
     }
     */
     //Test for odometry functionality
-    driveDistance(-tileDistance/5);
+    //driveDistance(-tileDistance/5);
     //turnLeft(45);
     //driveDistance(tileDistance * 1.4);
-    //driveDistance(-tileDistance*0.5);
+    driveDistance(-tileDistance*0.5);
     //turnLeft(90);
     //driveDistance(tileDistance*0.9);
     //turnRight(90);
