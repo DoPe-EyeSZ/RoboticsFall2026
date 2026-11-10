@@ -12,7 +12,7 @@ void usercontrol() {
   while (1) {
 
     //Get speed from controller joysticks
-    int forwardSpeed = Controller1.Axis3.position();   //left joystick output (forward/backward)
+    int forwardSpeed = -Controller1.Axis3.position();   //left joystick output (forward/backward)
     int sideSpeed = Controller1.Axis1.position();    //right joystick output (left/right)
 
     //Control lift motors with controller buttons
