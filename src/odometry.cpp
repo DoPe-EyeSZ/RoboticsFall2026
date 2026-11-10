@@ -1,5 +1,6 @@
 #include "vex.h"
 #include "setup.h"
+#include "vex_global.h"
 
 using namespace vex;
 //targetDistance is in centimeters
@@ -11,7 +12,6 @@ void driveDistance(double targetDistance, double maxTime = 5.0) {
   const double kD = 0.0; 
   RotationSensor.setPosition(0, deg);
   
-
   //Will come back to this for debugging experiments
   Controller1.Screen.newLine();
   Controller1.Screen.print(RotationSensor.position(rotationUnits::deg));
@@ -50,8 +50,8 @@ void driveDistance(double targetDistance, double maxTime = 5.0) {
     Controller1.Screen.setCursor(3, 1);
     Controller1.Screen.print("Power: %.1f", motorPow);
 
-    leftWheels.spin(forward, motorPow, percent);
-    rightWheels.spin(forward, motorPow, percent);
+    leftWheels.spin(reverse, motorPow, percent);
+    rightWheels.spin(reverse, motorPow, percent);
 
     prev_err = err;
 
