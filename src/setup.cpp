@@ -3,16 +3,16 @@
 #include "setup.h"
 
 // Front motors
-vex::motor rightMotorFront(vex::PORT19, vex::gearSetting::ratio18_1, true);
-vex::motor leftMotorFront(vex::PORT13, vex::gearSetting::ratio18_1, false);
+vex::motor rightMotorFront(vex::PORT19, vex::gearSetting::ratio18_1, false);
+vex::motor leftMotorFront(vex::PORT13, vex::gearSetting::ratio18_1, true);
 
 // Middle motors
-vex::motor rightMotorMiddle(vex::PORT16, vex::gearSetting::ratio18_1, true);
-vex::motor leftMotorMiddle(vex::PORT12, vex::gearSetting::ratio18_1, false);
+vex::motor rightMotorMiddle(vex::PORT16, vex::gearSetting::ratio18_1, false);
+vex::motor leftMotorMiddle(vex::PORT12, vex::gearSetting::ratio18_1, true);
 
 // Back motors
-vex::motor rightMotorBack(vex::PORT15, vex::gearSetting::ratio18_1, true);
-vex::motor leftMotorBack(vex::PORT11, vex::gearSetting::ratio18_1, false);
+vex::motor rightMotorBack(vex::PORT15, vex::gearSetting::ratio18_1, false);
+vex::motor leftMotorBack(vex::PORT11, vex::gearSetting::ratio18_1, true);
 
 // Grouping motors
 vex::motor_group leftWheels(leftMotorFront, leftMotorMiddle, leftMotorBack);
