@@ -45,6 +45,11 @@ void driveDistance(double targetDistance, double maxTime = 5.0) {
     if (motorPow > 100.0) motorPow = 100.0;
     if (motorPow < -100.0) motorPow = -100.0;
 
+    //Print motor power to controller for debugging
+    Controller1.Screen.clearLine(3);
+    Controller1.Screen.setCursor(3, 1);
+    Controller1.Screen.print("Power: %.1f", motorPow);
+
     leftWheels.spin(forward, motorPow, percent);
     rightWheels.spin(forward, motorPow, percent);
 
