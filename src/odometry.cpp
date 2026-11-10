@@ -6,7 +6,7 @@ using namespace vex;
 void driveDistance(double targetDistance, double maxTime = 5.0) {
   
   //Wheel configs
-  const double wheelCircumference = 15.96; // centimeters
+  const double wheelCircumference = 23.88; // centimeters
   const double kP = 0.5; 
   const double kD = 0.0; 
   RotationSensor.setPosition(0, deg);
