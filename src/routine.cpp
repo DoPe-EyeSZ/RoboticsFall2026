@@ -79,7 +79,8 @@ void testMode(string color, double tileDistance) {
     //driveDistance(-tileDistance/5);
     //turnLeft(45);
     //driveDistance(tileDistance * 1.4);
-    driveDistance(tileDistance);
+    //driveDistance(tileDistance);
+    intake("in");
     //driveDistance(-tileDistance*0.5);
     //turnLeft(90);
     //driveDistance(tileDistance*0.9);
