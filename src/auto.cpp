@@ -7,15 +7,14 @@
 
 using namespace std;
 
-
 void autonomous() {
-    if (InertialSensor.isCalibrating()) {
-        while (InertialSensor.isCalibrating()) {
-            wait(25, msec);
-        }
-    }
-    bansheeMotor.spin(vex::directionType::rev, 100, vex::velocityUnits::pct); 
     //Reset banshee claw position
+    bansheeMotor.setStopping(vex::brakeType::hold);
+    if (fabs(bansheeMotor.position(vex::rotationUnits::deg)) > 2.0) {
+        bansheeMotor.spinToPosition(0, vex::rotationUnits::deg, 25,
+                                    vex::velocityUnits::pct, true);
+    }
+    bansheeMotor.stop(vex::brakeType::hold);
     InertialSensor.setRotation(0, deg);
 
     //CHANGE ON MATCH
