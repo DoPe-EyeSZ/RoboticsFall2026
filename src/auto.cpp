@@ -10,8 +10,8 @@ using namespace std;
 void autonomous() {
     //Reset banshee claw position
     bansheeMotor.setStopping(vex::brakeType::hold);
-    if (fabs(bansheeMotor.position(vex::rotationUnits::deg)) > 2.0) {
-        bansheeMotor.spinToPosition(0, vex::rotationUnits::deg, 25,
+    if (fabs(bansheeMotor.position(vex::rotationUnits::deg)) < 360) {
+        bansheeMotor.spinToPosition(-345, vex::rotationUnits::deg, 50,
                                     vex::velocityUnits::pct, true);
     }
     bansheeMotor.stop(vex::brakeType::hold);
