@@ -23,8 +23,8 @@ vex::motor liftMotorRight(vex::PORT18, vex::gearSetting::ratio18_1, false);
 vex::motor_group liftMotors(liftMotorLeft, liftMotorRight);
 
 // Intake motor
-vex::motor blueMotor(vex::PORT17, vex::gearSetting::ratio18_1, false); //Clockw
-vex::motor blueMotor2(vex::PORT18, vex::gearSetting::ratio18_1, true); //CCW
+vex::motor blueMotor(vex::PORT17, vex::gearSetting::ratio36_1, false); //Clockw
+vex::motor blueMotor2(vex::PORT18, vex::gearSetting::ratio36_1, true); //CCW
 vex::motor_group blueMotors(blueMotor, blueMotor2);
 
 // Banshee motor
