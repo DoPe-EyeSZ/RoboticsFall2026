@@ -9,7 +9,14 @@ using namespace std;
 
 
 void autonomous() {
-    InertialSensor.setRotation(0, deg); 
+    if (InertialSensor.isCalibrating()) {
+        while (InertialSensor.isCalibrating()) {
+            wait(25, msec);
+        }
+    }
+    bansheeMotor.spin(vex::directionType::rev, 100, vex::velocityUnits::pct); 
+    //Reset banshee claw position
+    InertialSensor.setRotation(0, deg);
 
     //CHANGE ON MATCH
     const string color = "yellow";      //color to target (red, yellow, blue)
