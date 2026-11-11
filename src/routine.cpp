@@ -93,7 +93,7 @@ void testMode(string color, double tileDistance) {
     //Reset banshee claw position
     bansheeMotor.setStopping(vex::brakeType::hold);
     if (fabs(bansheeMotor.position(vex::rotationUnits::deg)) < 360) {
-        bansheeMotor.spinToPosition(360, vex::rotationUnits::deg, 50,
+        bansheeMotor.spinToPosition(-345, vex::rotationUnits::deg, 50,
                                     vex::velocityUnits::pct, true);
     }
     bansheeMotor.stop(vex::brakeType::hold);
