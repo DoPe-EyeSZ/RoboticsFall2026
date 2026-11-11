@@ -1,5 +1,5 @@
 #include "vex.h"
-//#include "setup.h" - not being used right now
+#include "setup.h"
 #include "inertial.h"
 #include "odometry.h"
 //#include "vision.h" - not being used right now
@@ -46,9 +46,15 @@ void intake(string direction)
 {
     if (direction == "in") {
         //intake roller collects pin
+        intakeMotors.spin(vex::directionType::fwd, 100, vex::velocityUnits::pct);
+        wait(3, vex::sec);
+        intakeMotors.stop();
     } 
     else if (direction == "out") {
         //outtake roller releases pin
+        intakeMotors.spin(vex::directionType::rev, 100, vex::velocityUnits::pct);
+        wait(3, vex::sec);
+        intakeMotors.stop();
     }
 }
 
