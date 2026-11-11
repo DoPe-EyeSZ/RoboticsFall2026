@@ -62,8 +62,7 @@ void processPin(bool collect) {
     //some pseudo-pseudo code to plan the function logic
     //always reset banshee claw to the downmost position after every programming skills match
     //after a short delay of the intake roller collecting the pin, lift the claw up to be perpendicular to the ground using motors' rotation sensors
-    bansheeMotor.spinToPosition(0, vex::rotationUnits::deg, 100,
-                                vex::velocityUnits::pct, true);
+    bansheeMotor.spinToPosition(0, vex::rotationUnits::deg, 100, vex::velocityUnits::pct, true);
     intakeMotors.spin(vex::directionType::fwd, 100, vex::velocityUnits::pct);
     //release pin with backward rotation of the intake roller
     //reset banshee claw to the downmost position
