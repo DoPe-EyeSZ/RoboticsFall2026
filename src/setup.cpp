@@ -18,14 +18,14 @@ vex::motor_group leftWheels(leftMotorFront, leftMotorMiddle, leftMotorBack);
 vex::motor_group rightWheels(rightMotorFront, rightMotorMiddle, rightMotorBack);
 
 // Grouping lift motors
-vex::motor liftMotorLeft(vex::PORT9, vex::gearSetting::ratio18_1, true);
-vex::motor liftMotorRight(vex::PORT10, vex::gearSetting::ratio18_1, false);
+vex::motor liftMotorLeft(vex::PORT17, vex::gearSetting::ratio18_1, true);
+vex::motor liftMotorRight(vex::PORT18, vex::gearSetting::ratio18_1, false);
 vex::motor_group liftMotors(liftMotorLeft, liftMotorRight);
 
 // Intake motor
-vex::motor intakeMotor(vex::PORT17, vex::gearSetting::ratio18_1, true);
-vex::motor intakeMotor2(vex::PORT7, vex::gearSetting::ratio18_1, true);
-vex::motor_group intakeMotors(intakeMotor, intakeMotor2);
+vex::motor blueMotor(vex::PORT17, vex::gearSetting::ratio18_1, false); //Clockw
+vex::motor blueMotor2(vex::PORT18, vex::gearSetting::ratio18_1, true); //CCW
+vex::motor_group blueMotors(blueMotor, blueMotor2);
 
 // Banshee motor
 vex::motor bansheeMotor(vex::PORT6, vex::gearSetting::ratio18_1, true);

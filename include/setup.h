@@ -22,9 +22,9 @@ extern vex::motor liftMotorLeft;
 extern vex::motor liftMotorRight;
 
 // Intake motor
-extern vex::motor intakeMotor;
-extern vex::motor intakeMotor2;
-extern vex::motor_group intakeMotors;
+extern vex::motor blueMotor;
+extern vex::motor blueMotor2;
+extern vex::motor_group blueMotors;
 
 // Banshee motor
 extern vex::motor bansheeMotor;

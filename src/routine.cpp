@@ -46,15 +46,15 @@ void intake(string direction)
 {
     if (direction == "in") {
         //intake roller collects pin
-        intakeMotors.spin(vex::directionType::fwd, 100, vex::velocityUnits::pct);
+        blueMotors.spin(vex::directionType::fwd, 100, vex::velocityUnits::pct);
         wait(0.5, vex::sec);
-        intakeMotors.stop();
+        blueMotors.stop();
     } 
     else if (direction == "out") {
         //outtake roller releases pin
-        intakeMotors.spin(vex::directionType::rev, 100, vex::velocityUnits::pct);
+        blueMotors.spin(vex::directionType::rev, 100, vex::velocityUnits::pct);
         wait(0.5, vex::sec);
-        intakeMotors.stop();
+        blueMotors.stop();
     }
 }
 

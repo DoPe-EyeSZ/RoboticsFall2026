@@ -8,7 +8,7 @@ void usercontrol() {
   leftWheels.setStopping(brakeType::coast);
   rightWheels.setStopping(brakeType::coast);
   liftMotors.setStopping(brakeType::hold);
-  intakeMotor.setStopping(brakeType::hold);
+  blueMotors.setStopping(brakeType::hold);
   while (1) {
 
     //Get speed from controller joysticks
@@ -28,13 +28,13 @@ void usercontrol() {
 
     //Control intake motor with controller buttons
     if (Controller1.ButtonB.pressing()) {
-      intakeMotors.spin(forward, 100, percent);
+      blueMotors.spin(forward, 100, percent);
     }
     else if (Controller1.ButtonA.pressing()) {
-      intakeMotors.spin(reverse, 100, percent);
+      blueMotors.spin(forward, 100, percent);
     }
     else {
-      intakeMotors.stop();
+      blueMotors.stop();
     }
 
     //Control banshee motor with controller buttons
