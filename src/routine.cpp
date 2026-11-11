@@ -90,6 +90,14 @@ void testMode(string color, double tileDistance) {
     //driveDistance(tileDistance);
     intake("in");
     processPin(true);
+    //Reset banshee claw position
+    bansheeMotor.setStopping(vex::brakeType::hold);
+    if (fabs(bansheeMotor.position(vex::rotationUnits::deg)) > 2.0) {
+        bansheeMotor.spinToPosition(0, vex::rotationUnits::deg, 25,
+                                    vex::velocityUnits::pct, true);
+    }
+    bansheeMotor.stop(vex::brakeType::hold);
+    InertialSensor.setRotation(0, deg);
     //driveDistance(-tileDistance*0.5);
     //turnLeft(90);
     //driveDistance(tileDistance*0.9);
