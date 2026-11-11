@@ -42,6 +42,16 @@ void elevator(string action) {
     }
 }
 
+void intake(string direction)
+{
+    if (direction == "in") {
+        //intake roller collects pin
+    } 
+    else if (direction == "out") {
+        //outtake roller releases pin
+    }
+}
+
 void testMode(string color, double tileDistance) {
     //CHANGE ON MATCH
     //const string color = "red"; 
