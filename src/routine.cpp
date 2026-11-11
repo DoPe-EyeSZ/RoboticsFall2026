@@ -58,6 +58,14 @@ void intake(string direction)
     }
 }
 
+void processPin(bool collect) {
+    //some pseudo-pseudo code to plan the function logic
+    //always reset banshee claw to the downmost position after every programming skills match
+    //after a short delay of the intake roller collecting the pin, lift the claw up to be perpendicular to the ground using motors' rotation sensors
+    //release pin with backward rotation of the intake roller
+    //reset banshee claw to the downmost position
+}
+
 void testMode(string color, double tileDistance) {
     //CHANGE ON MATCH
     //const string color = "red"; 
