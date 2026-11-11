@@ -2,6 +2,7 @@
 #include "setup.h"
 #include "routine.h"
 //#include "vision.h" - not being used right now
+#include "auto_func.h"
 #include <cmath>
 #include <string>
 
