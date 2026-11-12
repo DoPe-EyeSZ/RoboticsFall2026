@@ -62,7 +62,7 @@ void intake(string direction)
     }
 }
 
-void processPin(bool collect) {
+void processPin() {
     //some pseudo-pseudo code to plan the function logic
     //always reset banshee claw to the downmost position after every programming skills match
     //after a short delay of the intake roller collecting the pin, lift the claw up to be perpendicular to the ground using motors' rotation sensors
@@ -105,7 +105,7 @@ void testMode(string color, double tileDistance) {
     //driveDistance(tileDistance * 1.4);
     //driveDistance(tileDistance);
     //intake("in");
-    processPin(true);
+    processPin();
     //driveDistance(-tileDistance*0.5);
     //turnLeft(90);
     //driveDistance(tileDistance*0.9);
