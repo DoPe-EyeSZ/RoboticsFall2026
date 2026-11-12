@@ -1,16 +1,16 @@
 #include "vex.h"
+//#include "setup.h" - not being used right now
 #include "inertial.h"
 #include "odometry.h"
-#include "mechanical.h"
 //#include "vision.h" - not being used right now
+#include "mechanical.h"
 #include <cmath>
 #include <string>
-//#include "vision.h" //not being used right now
+#include "vision.h"
 
 using namespace std;
 
 namespace {
-//Autonomous constants
 constexpr double kTripDistanceScale = 0.9;
 constexpr double kShortDistanceScale = 0.3;
 constexpr double kDriveTimeoutSeconds = 3.0;
@@ -19,8 +19,8 @@ constexpr double kHalfTileDistanceScale = 0.5;
 constexpr double kFullTileDistanceScale = 1.0;
 constexpr double kTopBaseApproachDistanceScale = 2.4;
 constexpr double kTopBaseOffsetDistanceScale = 0.7;
-
 }
+
 
 void testMode(string color, double tileDistance) {
     //CHANGE ON MATCH
@@ -39,18 +39,15 @@ void testMode(string color, double tileDistance) {
         Vision(VisionTarget::blue);
     }
     */
-    //Test for odometry functionality
-    //driveDistance(-tileDistance/5);
-    //turnLeft(45);
-    //driveDistance(tileDistance * 1.4);
-    //driveDistance(tileDistance);
-    //intake("in");
-    processPin();
-    //driveDistance(-tileDistance*0.5);
-    //turnLeft(90);
-    //driveDistance(tileDistance*0.9);
-    //turnRight(90);
-    //driveDistance(tileDistance*1.5);
+
+    driveDistance(-tileDistance/5);
+    turnLeft(45);
+    driveDistance(tileDistance * 1.4);
+    driveDistance(-tileDistance*0.5);
+    turnLeft(90);
+    driveDistance(tileDistance*0.9);
+    turnRight(90);
+    driveDistance(tileDistance*1.5);
     
 }
 

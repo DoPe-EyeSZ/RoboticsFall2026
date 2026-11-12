@@ -12,12 +12,12 @@ constexpr double bansheeUprightAngle = -345.0; //degrees
 
 void autonomous() {
     //Reset banshee claw position
-    bansheeMotor.setStopping(vex::brakeType::hold);
-    if (fabs(bansheeMotor.position(vex::rotationUnits::deg)) < 360) { //Fix this magic number
-        bansheeMotor.spinToPosition(bansheeUprightAngle, vex::rotationUnits::deg, 50,
+    clawMotor.setStopping(vex::brakeType::hold);
+    if (fabs(clawMotor.position(vex::rotationUnits::deg)) < 360) { //Fix this magic number
+        clawMotor.spinToPosition(bansheeUprightAngle, vex::rotationUnits::deg, 50,
                                     vex::velocityUnits::pct, true);
     }
-    bansheeMotor.stop(vex::brakeType::hold);
+    clawMotor.stop(vex::brakeType::hold);
     InertialSensor.setRotation(0, deg);
 
     //CHANGE ON MATCH
