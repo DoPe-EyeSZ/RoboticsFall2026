@@ -39,10 +39,10 @@ void usercontrol() {
 
     //Control banshee motor with controller buttons
     if (Controller1.ButtonL1.pressing()) {
-      bansheeMotor.spin(forward, 100, percent);
+      bansheeMotor.spin(forward, 50, percent);
     }
     else if (Controller1.ButtonR1.pressing()) {
-      bansheeMotor.spin(reverse, 100, percent);
+      bansheeMotor.spin(reverse, 50, percent);
     }
     else {
       bansheeMotor.stop();
