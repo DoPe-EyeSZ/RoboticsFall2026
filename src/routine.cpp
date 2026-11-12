@@ -19,7 +19,9 @@ constexpr double kHalfTileDistanceScale = 0.5;
 constexpr double kFullTileDistanceScale = 1.0;
 constexpr double kTopBaseApproachDistanceScale = 2.4;
 constexpr double kTopBaseOffsetDistanceScale = 0.7;
-}
+
+//Pin processing constants
+constexpr double bansheeUprightAngle = -345.0; //degrees
 
 void flipBar(string color) {
     if (color == "red") {
@@ -69,8 +71,8 @@ void processPin(bool collect) {
     intakeMotors.stop();
     //Reset banshee claw position
     bansheeMotor.setStopping(vex::brakeType::hold);
-    if (fabs(bansheeMotor.position(vex::rotationUnits::deg)) < 360) {
-        bansheeMotor.spinToPosition(-345, vex::rotationUnits::deg, 50,
+    if (fabs(bansheeMotor.position(vex::rotationUnits::deg)) < 360) { //Fix this magic number
+        bansheeMotor.spinToPosition(bansheeUprightAngle, vex::rotationUnits::deg, 50,
                                     vex::velocityUnits::pct, true);
     }
     bansheeMotor.stop(vex::brakeType::hold);
