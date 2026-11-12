@@ -68,7 +68,7 @@ void processPin(bool collect) {
     //after a short delay of the intake roller collecting the pin, lift the claw up to be perpendicular to the ground using motors' rotation sensors
     intake("in");
     bansheeMotor.spinToPosition(0, vex::rotationUnits::deg, 100, vex::velocityUnits::pct, true);
-    intakeMotors.spin(vex::directionType::fwd, 100, vex::velocityUnits::pct);
+    intakeMotors.spin(vex::directionType::rev, 100, vex::velocityUnits::pct);
     wait(0.15, vex::sec);
     intakeMotors.stop();
     //Reset banshee claw position
