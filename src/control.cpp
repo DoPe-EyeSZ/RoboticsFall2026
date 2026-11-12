@@ -31,7 +31,7 @@ void usercontrol() {
       blueMotors.spin(forward, 100, percent);
     }
     else if (Controller1.ButtonA.pressing()) {
-      blueMotors.spin(forward, 100, percent);
+      blueMotors.spin(reverse, 100, percent);
     }
     else {
       blueMotors.stop();
