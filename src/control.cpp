@@ -28,10 +28,10 @@ void usercontrol() {
 
     //Control intake motor with controller buttons
     if (Controller1.ButtonB.pressing()) {
-      blueMotors.spin(forward, 100, percent);
+      blueMotors.spin(forward, 40, percent);
     }
     else if (Controller1.ButtonA.pressing()) {
-      blueMotors.spin(reverse, 100, percent);
+      blueMotors.spin(reverse, 40, percent);
     }
     else {
       blueMotors.stop();
