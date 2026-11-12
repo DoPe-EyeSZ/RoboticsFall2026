@@ -67,6 +67,13 @@ void processPin(bool collect) {
     intakeMotors.spin(vex::directionType::fwd, 100, vex::velocityUnits::pct);
     wait(0.15, vex::sec);
     intakeMotors.stop();
+    //Reset banshee claw position
+    bansheeMotor.setStopping(vex::brakeType::hold);
+    if (fabs(bansheeMotor.position(vex::rotationUnits::deg)) < 360) {
+        bansheeMotor.spinToPosition(-345, vex::rotationUnits::deg, 50,
+                                    vex::velocityUnits::pct, true);
+    }
+    bansheeMotor.stop(vex::brakeType::hold);
     //release pin with backward rotation of the intake roller
     //reset banshee claw to the downmost position
 }
