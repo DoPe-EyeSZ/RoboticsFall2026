@@ -23,6 +23,8 @@ constexpr double kTopBaseOffsetDistanceScale = 0.7;
 //Pin processing constants
 constexpr double bansheeUprightAngle = -345.0; //degrees
 
+}
+
 void flipBar(string color) {
     if (color == "red") {
         //lift 1x;
