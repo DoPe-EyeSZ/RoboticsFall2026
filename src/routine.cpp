@@ -47,109 +47,109 @@ void matchMode(string color, double tileDistance){
     //Trip 1 (stack grey thing on base)
     turnRight(90);
     driveDistance(tileDistance * kTripDistanceScale, kDriveTimeoutSeconds);
-    lift("up");
+    //lift("up");
     turnRight(85);
     driveDistance(tileDistance * kTripDistanceScale, kDriveTimeoutSeconds);
-    lift("down");
+    //lift("down");
 
     //Trip 2 (stack yellow cone on grey thing)
     turnLeft(175);
     driveDistance(tileDistance * kTripDistanceScale, kDriveTimeoutSeconds);
-    lift("up");
+    //lift("up");
     turnLeft(180);
     driveDistance(tileDistance * kTripDistanceScale, kDriveTimeoutSeconds);
-    lift("down");
+    //lift("down");
 
     //Trip 3 (stack grey thing on yellow)
     turnLeft(175);
     driveDistance(tileDistance * kTripDistanceScale, kDriveTimeoutSeconds);
-    lift("up");
+    //lift("up");
     turnLeft(180);
     driveDistance(tileDistance * kTripDistanceScale, kDriveTimeoutSeconds);
-    lift("down");
+    //lift("down");
 
     //Trip 4 (stack yellow gone on grey)
     turnLeft(85);
     driveDistance(tileDistance * kShortDistanceScale);
-    lift("up");
+    //lift("up");
     turnRight(160);
     driveDistance(tileDistance * kShortDistanceScale);
-    lift("down");
+    //lift("down");
 
     //Go to next base
     //Check timing on this run
     turnLeft(90);
     driveDistance(tileDistance * kBaseTransitionDistanceScale);
-    lift("up");
+    //lift("up");
     turnRight(45);
     driveDistance(tileDistance * kFullTileDistanceScale);
-    lift("down");
+    //lift("down");
 
     //Trip 1 (stack gray thing)
     turnRight(90);
     driveDistance(tileDistance * kTripDistanceScale);
-    lift("up");
+    //lift("up");
     turnLeft(180);
     driveDistance(tileDistance * kTripDistanceScale);
-    lift("down");
+    //lift("down");
 
     //Trip 2 (stack gray thing)
     turnRight(180);
     driveDistance(tileDistance * kTripDistanceScale);
-    lift("up");
+    //lift("up");
     turnLeft(180);
     driveDistance(tileDistance * kTripDistanceScale);
-    lift("down");
+    //lift("down");
 
     //Trip 3 (stack gray thing)
     turnRight(180);
     driveDistance(tileDistance * kTripDistanceScale);
-    lift("up");
+    //lift("up");
     turnLeft(180);
     driveDistance(tileDistance * kTripDistanceScale);
-    lift("down");
+    //lift("down");
 
     //Trip 4 (stack gray thing)
     turnRight(90);
     driveDistance(tileDistance * kTripDistanceScale);
-    lift("up");
+    //lift("up");
     turnLeft(180);
     driveDistance(tileDistance * kTripDistanceScale);
-    lift("down");
+    //lift("down");
 
     //Go to the "2" base (up 1 tile, right 1 tile)
     turnRight(90);
     driveDistance(tileDistance * kFullTileDistanceScale);
-    lift("up");
+    //lift("up");
     turnRight(90);
     driveDistance(tileDistance * kFullTileDistanceScale);
-    lift("down");
+    //lift("down");
 
     //"2" base, trip 1
     driveDistance(tileDistance * kTripDistanceScale);
-    lift("up");
+    //lift("up");
     turnLeft(180);
     driveDistance(tileDistance * kTripDistanceScale);
-    lift("down");
+    //lift("down");
 
     //"2" base, trip 2
     turnRight(180);
     driveDistance(tileDistance * kTripDistanceScale);
-    lift("up");
+    //lift("up");
     turnLeft(180);
     driveDistance(tileDistance * kTripDistanceScale);
-    lift("down");
+    //lift("down");
 
     //"2" base, trip 3
     turnRight(180);
     driveDistance(tileDistance * kTripDistanceScale);
-    lift("up");
+    //lift("up");
     turnLeft(90);
     driveDistance(tileDistance * kHalfTileDistanceScale);
     flipBar(color);
     turnLeft(135);
     driveDistance(+tileDistance * kTripDistanceScale);
-    lift("down");
+    //lift("down");
 
 }
 
@@ -163,138 +163,138 @@ void skillsMode(string color, double tileDistance){
     //Trip 1 (stack grey thing on base)
     turnRight(90);
     driveDistance(tileDistance * kTripDistanceScale, kDriveTimeoutSeconds);
-    lift("up");
+    //lift("up");
     turnRight(85);
     driveDistance(tileDistance * kTripDistanceScale, kDriveTimeoutSeconds);
-    lift("down");
+    //lift("down");
 
     //Trip 2 (stack yellow cone on grey thing)
     turnLeft(175);
     driveDistance(tileDistance * kTripDistanceScale, kDriveTimeoutSeconds);
-    lift("up");
+    //lift("up");
     turnLeft(180);
     driveDistance(tileDistance * kTripDistanceScale, kDriveTimeoutSeconds);
-    lift("down");
+    //lift("down");
 
     //Trip 3 (stack grey thing on yellow)
     turnLeft(175);
     driveDistance(tileDistance * kTripDistanceScale, kDriveTimeoutSeconds);
-    lift("up");
+    //lift("up");
     turnLeft(180);
     driveDistance(tileDistance * kTripDistanceScale, kDriveTimeoutSeconds);
-    lift("down");
+    //lift("down");
 
     //Trip 4 (stack yellow gone on grey)
     turnLeft(85);
     driveDistance(tileDistance * kShortDistanceScale);
-    lift("up");
+    //lift("up");
     turnRight(160);
     driveDistance(tileDistance * kShortDistanceScale);
-    lift("down");
+    //lift("down");
 
     //Go to next base
     turnLeft(90);
     driveDistance(tileDistance * kBaseTransitionDistanceScale);
-    lift("up");
+    //lift("up");
     turnRight(45);
     driveDistance(tileDistance * kFullTileDistanceScale);
-    lift("down");
+    //lift("down");
 
     //Trip 1 (stack gray thing)
     turnRight(90);
     driveDistance(tileDistance * kTripDistanceScale);
-    lift("up");
+    //lift("up");
     turnLeft(180);
     driveDistance(tileDistance * kTripDistanceScale);
-    lift("down");
+    //lift("down");
 
     //Trip 2 (stack gray thing)
     turnRight(180);
     driveDistance(tileDistance * kTripDistanceScale);
-    lift("up");
+    //lift("up");
     turnLeft(180);
     driveDistance(tileDistance * kTripDistanceScale);
-    lift("down");
+    //lift("down");
 
     //Trip 3 (stack gray thing)
     turnRight(180);
     driveDistance(tileDistance * kTripDistanceScale);
-    lift("up");
+    //lift("up");
     turnLeft(180);
     driveDistance(tileDistance * kTripDistanceScale);
-    lift("down");
+    //lift("down");
 
     //Trip 4 (stack gray thing)
     turnRight(90);
     driveDistance(tileDistance * kTripDistanceScale);
-    lift("up");
+    //lift("up");
     turnLeft(180);
     driveDistance(tileDistance * kTripDistanceScale);
-    lift("down");
+    //lift("down");
 
     //Go to the "2" base (up 1 tile, right 1 tile)
     turnRight(90);
     driveDistance(tileDistance * kFullTileDistanceScale);
-    lift("up");
+    //lift("up");
     turnRight(90);
     driveDistance(tileDistance * kFullTileDistanceScale);
-    lift("down");
+    //lift("down");
 
     //"2" base, trip 1
     driveDistance(tileDistance * kTripDistanceScale);
-    lift("up");
+    //lift("up");
     turnLeft(180);
     driveDistance(tileDistance * kTripDistanceScale);
-    lift("down");
+    //lift("down");
 
     //"2" base, trip 2
     turnRight(180);
     driveDistance(tileDistance * kTripDistanceScale);
-    lift("up");
+    //lift("up");
     turnLeft(180);
     driveDistance(tileDistance * kTripDistanceScale);
-    lift("down");
+    //lift("down");
 
     //"2" base, trip 3
     turnRight(180);
     driveDistance(tileDistance * kTripDistanceScale);
-    lift("up");
+    //lift("up");
     turnLeft(90);
     driveDistance(tileDistance * kHalfTileDistanceScale);
-    flipBar(color);
+    //flipBar(color);
     turnLeft(135);
     driveDistance(+tileDistance * kTripDistanceScale);
-    lift("down");
+    //lift("down");
 
     //Go to the top "3" base and trip 1
     turnLeft(160);
     driveDistance(tileDistance * kTopBaseApproachDistanceScale);
-    lift("up");
+    //lift("up");
     turnLeft(90);
     driveDistance(tileDistance * kTopBaseOffsetDistanceScale);
-    lift("down");
+    //lift("down");
 
     //Top "3" base, trip 2
     turnRight(180);
     driveDistance(tileDistance * kFullTileDistanceScale);
-    lift("up");
+    //lift("up");
     turnLeft(180);
     driveDistance(tileDistance * kTripDistanceScale);
-    lift("down");
+    //lift("down");
 
     //Top "3" base, trip 3
     turnRight(180);
     driveDistance(tileDistance * kFullTileDistanceScale);
-    lift("up");
+    //lift("up");
     turnLeft(180);
     driveDistance(tileDistance * kTripDistanceScale);
-    lift("down");
+    //lift("down");
 
     //Top "3" base, trip 4
     turnLeft(90);
     driveDistance(tileDistance * kFullTileDistanceScale);
-    lift("up");
+    //lift("up");
     turnLeft(180);
     driveDistance(tileDistance * kTripDistanceScale);
-    lift("down");
+    //lift("down");
 }

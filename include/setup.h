@@ -21,8 +21,13 @@ extern vex::motor_group rightWheels;
 extern vex::motor liftMotorLeft;
 extern vex::motor liftMotorRight;
 
-// Claw motor
-extern vex::motor clawMotor;
+// Intake motor
+extern vex::motor intakeMotor;
+extern vex::motor intakeMotor2;
+extern vex::motor_group intakeMotors;
+
+// Banshee motor
+extern vex::motor bansheeMotor;
 
 // Inertial Sensor
 extern vex::inertial InertialSensor;
