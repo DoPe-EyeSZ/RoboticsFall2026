@@ -9,9 +9,9 @@ using namespace std;
 
 void flipBar(string color);
 
-void lift(string action);
+void elevator(string action);
 
-void claw(string direction);
+void intake(string direction);
 
 void processPin();
 
