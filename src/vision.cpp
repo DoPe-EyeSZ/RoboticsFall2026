@@ -75,9 +75,9 @@ void Vision(VisionTarget target) {
   double lastError = 0;
   bool centered = false;
 
-  double err = 0;
-  double last_err = 0;
-  double derivative = 0;
+  //double err = 0; - not being used right now
+  //double last_err = 0; - not being used right now
+  //double derivative = 0; - not being used right now
   const double tolerance = 8.0;
   const double TurnLimit = 25.0;
   const double MinimumTurnOutput = 5.0;
