@@ -49,15 +49,23 @@ void claw(string direction)
     }
 }
 
-void processPin() {
-    //some pseudo-pseudo code to plan the function logic
-    //always reset banshee claw to the downmost position after every programming skills match
-    //after a short delay of the claw roller collecting the pin, lift the claw up to be perpendicular to the ground using motors' rotation sensors
+namespace {
+
+void collectPin() {
     claw("in"); //Collects pin
+}
+
+void moveClawUpright() {
     clawMotor.spinToPosition(0, vex::rotationUnits::deg, 100, vex::velocityUnits::pct, true); //Moves banshee claw to upright position
+}
+
+void releasePin() {
     clawMotor.spin(vex::directionType::rev, 100, vex::velocityUnits::pct); //Releases pin
     wait(0.15, vex::sec); //Small delay
     clawMotor.stop();
+}
+
+void resetClaw() {
     //Reset banshee claw position
     clawMotor.setStopping(vex::brakeType::hold);
     if (fabs(clawMotor.position(vex::rotationUnits::deg)) < 360) { //Fix this magic number
@@ -67,4 +75,16 @@ void processPin() {
     clawMotor.stop(vex::brakeType::hold);
     //release pin with backward rotation of the claw roller
     //reset banshee claw to the downmost position
+}
+
+}
+
+void processPin() {
+    //some pseudo-pseudo code to plan the function logic
+    //always reset banshee claw to the downmost position after every programming skills match
+    //after a short delay of the claw roller collecting the pin, lift the claw up to be perpendicular to the ground using motors' rotation sensors
+    collectPin();
+    moveClawUpright();
+    releasePin();
+    resetClaw();
 }
