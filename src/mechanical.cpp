@@ -1,62 +1,19 @@
-#include "vex.h"
+#include "mechanical.h"
 #include "setup.h"
 #include <cmath>
-#include <string>
-
-using namespace std;
 
 namespace {
 
 //Pin processing constants
-constexpr double bansheeUprightAngle = -345.0; //degrees
-
-}
-
-void flipBar(string color) {
-    if (color == "red") {
-        //lift 1x;
-    } 
-    else {
-        //lift 2x;
-    }
-}
-
-void lift(string action) {
-    //pick something up with claw
-    if (action == "up") {
-        liftMotors.spin(vex::directionType::fwd, 100, vex::velocityUnits::pct);
-    } 
-
-    //drop what is being held
-    else if (action == "down") {
-        liftMotors.spin(vex::directionType::rev, 25, vex::velocityUnits::pct);
-    }
-}
-
-void claw(string direction)
-{
-    if (direction == "in") {
-        //claw roller collects pin
-        clawMotor.spin(vex::directionType::fwd, 100, vex::velocityUnits::pct);
-        wait(0.5, vex::sec);
-        clawMotor.stop();
-    } 
-    else if (direction == "out") {
-        //outtake roller releases pin
-        clawMotor.spin(vex::directionType::rev, 100, vex::velocityUnits::pct);
-        wait(0.5, vex::sec);
-        clawMotor.stop();
-    }
-}
-
-namespace {
+constexpr double kBansheeUprightAngle = -345.0; //degrees
 
 void collectPin() {
     claw("in"); //Collects pin
 }
 
 void moveClawUpright() {
-    clawMotor.spinToPosition(0, vex::rotationUnits::deg, 100, vex::velocityUnits::pct, true); //Moves banshee claw to upright position
+    clawMotor.spinToPosition(0, vex::rotationUnits::deg, 100,
+                             vex::velocityUnits::pct, true); //Moves banshee claw to upright position
 }
 
 void releasePin() {
@@ -68,15 +25,50 @@ void releasePin() {
 void resetClaw() {
     //Reset banshee claw position
     clawMotor.setStopping(vex::brakeType::hold);
-    if (fabs(clawMotor.position(vex::rotationUnits::deg)) < 360) { //Fix this magic number
-        clawMotor.spinToPosition(bansheeUprightAngle, vex::rotationUnits::deg, 50,
-                                    vex::velocityUnits::pct, true);
+    if (std::fabs(clawMotor.position(vex::rotationUnits::deg)) < 360) { //Fix this magic number
+        clawMotor.spinToPosition(kBansheeUprightAngle, vex::rotationUnits::deg,
+                                 50, vex::velocityUnits::pct, true);
     }
     clawMotor.stop(vex::brakeType::hold);
     //release pin with backward rotation of the claw roller
     //reset banshee claw to the downmost position
 }
 
+}
+
+void flipBar(std::string color) {
+    if (color == "red") {
+        //lift 1x;
+    } else {
+        //lift 2x;
+    }
+}
+
+void lift(std::string action) {
+    //pick something up with claw
+    if (action == "up") {
+        liftMotors.spin(vex::directionType::fwd, 100, vex::velocityUnits::pct);
+    }
+
+    //drop what is being held
+    else if (action == "down") {
+        liftMotors.spin(vex::directionType::rev, 25, vex::velocityUnits::pct);
+    }
+}
+
+void claw(std::string direction) {
+    if (direction == "in") {
+        //claw roller collects pin
+        clawMotor.spin(vex::directionType::fwd, 100, vex::velocityUnits::pct);
+        wait(0.5, vex::sec);
+        clawMotor.stop();
+    }
+    else if (direction == "out") {
+        //outtake roller releases pin
+        clawMotor.spin(vex::directionType::rev, 100, vex::velocityUnits::pct);
+        wait(0.5, vex::sec);
+        clawMotor.stop();
+    }
 }
 
 void processPin() {
