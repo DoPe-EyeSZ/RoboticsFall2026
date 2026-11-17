@@ -11,7 +11,7 @@ void closeClaw(){
 }
 
 void liftUp(){
-  liftMotors.spin(forward, 100, percent);
+  liftMotors.spin(forward, 25, percent);
 }
 
 void liftDown(){

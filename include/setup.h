@@ -18,8 +18,10 @@ extern vex::motor_group leftWheels;
 extern vex::motor_group rightWheels;
 
 // Lifting motors
-extern vex::motor liftMotorLeft;
-extern vex::motor liftMotorRight;
+extern vex::motor liftMotorLeftBottom;
+extern vex::motor liftMotorRightBottom;
+extern vex::motor liftMotorLeftTop;
+extern vex::motor liftMotorRightTop;
 
 // Claw motor
 extern vex::motor clawMotor;

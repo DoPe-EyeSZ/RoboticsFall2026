@@ -18,9 +18,11 @@ vex::motor_group leftWheels(leftMotorFront, leftMotorMiddle, leftMotorBack);
 vex::motor_group rightWheels(rightMotorFront, rightMotorMiddle, rightMotorBack);
 
 // Grouping lift motors
-vex::motor liftMotorLeft(vex::PORT11, vex::gearSetting::ratio18_1, true);
-vex::motor liftMotorRight(vex::PORT17, vex::gearSetting::ratio18_1, false);
-vex::motor_group liftMotors(liftMotorLeft, liftMotorRight);
+vex::motor liftMotorLeftBottom(vex::PORT11, vex::gearSetting::ratio18_1, true);
+vex::motor liftMotorRightBottom(vex::PORT17, vex::gearSetting::ratio18_1, false);
+vex::motor liftMotorLeftTop(vex::PORT12, vex::gearSetting::ratio18_1, false);
+vex::motor liftMotorRightTop(vex::PORT20, vex::gearSetting::ratio18_1, true);
+vex::motor_group liftMotors(liftMotorLeftBottom, liftMotorRightBottom, liftMotorLeftTop, liftMotorRightTop);
 
 // Claw motor
 vex::motor clawMotor(vex::PORT16, vex::gearSetting::ratio18_1, true);
