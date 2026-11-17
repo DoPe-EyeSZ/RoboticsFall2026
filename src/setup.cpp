@@ -31,7 +31,7 @@ vex::motor clawMotor(vex::PORT16, vex::gearSetting::ratio18_1, true);
 vex::inertial InertialSensor(vex::PORT20);
 
 //Odometry
-vex::rotation RotationSensor(vex::PORT5, false);
+vex::rotation RotationSensor(vex::PORT14, false);
 
 // Drive Train
 vex::drivetrain driveTrain(leftWheels, rightWheels);
