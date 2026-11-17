@@ -19,11 +19,18 @@ using namespace vex;
 // A global instance of competition
 competition Competition;
 
-int main() {
+namespace {
+
+void registerCompetitionCallbacks() {
   //tells program to listen for sign to run autonomous, autonomous odometry, and usercontrol function
   Competition.autonomous(autonomous);
   Competition.drivercontrol(usercontrol);
+}
 
+}
+
+int main() {
+  registerCompetitionCallbacks();
   pre_auton();
 
   // Prevent main from exiting with an infinite loop.
