@@ -25,10 +25,7 @@ void testMode(string color, double tileDistance) {
     //CHANGE ON MATCH
     //const string color = "red"; 
 
-    turnRight(180);
-    turnLeft(180);
-    turnRight(90);
-    turnLeft(90);
+    driveDistance(tileDistance, 3.0);
     
 }
 
