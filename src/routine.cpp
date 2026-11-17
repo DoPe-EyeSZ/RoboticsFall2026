@@ -23,9 +23,8 @@ constexpr double kTopBaseOffsetDistanceScale = 0.7;
 
 void testMode(string color, double tileDistance) {
     //CHANGE ON MATCH
-    //const string color = "red"; 
 
-    driveDistance(tileDistance, 3.0);
+    driveDistance(50);
     
 }
 
