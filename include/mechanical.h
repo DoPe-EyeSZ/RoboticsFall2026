@@ -15,4 +15,12 @@ void claw(string direction);
 
 void processPin();
 
+void openClaw();
+
+void closeClaw();
+
+void liftUp();
+
+void liftDown();
+
 #endif

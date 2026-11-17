@@ -1,22 +1,7 @@
 #include "vex.h"
 #include "setup.h"
+#include "mechanical.h"
 
-void openClaw(){
-  clawMotor.spin(forward, 100, percent);
- 
-}
-
-void closeClaw(){
-  clawMotor.spin(reverse, 100, percent);
-}
-
-void liftUp(){
-  liftMotors.spin(forward, 25, percent);
-}
-
-void liftDown(){
-  liftMotors.spin(reverse, 25, percent);
-}
 
 // User control code here, inside the loop
 void usercontrol() {
@@ -55,10 +40,10 @@ void usercontrol() {
       liftMotors.stop();
     }
 
-    leftWheels.spin(forward, forwardSpeed + sideSpeed, percent);
+    leftWheels.spin(vex::directionType::fwd, forwardSpeed + sideSpeed, vex::velocityUnits::pct);
 
-    rightWheels.spin(forward, forwardSpeed - sideSpeed, percent);
+    rightWheels.spin(vex::directionType::fwd, forwardSpeed - sideSpeed, vex::velocityUnits::pct);
 
-    wait(20, msec); // Sleep the task for a short amount of time to
+    wait(20, vex::msec); // Sleep the task for a short amount of time to
   }
 }

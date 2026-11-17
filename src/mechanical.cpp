@@ -36,6 +36,22 @@ void resetClaw() {
 
 }
 
+void openClaw(){
+  clawMotor.spin(vex::directionType::fwd, 100, vex::velocityUnits::pct);
+}
+
+void closeClaw(){
+  clawMotor.spin(vex::directionType::rev, 100, vex::velocityUnits::pct);
+}
+
+void liftUp(){
+  liftMotors.spin(vex::directionType::fwd, 25, vex::velocityUnits::pct);
+}
+
+void liftDown(){
+  liftMotors.spin(vex::directionType::rev, 25, vex::velocityUnits::pct);
+}
+
 void flipBar(std::string color) {
     if (color == "red") {
         //lift 1x;
