@@ -8,8 +8,8 @@ void driveDistance(double targetDistance, double maxTime = 5.0) {
   
   //Wheel configs
   const double wheelCircumference = 15.96; // centimeters
-  const double kP = 0.2; 
-  const double kD = 0.5; 
+  const double kP = 0.5; 
+  const double kD = 0.1; 
   RotationSensor.setPosition(0, deg);
   
   //Will come back to this for debugging experiments
