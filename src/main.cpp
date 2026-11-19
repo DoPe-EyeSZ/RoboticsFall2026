@@ -16,13 +16,12 @@
 
 using namespace vex;
 
-// A global instance of competition
 competition Competition;
 
 namespace {
 
 void registerCompetitionCallbacks() {
-  //tells program to listen for sign to run autonomous, autonomous odometry, and usercontrol function
+  //Listen for flags
   Competition.autonomous(autonomous);
   Competition.drivercontrol(usercontrol);
 }
