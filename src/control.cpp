@@ -8,6 +8,8 @@ void usercontrol() {
   rightWheels.setStopping(brakeType::coast);
   liftMotors.setStopping(brakeType::hold);
   clawMotor.setStopping(brakeType::hold);
+  Controller1.ButtonR2.pressed(openClaw);
+  Controller1.ButtonL2.pressed(closeClaw);
 
   while (true) {
     //Get speed from controller joysticks
@@ -15,14 +17,10 @@ void usercontrol() {
     forwardSpeed = (forwardSpeed * forwardSpeed * forwardSpeed) / 10000;
     int sideSpeed = -Controller1.Axis1.position(); //right joystick output (left/right)
 
-    //Control claw motors
-    if (Controller1.ButtonR2.pressing()) {
-      openClaw();
-    } else if (Controller1.ButtonL2.pressing()) {
-      closeClaw();
-    } else {
-      clawMotor.stop();
-    }
+
+    //incrase power of lift motors to make it more responsive
+
+
 
     //Control lift motor
     if (Controller1.ButtonB.pressing()) {
