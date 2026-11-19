@@ -28,7 +28,7 @@ vex::motor_group liftMotors(liftMotorLeftBottom, liftMotorRightBottom, liftMotor
 vex::motor clawMotor(vex::PORT16, vex::gearSetting::ratio18_1, true);
 
 // Inertial Sensor
-vex::inertial InertialSensor(vex::PORT20);
+vex::inertial InertialSensor(vex::PORT18, vex::turnType::right);
 
 //Odometry
 vex::rotation RotationSensor(vex::PORT14, true);
