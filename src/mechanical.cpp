@@ -45,7 +45,7 @@ void closeClaw(){
 }
 
 void liftUp(){
-  liftMotors.spin(vex::directionType::fwd, 25, vex::velocityUnits::pct);
+  liftMotors.spin(vex::directionType::fwd, 50, vex::velocityUnits::pct);
 }
 
 void liftDown(){
