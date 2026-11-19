@@ -8,14 +8,17 @@ void usercontrol() {
   rightWheels.setStopping(brakeType::coast);
   liftMotors.setStopping(brakeType::hold);
   clawMotor.setStopping(brakeType::hold);
+
+  // Set claw to toggle
   Controller1.ButtonR2.pressed(openClaw);
   Controller1.ButtonL2.pressed(closeClaw);
 
   while (true) {
     //Get speed from controller joysticks
-    int forwardSpeed = -Controller1.Axis3.position(); //left joystick output (forward/backward)
+    int forwardSpeed = -Controller1.Axis3.position(); 
     forwardSpeed = (forwardSpeed * forwardSpeed * forwardSpeed) / 10000;
-    int sideSpeed = -Controller1.Axis1.position(); //right joystick output (left/right)
+
+    int sideSpeed = -Controller1.Axis1.position(); 
 
 
     //incrase power of lift motors to make it more responsive
@@ -31,10 +34,8 @@ void usercontrol() {
       liftMotors.stop();
     }
 
-    leftWheels.spin(vex::directionType::fwd, forwardSpeed + sideSpeed,
-                    vex::velocityUnits::pct);
-    rightWheels.spin(vex::directionType::fwd, forwardSpeed - sideSpeed,
-                     vex::velocityUnits::pct);
+    leftWheels.spin(vex::directionType::fwd, forwardSpeed + sideSpeed, vex::velocityUnits::pct);
+    rightWheels.spin(vex::directionType::fwd, forwardSpeed - sideSpeed, vex::velocityUnits::pct);
 
     wait(20, vex::msec); // Sleep the task for a short amount of time to
   }
