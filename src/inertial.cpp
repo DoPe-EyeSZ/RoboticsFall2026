@@ -9,14 +9,11 @@ void turn(int degree){
     const double Kp = 0.55;
     const double Kd = 0.1;
 
+    //initialize variables for PID control
     double err;
     double prevErr = 0;
-
-    //initialize variables for PID control
     double derivative;
     double motorPow;
-
-    //initialize timer
     timer t; 
     t.reset(); 
 
