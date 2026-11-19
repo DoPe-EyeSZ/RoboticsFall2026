@@ -1,5 +1,7 @@
 #include "mechanical.h"
 #include "setup.h"
+#include "inertial.h"
+#include "odometry.h"
 #include <cmath>
 
 namespace {
@@ -37,12 +39,22 @@ void resetClaw() {
 }
 
 
-
+// Assume bot is front-facing already
 void flipBar(std::string color) {
+    
+    // Flip bar 1x
     if (color == "red") {
-        //lift 1x;
-    } else {
-        //lift 2x;
+        driveDistance(-10);
+        driveDistance(10);
+
+    }
+    // Flip bar 2x 
+    else {
+        driveDistance(-10);
+        driveDistance(10);
+        driveDistance(-10);
+        driveDistance(10);
+
     }
 }
 
