@@ -15,6 +15,7 @@ void claw(string direction);
 
 void processPin();
 
+// Functions for auton
 void openClaw();
 
 void closeClaw();
