@@ -11,11 +11,13 @@ void flipBar(string color);
 
 void lift(string action);
 
-void claw(string direction);
+void autoCloseClaw();
+
+void autoOpenClaw();
 
 void processPin();
 
-// Functions for auton
+// Functions for MANUAL CONTROL ONLY
 void openClaw();
 
 void closeClaw();

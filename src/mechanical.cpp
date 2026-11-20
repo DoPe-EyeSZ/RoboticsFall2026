@@ -11,7 +11,7 @@ constexpr double kBansheeUprightAngle = -345.0; //degrees
 constexpr double maxLiftAngle = 224.0; //degrees
 
 void collectPin() {
-    claw("in"); //Collects pin
+    autoCloseClaw();
 }
 
 void moveClawUpright() {
@@ -42,16 +42,14 @@ void resetClaw() {
 
 // Assume bot is front-facing already
 void flipBar(std::string color) {
-    
+    autoCloseClaw();
     // Flip bar 1x
     if (color == "blue") {
-        claw("out");
         driveDistance(50);
 
     }
     // Flip bar 2x 
     else {
-        claw("out");
         driveDistance(200, 1);
         driveDistance(-100, .75);
         driveDistance(100, 1);
@@ -71,20 +69,18 @@ void lift(std::string action) {
     }
 }
 
-void claw(std::string direction) {
-    if (direction == "in") {
-        //claw roller collects pin
-        clawMotor.spin(vex::directionType::fwd, 100, vex::velocityUnits::pct);
-        wait(0.5, vex::sec);
-        clawMotor.stop();
-    }
-    else if (direction == "out") {
-        //outtake roller releases pin
-        clawMotor.spin(vex::directionType::rev, 100, vex::velocityUnits::pct);
-        wait(0.5, vex::sec);
-        clawMotor.stop();
-    }
+void autoCloseClaw() {
+    clawMotor.spin(vex::directionType::rev, 100, vex::velocityUnits::pct);
+    wait(0.5, vex::sec);
+    clawMotor.stop();
 }
+
+void autoOpenClaw() {
+    clawMotor.spin(vex::directionType::fwd, 100, vex::velocityUnits::pct);
+    wait(0.5, vex::sec);
+    clawMotor.stop();
+}
+
 
 void processPin() {
     //some pseudo-pseudo code to plan the function logic
