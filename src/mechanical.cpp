@@ -32,12 +32,18 @@ void flipBar(std::string color) {
 void lift(std::string action) {
     //pick something up with claw
     if (action == "up") {
-        liftMotors.spin(vex::directionType::fwd, 100, vex::velocityUnits::pct);
+    if (std::fabs(liftMotorRightBottom.position(vex::rotationUnits::deg)) > maxLiftAngle) {
+        liftMotors.stop();
+        return;
+    }
+    liftMotors.spin(vex::directionType::fwd, 75, vex::velocityUnits::pct);
+        wait(0.8, vex::sec); // Small delay to allow lift to start moving
     }
 
     //drop what is being held
     else if (action == "down") {
-        liftMotors.spin(vex::directionType::rev, 25, vex::velocityUnits::pct);
+    liftMotors.spin(vex::directionType::rev, 25, vex::velocityUnits::pct);
+    wait(0.8, vex::sec); // Small delay to allow lift to start moving
     }
 }
 
@@ -52,7 +58,6 @@ void autoOpenClaw() {
     wait(0.5, vex::sec);
     clawMotor.stop();
 }
-
 
 void processPin() {
     //some pseudo-pseudo code to plan the function logic
