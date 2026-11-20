@@ -22,6 +22,6 @@ void closeClaw();
 
 void liftUp(double spinPercent);
 
-void liftDown();
+void liftDown(double spinPercent);
 
 #endif

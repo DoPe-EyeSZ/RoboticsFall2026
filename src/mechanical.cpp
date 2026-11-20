@@ -8,6 +8,7 @@ namespace {
 
 //Pin processing constants
 constexpr double kBansheeUprightAngle = -345.0; //degrees
+constexpr double maxLiftAngle = 224.0; //degrees
 
 void collectPin() {
     claw("in"); //Collects pin
@@ -105,10 +106,17 @@ void closeClaw(){
 }
 
 void liftUp(double spinPercent){
-    if (spinPercent > 100) spinPercent = 100;
+    if (spinPercent > 75) spinPercent = 75;
+    if (std::fabs(liftMotorRightBottom.position(vex::rotationUnits::deg)) > maxLiftAngle) {
+        liftMotors.stop();
+        return;
+    }
     liftMotors.spin(vex::directionType::fwd, spinPercent, vex::velocityUnits::pct);
+        wait(0.8, vex::sec); // Small delay to allow lift to start moving
 }
 
-void liftDown(){
-    liftMotors.spin(vex::directionType::rev, 25, vex::velocityUnits::pct);
+void liftDown(double spinPercent){
+    if (spinPercent > 25) spinPercent = 25;
+    liftMotors.spin(vex::directionType::rev, spinPercent, vex::velocityUnits::pct);
+    wait(0.8, vex::sec); // Small delay to allow lift to start moving
 }
