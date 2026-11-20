@@ -109,6 +109,6 @@ void liftUp(double spinPercent){
     liftMotors.spin(vex::directionType::fwd, spinPercent, vex::velocityUnits::pct);
 }
 
-void liftDown(double spinPercent){
-    liftMotors.spin(vex::directionType::rev, spinPercent, vex::velocityUnits::pct);
+void liftDown(){
+    liftMotors.spin(vex::directionType::rev, 25, vex::velocityUnits::pct);
 }
