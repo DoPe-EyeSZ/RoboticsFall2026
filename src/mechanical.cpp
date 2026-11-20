@@ -104,8 +104,9 @@ void closeClaw(){
     clawMotor.spin(vex::directionType::rev, 100, vex::velocityUnits::pct);
 }
 
-void liftUp(){
-    liftMotors.spin(vex::directionType::fwd, 75, vex::velocityUnits::pct);
+void liftUp(double spinPercent){
+    if (spinPercent > 100) spinPercent = 100;
+    liftMotors.spin(vex::directionType::fwd, spinPercent, vex::velocityUnits::pct);
 }
 
 void liftDown(){
