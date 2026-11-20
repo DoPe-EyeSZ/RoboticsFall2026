@@ -14,7 +14,7 @@ void usercontrol() {
   Controller1.ButtonL2.pressed(closeClaw);
 
   // Lift logic
-  const int MAX_RPM = 200;
+  const int MAX_RPM = 100;
   const double idealSpinPerc = 75;
   const double idealRPM = MAX_RPM * (idealSpinPerc/100);
   double spinPercent = idealSpinPerc;
