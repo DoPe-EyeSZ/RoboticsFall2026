@@ -5,9 +5,7 @@
 #include <cmath>
 
 namespace {
-
 //Pin processing constants
-constexpr double kBansheeUprightAngle = -345.0; //degrees
 constexpr double maxLiftAngle = 224.0; //degrees
 
 
