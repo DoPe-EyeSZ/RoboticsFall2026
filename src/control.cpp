@@ -13,6 +13,13 @@ void usercontrol() {
   Controller1.ButtonR2.pressed(openClaw);
   Controller1.ButtonL2.pressed(closeClaw);
 
+  // Lift logic
+  const int MAX_RPM = 200;
+  const double idealSpinPerc = 75;
+  const double idealRPM = MAX_RPM * (idealSpinPerc/100);
+  double spinPercent = idealSpinPerc;
+  double err;
+
   while (true) {
     //Get speed from controller joysticks
     int forwardSpeed = -Controller1.Axis3.position(); 
@@ -25,13 +32,27 @@ void usercontrol() {
 
 
 
-    //Control lift motor
+    // Control lift motor
     if (Controller1.ButtonB.pressing()) {
-      liftUp();
-    } else if (Controller1.ButtonA.pressing()) {
+
+      liftUp(spinPercent);
+
+      if (liftMotors.velocity(vex::velocityUnits::rpm) >= 10 ){
+        err = idealRPM - liftMotors.velocity(vex::velocityUnits::rpm);
+        if (err >= 5){
+          spinPercent = idealSpinPerc * (idealRPM / liftMotors.velocity(vex::velocityUnits::rpm));
+        }
+      }
+      
+
+    }
+    else if (Controller1.ButtonA.pressing()) {
       liftDown();
-    } else {
+      spinPercent = idealSpinPerc;
+    } 
+    else {
       liftMotors.stop();
+      spinPercent = idealSpinPerc;
     }
 
     leftWheels.spin(vex::directionType::fwd, forwardSpeed + sideSpeed, vex::velocityUnits::pct);
