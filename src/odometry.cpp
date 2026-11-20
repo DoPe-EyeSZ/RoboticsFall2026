@@ -13,10 +13,10 @@ void driveDistance(double targetDistance, double maxTime = 5.0) {
   RotationSensor.setPosition(0, deg);
   
   //Will come back to this for debugging experiments
-  Controller1.Screen.newLine();
-  Controller1.Screen.print(RotationSensor.position(rotationUnits::deg));
-  Controller1.Screen.newLine();
-  Controller1.Screen.print(targetDistance);
+  //Controller1.Screen.newLine();
+  //Controller1.Screen.print(RotationSensor.position(rotationUnits::deg));
+  //Controller1.Screen.newLine();
+  //Controller1.Screen.print(targetDistance);
   
 
   double distanceTraveled = (RotationSensor.position(deg) / 360.0) * wheelCircumference;
