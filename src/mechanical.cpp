@@ -106,20 +106,9 @@ void closeClaw(){
 }
 
 void liftUp(double spinPercent){
-<<<<<<< HEAD
-=======
-    if (spinPercent > 75) spinPercent = 75;
-    if (std::fabs(liftMotorRightBottom.position(vex::rotationUnits::deg)) > maxLiftAngle) {
-        liftMotors.stop();
-        return;
-    }
->>>>>>> 9f477d1e5d3df05022950d3a3d84e0f65f81a20f
     liftMotors.spin(vex::directionType::fwd, spinPercent, vex::velocityUnits::pct);
-        wait(0.8, vex::sec); // Small delay to allow lift to start moving
 }
 
 void liftDown(double spinPercent){
-    if (spinPercent > 25) spinPercent = 25;
     liftMotors.spin(vex::directionType::rev, spinPercent, vex::velocityUnits::pct);
-    wait(0.8, vex::sec); // Small delay to allow lift to start moving
 }

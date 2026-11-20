@@ -43,11 +43,7 @@ void usercontrol() {
 
     }
     else if (Controller1.ButtonB.pressing()) {
-<<<<<<< HEAD
       liftDown();
-=======
-      liftDown(spinPercent);
->>>>>>> 9f477d1e5d3df05022950d3a3d84e0f65f81a20f
       spinPercent = idealSpinPerc;
     } 
     else {
