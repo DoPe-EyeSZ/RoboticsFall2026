@@ -24,8 +24,9 @@ constexpr double kTopBaseOffsetDistanceScale = 0.7;
 void testMode(string teamColor, double tileDistance) {
     //CHANGE ON MATCH
 
-    turn(-90);
-    turn(90);
+    //turn(-90);
+    //turn(90);
+    driveDistance(tileDistance * 2, kDriveTimeoutSeconds);
     
 }
 
