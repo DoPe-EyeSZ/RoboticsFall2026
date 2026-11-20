@@ -8,6 +8,7 @@ namespace {
 
 //Pin processing constants
 constexpr double kBansheeUprightAngle = -345.0; //degrees
+constexpr double maxLiftAngle = 224.0; //degrees
 
 void collectPin() {
     claw("in"); //Collects pin
@@ -95,7 +96,7 @@ void processPin() {
     resetClaw();
 }
 
-// Functions for auton
+// Functions for MANUAL CONTROL ONLY
 void openClaw(){
     clawMotor.spin(vex::directionType::fwd, 100, vex::velocityUnits::pct);
 }
@@ -105,7 +106,6 @@ void closeClaw(){
 }
 
 void liftUp(double spinPercent){
-    if (spinPercent > 100) spinPercent = 100;
     liftMotors.spin(vex::directionType::fwd, spinPercent, vex::velocityUnits::pct);
 }
 

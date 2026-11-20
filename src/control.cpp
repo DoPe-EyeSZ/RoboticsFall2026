@@ -28,10 +28,6 @@ void usercontrol() {
     int sideSpeed = -Controller1.Axis1.position(); 
 
 
-    //incrase power of lift motors to make it more responsive
-
-
-
     // Control lift motor
     if (Controller1.ButtonA.pressing()) {
 
