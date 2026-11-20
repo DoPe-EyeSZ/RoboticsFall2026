@@ -1,6 +1,6 @@
 #include "mechanical.h"
 #include "setup.h"
-#include "inertial.h"
+//#include "inertial.h" - not being used right now
 #include "odometry.h"
 #include <cmath>
 
