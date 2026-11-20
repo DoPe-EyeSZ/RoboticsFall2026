@@ -43,4 +43,4 @@ vex::controller Controller1(vex::controllerType::primary);
 vex::brain Brain;
 
 //configure vision sensor
-vex::vision VisionSensor(vex::PORT8);
+vex::vision VisionSensor(vex::PORT19);
