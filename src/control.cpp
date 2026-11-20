@@ -33,7 +33,7 @@ void usercontrol() {
 
 
     // Control lift motor
-    if (Controller1.ButtonB.pressing()) {
+    if (Controller1.ButtonA.pressing()) {
 
       liftUp(spinPercent);
 
@@ -46,7 +46,7 @@ void usercontrol() {
       
 
     }
-    else if (Controller1.ButtonA.pressing()) {
+    else if (Controller1.ButtonB.pressing()) {
       liftDown();
       spinPercent = idealSpinPerc;
     } 
