@@ -43,17 +43,17 @@ void resetClaw() {
 void flipBar(std::string color) {
     
     // Flip bar 1x
-    if (color == "red") {
-        driveDistance(-10);
-        driveDistance(10);
+    if (color == "blue") {
+        claw("out");
+        driveDistance(50);
 
     }
     // Flip bar 2x 
     else {
-        driveDistance(-10);
-        driveDistance(10);
-        driveDistance(-10);
-        driveDistance(10);
+        claw("out");
+        driveDistance(200, 1);
+        driveDistance(-100, .75);
+        driveDistance(100, 1);
 
     }
 }
