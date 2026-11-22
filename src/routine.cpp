@@ -25,7 +25,7 @@ void testMode(string teamColor, double tileDistance) {
     //CHANGE ON MATCH
 
     
-    lift("up",1.5);
+    //lift("up",1.5);
     driveDistance(tileDistance * 2);
     //turn(90);
     //driveDistance(tileDistance * 0.62);
