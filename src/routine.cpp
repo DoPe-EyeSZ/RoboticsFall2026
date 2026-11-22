@@ -28,7 +28,7 @@ void testMode(string teamColor, double tileDistance) {
     //turn(90);
     //driveDistance(tileDistance * 2, kDriveTimeoutSeconds);
     //flipBar("red");
-    lift("up");
+    //lift("up");
     //lift("down");
     //autoOpenClaw();
 
