@@ -6,7 +6,7 @@
 
 namespace {
 //Pin processing constants
-constexpr double maxLiftAngle = 700.0; //degrees
+constexpr double maxLiftAngle = 300.0; //degrees
 constexpr double minLiftAngle = 100.0; //degrees
 
 
@@ -31,18 +31,23 @@ void flipBar(std::string color) {
 }
 
 
-void lift(std::string action) {
+void lift(std::string action, double maxTime) {
     //pick something up with claw
+
+    timer t;
+    t.reset();
+
     if (action == "up") {
-    if (std::fabs(liftMotors.position(vex::rotationUnits::deg)) > maxLiftAngle) {
-        Controller1.Screen.newLine();
-        Controller1.Screen.print(liftMotors.position(rotationUnits::deg));
-        liftMotors.stop();
-        Controller1.Screen.print(liftMotors.position(rotationUnits::deg));
-        return;
-    }
-    liftMotors.spin(vex::directionType::fwd, 25, vex::velocityUnits::pct);
-        wait(0.8, vex::sec);
+        liftMotors.spin(vex::directionType::fwd, 30, vex::velocityUnits::pct);
+
+        if (std::fabs(liftMotors.position(vex::rotationUnits::deg)) >= maxLiftAngle || t.time(sec) >= maxTime) {
+            Controller1.Screen.newLine();
+            Controller1.Screen.print(liftMotors.position(rotationUnits::deg));
+            liftMotors.stop();
+            Controller1.Screen.print(liftMotors.position(rotationUnits::deg));
+            return;
+        }
+
     }
 
     //drop what is being held
@@ -63,7 +68,6 @@ void autoCloseClaw() {
 void autoOpenClaw() {
     clawMotor.spin(vex::directionType::rev, 100, vex::velocityUnits::pct);
     wait(0.5, vex::sec);
-    clawMotor.stop();
 }
 
 void processPin() {

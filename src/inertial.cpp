@@ -6,7 +6,7 @@
 void turn(int degree){
     //kp, kd, startingAngle values initialization
     const double startingAngle = InertialSensor.rotation(deg);
-    const double Kp = 0.55;
+    const double Kp = 0.7;
     const double Kd = 0.1;
 
     //initialize variables for PID control

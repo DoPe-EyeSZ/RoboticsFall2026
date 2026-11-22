@@ -9,7 +9,7 @@ using namespace std;
 
 void flipBar(string color);
 
-void lift(string action);
+void lift(string action, double maxTime = 3);
 
 void autoCloseClaw();
 

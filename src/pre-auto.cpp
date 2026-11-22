@@ -7,7 +7,6 @@ void pre_auton(void) {
 
   clawMotor.setStopping(brakeType::hold);
   liftMotors.setStopping(brakeType::hold);
-  autoOpenClaw();
   clawMotor.stop();
 
 

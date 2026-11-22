@@ -12,9 +12,8 @@ using namespace std;
 constexpr double bansheeUprightAngle = -345.0; //degrees
 
 void autonomous() {
-    autoOpenClaw();
+    autoCloseClaw();
     clawMotor.setStopping(vex::brakeType::hold);
-    clawMotor.stop(vex::brakeType::hold);
     liftMotors.setStopping(vex::brakeType::hold);
     InertialSensor.setRotation(0, deg);
 

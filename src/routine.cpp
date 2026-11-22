@@ -24,14 +24,18 @@ constexpr double kTopBaseOffsetDistanceScale = 0.7;
 void testMode(string teamColor, double tileDistance) {
     //CHANGE ON MATCH
 
-    //turn(-90);
+    
+    lift("up",1.5);
+    driveDistance(tileDistance * 2);
     //turn(90);
-    //driveDistance(tileDistance * 2, kDriveTimeoutSeconds);
-    //flipBar("red");
-    //lift("up");
+    //driveDistance(tileDistance * 0.62);
     //lift("down");
     //autoOpenClaw();
 
+    //lift(action: "up")
+    //turn(-90)
+    //driveDistance(tileDistance)
+    //driveDistance(tileDistance * 2);
     
 }
 
