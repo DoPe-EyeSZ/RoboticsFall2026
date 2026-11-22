@@ -6,10 +6,10 @@
 void pre_auton(void) {
 
   clawMotor.setStopping(brakeType::hold);
-  autoOpenClaw();
-  autoCloseClaw();
-
   liftMotors.setStopping(brakeType::hold);
+  autoOpenClaw();
+  clawMotor.stop();
+
 
   //Calibrate Inertial Sensor
   InertialSensor.calibrate();
