@@ -1,5 +1,3 @@
-
-#include "mechanical.h"
 #include "vex.h"
 #include "setup.h"
 
