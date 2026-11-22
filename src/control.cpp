@@ -9,9 +9,6 @@ void usercontrol() {
   liftMotors.setStopping(brakeType::hold);
   clawMotor.setStopping(brakeType::hold);
 
-  // Set claw to toggle
-  Controller1.ButtonR2.pressed(openClaw);
-  Controller1.ButtonL2.pressed(closeClaw);
 
   // Lift logic
   const int MAX_RPM = 100;
@@ -49,6 +46,17 @@ void usercontrol() {
     else {
       liftMotors.stop();
       spinPercent = idealSpinPerc;
+    }
+
+    // Control claw motor
+    if (Controller1.ButtonR2.pressing()) {
+      openClaw();
+    } 
+    else if (Controller1.ButtonL2.pressing()) {
+      closeClaw();
+    }
+    else {
+      clawMotor.stop();
     }
 
     leftWheels.spin(vex::directionType::fwd, forwardSpeed + sideSpeed, vex::velocityUnits::pct);
