@@ -28,16 +28,21 @@ void testMode(string teamColor, double tileDistance) {
     //turn(90);
     //driveDistance(tileDistance * 2, kDriveTimeoutSeconds);
     //flipBar("red");
+<<<<<<< HEAD
     lift("up");
+=======
+    //lift("up");
+    //lift("down");
+    //autoOpenClaw();
+
+>>>>>>> 938c29fcd220dd2a0c5c90957954b523d48f6ea7
     
 }
 
 //For head-to-head match
 //There will be 2 alliance bots on our half of field, so let's restrict this bot's movement to one's of the triangle spaces
 void matchMode(string teamColor, double tileDistance){
-    //CHANGE ON MATCH
-    //const string color = "red"; 
-    //const double tileDistance = 61; //cm
+
 
     //Flipping bar thing
     turn(180);

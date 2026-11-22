@@ -9,7 +9,7 @@
 
 #include "vex.h"
 //#include "setup.h" - not being used right now
-#include "pre-auto.h"
+//#include "pre-auto.h"
 #include "auto.h"
 //#include "odometry.h" - not being used right now
 #include "control.h"
@@ -29,8 +29,9 @@ void registerCompetitionCallbacks() {
 }
 
 int main() {
+  //pre_auton();
   registerCompetitionCallbacks();
-  pre_auton();
+
 
   // Prevent main from exiting with an infinite loop.
   while (true) {

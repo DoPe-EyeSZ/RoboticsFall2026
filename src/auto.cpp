@@ -1,4 +1,5 @@
 #include "vex.h"
+#include "mechanical.h"
 #include "setup.h"
 #include "routine.h"
 //#include "vision.h" - not being used right now
@@ -11,9 +12,10 @@ using namespace std;
 constexpr double bansheeUprightAngle = -345.0; //degrees
 
 void autonomous() {
-    //Reset banshee claw position
+    autoOpenClaw();
     clawMotor.setStopping(vex::brakeType::hold);
     clawMotor.stop(vex::brakeType::hold);
+    liftMotors.setStopping(vex::brakeType::hold);
     InertialSensor.setRotation(0, deg);
 
     //CHANGE ON MATCH
