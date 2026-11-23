@@ -4,12 +4,12 @@
 
 using namespace vex;
 //targetDistance is in centimeters
-void driveDistance(double targetDistance, double maxTime = 5.0) {
+void driveDistance(double targetDistance, double maxTime = 1.5) {
   
   //Wheel configs
   const double wheelCircumference = 15.96; // centimeters
-  const double kP = 0.5; 
-  const double kD = 0.1; 
+  const double kP = 0.7; 
+  const double kD = 0.3; 
   RotationSensor.setPosition(0, deg);
   
   //Will come back to this for debugging experiments
@@ -35,7 +35,7 @@ void driveDistance(double targetDistance, double maxTime = 5.0) {
 
     err = targetDistance - distanceTraveled;
 
-    if (fabs(err) < 0.5) break;   // check if the error is within a threshold to break the loop
+    if (fabs(err) < 1) break;   // check if the error is within a threshold to break the loop
 
     derivative = (err - prev_err);
 
