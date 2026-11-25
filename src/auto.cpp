@@ -1,5 +1,4 @@
 #include "vex.h"
-#include "mechanical.h"
 #include "setup.h"
 #include "routine.h"
 //#include "vision.h" - not being used right now
